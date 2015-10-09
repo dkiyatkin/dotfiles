@@ -1,0 +1,16 @@
+[user]
+	name = Dmitriy Kiyatkin
+	email = info@dkiyatkin.com
+[github]
+	user = dkiyatkin
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+[core]
+	excludesfile = ~/.gitignore_global
+	quotepath = false
