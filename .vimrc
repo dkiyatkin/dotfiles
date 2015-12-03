@@ -79,9 +79,7 @@ let g:EditorConfig_preserve_formatoptions = 1
 " Filetypes:
 autocmd BufNewFile,BufRead .npmrc setlocal filetype=dosini
 autocmd BufNewFile,BufRead .bash_aliases setlocal filetype=sh
-autocmd FileType sh setlocal foldmethod=indent shiftwidth=2 expandtab tabstop=2
 NeoBundle 'kchmck/vim-coffee-script'
-autocmd BufNewFile,BufReadPost *.coffee setlocal foldmethod=indent shiftwidth=2 expandtab tabstop=2
 NeoBundle 'mustache/vim-mustache-handlebars'
 autocmd BufNewFile,BufRead *.tpl setfiletype mustache
 NeoBundle 'derekwyatt/vim-scala'
@@ -94,7 +92,6 @@ let g:vim_json_syntax_conceal = 0
 " let g:vim_json_warnings = 0
 autocmd BufNewFile,BufRead .eslintrc setlocal filetype=json
 NeoBundle 'pangloss/vim-javascript'
-" autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
 let g:javascript_enable_domhtmlcss=1
 " autocmd BufNewFile,BufRead *.jsx setfiletype javascript
 NeoBundle 'mxw/vim-jsx', {'depends': 'pangloss/vim-javascript'}
@@ -102,11 +99,11 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'groenewege/vim-less'
 " NeoBundle 'wavded/vim-stylus', {'depends': 'lepture/vim-css'}
+NeoBundle 'ap/vim-css-color'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundle 'plasticboy/vim-markdown'
 let g:vim_markdown_initial_foldlevel=3
-" TODO vim files 2 пробела
 
 " Theme Bundles:
 NeoBundle 'junegunn/seoul256.vim'
@@ -120,13 +117,13 @@ let g:airline_right_alt_sep = '⮃'
 " let g:airline_exclude_preview = 1 " ctrlspace
 
 " Extends:
+NeoBundle 'tpope/vim-speeddating'
 " fullscreen and open http://ya.ru '~/.gvimrc'
 NeoBundle 'xolox/vim-shell', {'depends': 'xolox/vim-misc'}
-let g:shell_mappings_enabled = 0
-" inoremap gx <C-O>:Open<CR>
 nnoremap gx :Open<CR>
 NeoBundle 'tyru/open-browser.vim'
 vmap gx <Plug>(openbrowser-smart-search)
+vmap <F6> <Plug>(openbrowser-smart-search)
 " автосохранение сессий
 NeoBundle 'xolox/vim-session', {'depends': 'xolox/vim-misc'}
 let g:session_autosave='yes'
@@ -138,15 +135,9 @@ NeoBundle 'mbbill/undotree'
 function g:Undotree_CustomMap()
   silent! nunmap <buffer> <Tab>
 endfunc
-nnoremap <Leader>u :UndotreeToggle<CR>
+nnoremap <Leader>ut :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 4
-" bash-style
-NeoBundle 'houtsnip/vim-emacscommandline'
-cmap <M-r> <Esc>r
-cmap <M-f> <Esc>f
-cmap <M-b> <Esc>b
-cmap <M-d> <Esc>d
 NeoBundle 'scrooloose/nerdtree'
 " autocmd FileType nerdtree,tagbar setlocal nocursorcolumn
 let g:NERDTreeWinSize=50
@@ -223,8 +214,9 @@ function! ToggleYcmAutoTrigger()
   endif
   echo 'g:ycm_auto_trigger = '.g:ycm_auto_trigger
 endfunction
+" TODO режим правки
 nnoremap <LocalLeader><C-Space> :call ToggleYcmAutoTrigger()<CR>
-NeoBundle 'marijnh/tern_for_vim', {'build' : { 'linux': 'npm install' }}
+NeoBundle 'ternjs/tern_for_vim', {'build' : { 'linux': 'npm install' }}
 NeoBundle 'justinmk/vim-sneak'
 let g:sneak#streak = 1
 nmap <Leader>s <Plug>Sneak_s
@@ -245,15 +237,21 @@ filetype plugin indent on
 NeoBundleCheck
 
 " Settings:
-" TODO кто удаляет пробелы в конце строк?
 colorscheme seoul256
+set notimeout " отключим таймаут для leader
+set nojoinspaces " не вставлять лишних пробелов при объединении строк
+set visualbell
 set history=10000 " Number of things to remember in history
 set number " Включает отображение номеров строк
 " Не выгружать буфер, когда переключаемся на другой
 " Это позволяет редактировать несколько файлов в один и тот же момент без необходимости сохранения каждый раз
 " когда переключаешься между ними
 set hidden
-set linebreak " Перенос строк по словам, а не по буквам
+set linebreak " Перенос строк по словам, а не по буквам TODO не работает вместе с set list
+set list
+set listchars=tab:├─,trail:·,extends:»,precedes:«,nbsp:␣ " ,eol:¬
+let &showbreak = '+++ ' " индикатор переноса
+set cpoptions+=n " отображение переноса в столбике с цифрами
 " set shiftwidth=8 tabstop=8 " Размер табулации по умолчанию
 " set expandtab " пробелы за мето табов
 set cursorline " Подсветка текущей строки --тормозит
@@ -282,16 +280,13 @@ set imsearch=0
 " set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.exe
 set wildignore=*~
 " sbuffer переключает на существующую вкладку
-set switchbuf=useopen,usetab,newtab
+" set switchbuf=useopen,usetab,newtab
 if has('persistent_undo')
   silent !mkdir ~/.vim/backups > /dev/null 2>&1
   set undodir=~/.vim/backups
   set undofile
 endif
-" менять раскладку с помощью внешних программ TODO visual mode
-noremap  <LocalLeader><F6> :let &l:imi = !&l:imi<CR>
-inoremap <LocalLeader><F6> <C-^>
-cnoremap <LocalLeader><F6> <C-^>
+" set directory=.,~/tmp,/var/tmp,/tmp
 
 " подсветка вспомогательных слов в комментариях
 autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|DEBUG\|REMOVE\)')
@@ -308,8 +303,8 @@ call unite#custom#profile('default', 'context', {'direction': 'aboveleft'})
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 nnoremap <silent> <Leader>ur :<C-u>UniteResume<CR>
-nnoremap <silent> <Leader>f :<C-u>Unite -buffer-name=files -start-insert file_rec/async:! -default-action=tabswitch<CR>
-nnoremap <silent> <Leader>g :Unite -buffer-name=grep grep:.<CR>
+nnoremap <silent> <Leader>fa :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<CR>
+nnoremap <silent> <Leader>fg :Unite -buffer-name=grep grep:. -no-empty<CR>
 " let g:unite_source_history_yank_enable = 1
 " nnoremap <Leader>y :<C-u>Unite history/yank<CR>
 " " The prefix key.
@@ -355,11 +350,24 @@ nnoremap <silent> <PageDown> <C-D><C-D>
 vnoremap <silent> <PageDown> <C-D><C-D>
 inoremap <silent> <PageDown> <C-\><C-O><C-D><C-\><C-O><C-D>
 
+" удобные знаки препинания для русской расскладки
+" alt-,
+inoremap ¬ ,
+" alt-.
+inoremap ® .
+" alt-shift-?
+inoremap ¿ ?
+" alt-;
+inoremap » ;
+" alt-shift-:
+inoremap » º
+
 " вставка/копирование CTRL-V/CTRL-C. CTRL-Q same as old CTRL-V
 " CTRL-C and CTRL-Insert are Copy
 vnoremap <C-C> "+y
 vnoremap <C-Insert> "+y
 " CTRL-V and SHIFT-Insert are Paste
+" use i_CTRL-Q instead
 map <C-V> "+gp
 map <S-Insert> "+gp
 cmap <C-V> <C-R>+
@@ -390,17 +398,17 @@ vnoremap <silent> # :<C-U>
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 " close current buffer
 nnoremap <Leader>bd :bd<CR>
-" close all buffers or bufferonly
+" close all buffers or bufferonly TODO
 nnoremap <Leader>bo :bufdo bd<CR>
 " list buffers
 nnoremap <silent> <Leader>bt :<C-u>Unite -buffer-name=buffers_tab buffer_tab<CR>
-nnoremap <silent> <Leader>b :<C-u>Unite -buffer-name=buffers -start-insert buffer -default-action=tabswitch<CR>
+nnoremap <silent> <Leader>ba :<C-u>Unite -buffer-name=buffers buffer<CR>
 " managing tabs
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>tm :tabmove 
-nnoremap <silent> <Leader>t :<C-u>Unite -buffer-name=tabs tab:no-current<CR>
+nnoremap <silent> <Leader>ta :<C-u>Unite -buffer-name=tabs tab:no-current<CR>
 " закрыть вкладку по CTRL-F4
 nnoremap <C-F4> :tabclose<CR>
 inoremap <C-F4> <Esc>:tabclose<CR>
@@ -435,17 +443,9 @@ command W w !sudo tee % > /dev/null
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 " bash-style
-inoremap <C-A> <Home>
-inoremap <C-E> <End>
-inoremap <A-b> <C-Left>
-inoremap <A-f> <C-Right>
-inoremap <C-F> <Right>
-inoremap <C-B> <Left>
-inoremap <A-d> <C-O>de
-inoremap <C-D> <Del>
 " remap <C-K> digraphs
-inoremap <LocalLeader><C-K> <C-K>
-inoremap <C-K> <C-O>d$
+" inoremap <LocalLeader><C-K> <C-K>
+" inoremap <C-K> <C-O>d$
 
 " Разное:
 nnoremap <LocalLeader>ev :vsplit $MYVIMRC<CR>
@@ -464,31 +464,50 @@ autocmd FileType qf nnoremap <buffer> q :bd<CR>
 nnoremap <F1> :<C-u>Unite -buffer-name=help -start-insert help<CR>
 " Execute help by cursor keyword.
 nnoremap <silent> g<F1> :<C-u>UniteWithCursorWord help<CR>
+" TODO обработка команд в visual/select mode
+" менять раскладку с помощью внешних программ
+noremap  <LocalLeader><F6> :let &l:imi = !&l:imi<CR>
+inoremap <LocalLeader><F6> <C-^>
+cnoremap <LocalLeader><F6> <C-^>
+" вставка текущей даты, так же настроен speeddating для этого формата TODO выяснить как подставлять переменну формата даты сюда и в speeddating
+inoremap <LocalLeader><C-D> <C-R>=strftime("%H:%M %a %d.%m.%y")<CR>
+nnoremap <LocalLeader><C-D> o<Esc>"=strftime("%H:%M %a %d.%m.%y")<CR>P
 
 " TODO
 " i_CTRL-O в конце строки переходит на один символ назад, убрать из кейбиндов
 " курсор в normal mode не меняется от iminsert
 " ctrl-alt-r RestartVim если нет несохраненных изменений
-" слишком яркие diff цвета
-" отключить автоматический перенос слов
-" добавить пустые строки по краям выделения
+" слишком яркие diff цвета (кроме gitdiff)
+" vmap добавить пустые строки по краям выделения
 " RestartVim срабатывать только когда все файлы сохранены
 " Unite ctrl-l не убирает подсветку
 " при свертке фолдов может нарушится расцветка синтаксиса
 " ycm goto decloration, ctags, syntastic goto, ternjs
-" не сохранять nerdtree
+" vim-session не сохранять nerdtree
 " vim-session не сохраняет список буферов для каждой вкладки tabpagebuffer
-
-let bundle = neobundle#get('vim-emacscommandline')
-function! bundle.hooks.on_post_source(bundle)
-  " возвращаем после emacscommandline, чтобы удаление было не по всему слову
-  " в баше тоже C-W нестандартный настроен
-  " TODO перестает работать отмена по Ctrl _
-  cnoremap <C-W> <C-W>
-endfunction
+" начинает тормозить переход между буферами, сплитами и вкладками
+" упорядочить конфиг, найти быстрый способ выявить текущий плагин
+" скопировать путь файла относительно pwd
+" Ctrl-Shift-PgDn-PgUp перемещать вкладки
+" попробовать принудительный tw, gq, formatoptions
+" сделать map на отступы по 1 пробелу
+" alt-` = alt-ё - переключение на последнию активную вкладку, также alt-номер вкладки
+" vim - при bd не закрывать вкладку, если в ней есть еще другие буфферы
+" vim - помечать вкладки
+" ctrl-x вырезать текст в обычный буфер
+" unite bookmark - b,N key conflict
 
 " показывать preview внизу
 augroup PreviewOnBottom
   autocmd InsertEnter * set splitbelow
   autocmd InsertLeave * set splitbelow!
 augroup END
+
+" Remember cursor position when switching buffer
+if v:version >= 700
+  autocmd BufLeave * let b:winview = winsaveview()
+  " Except NERDTree
+  autocmd BufLeave NERD_tree_\d\+ unlet! b:winview
+  " TODO центрировать буфер
+  autocmd BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
+endif
