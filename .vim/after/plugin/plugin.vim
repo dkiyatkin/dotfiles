@@ -1,3 +1,3 @@
 if exists(':SpeedDatingFormat')
-  1SpeedDatingFormat %H:%M %a %d.%m.%y
+  1SpeedDatingFormat %a %d.%m.%y %H:%M
 endif

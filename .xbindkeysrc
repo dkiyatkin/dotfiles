@@ -1,0 +1,184 @@
+# For the benefit of emacs users: -*- shell-script -*-
+###########################
+# xbindkeys configuration #
+###########################
+#
+# Version: 1.8.6
+#
+# If you edit this file, do not forget to uncomment any lines
+# that you change.
+# The pound(#) symbol may be used anywhere for comments.
+#
+# To specify a key, you can use 'xbindkeys --key' or
+# 'xbindkeys --multikey' and put one of the two lines in this file.
+#
+# The format of a command line is:
+#    "command to start"
+#       associated key
+#
+#
+# A list of keys is in /usr/include/X11/keysym.h and in
+# /usr/include/X11/keysymdef.h
+# The XK_ is not needed.
+#
+# List of modifier:
+#   Release, Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
+#
+
+# The release modifier is not a standard X modifier, but you can
+# use it if you want to catch release events instead of press events
+
+# By defaults, xbindkeys does not pay attention with the modifiers
+# NumLock, CapsLock and ScrollLock.
+# Uncomment the lines above if you want to pay attention to them.
+
+#keystate_numlock = enable
+#keystate_capslock = enable
+#keystate_scrolllock= enable
+
+# xdotool key --clearmodifiers ctrl+BackSpace
+# "xvkbd -xsendevent -text '\C\b'"
+
+# Examples of commands:
+
+# "xbindkeys_show"
+#   Control+Shift + q
+
+# set directly keycode (here control + f with my keyboard)
+#"xterm"
+#  c:41 + m:0x4
+
+# specify a mouse button
+#"xterm"
+#  control + b:2
+
+#"xterm -geom 50x20+20+20"
+#   Shift+Mod2+alt + s
+#
+## set directly keycode (here control+alt+mod2 + f with my keyboard)
+#"xterm"
+#  alt + c:0x29 + m:4 + mod2
+#
+## Control+Shift+a  release event starts rxvt
+#"rxvt"
+#  release+control+shift + a
+#
+## Control + mouse button 2 release event starts rxvt
+#"rxvt"
+#  Control + b:2 + Release
+
+# во всех приложениях убираем ctrl-w как закрытие вкладки, за место этого есть ctlr-f4
+# по ctrl-w удалить предыдущее слово
+# отдельная настройка глобальных клавиш для kde
+# удалить предыдущее слово в firefox, во всех gtk включен режим Emacs:
+# echo 'gtk-key-theme-name = "Emacs"' >>~/.gtkrc-2.0
+# gconftool-2 --set /desktop/gnome/interface/gtk_key_theme Emacs --type string
+# в firefox с помощью плагина Customizable Shortcuts отключен ctrl-w чтобы не закрывались вкладки
+# для всех приложений обычный ctrl-w, для firefox ctrl-backspace
+# "firefox-ctrl-w.sh" # все таки нельзя забирать это сочетание, так как оно, маловероятно, но все-таки может быть использовано в приложениях =(
+#   Control + w
+
+# Настраиваем CapsLock как дополнительный модификатор(Mod3), который будет везде работать
+"xvkbd -xsendevent -text '\C\b'"
+  Mod3 + w
+"xvkbd -xsendevent -text '\b'"
+  Mod3 + h
+"xvkbd -xsendevent -text '\Cu'"
+  Mod3 + u
+"xvkbd -xsendevent -text '\Ck'"
+  Mod3 + k
+"xvkbd -xsendevent -text '\[Home]'"
+  Mod3 + a
+"xvkbd -xsendevent -text '\S\[Home]'"
+  Shift+Mod3 + a
+"xvkbd -xsendevent -text '\[End]'"
+  Mod3 + e
+"xvkbd -xsendevent -text '\S\[End]'"
+  Shift+Mod3 + e
+"xvkbd -xsendevent -text '\d'"
+  Mod3 + d
+"xvkbd -xsendevent -text '\C\d'"
+  Alt+Mod3 + d
+
+"xvkbd -xsendevent -text '\[Down]'"
+  Mod3 + n
+"xvkbd -xsendevent -text '\S\[Down]'"
+  Shift+Mod3 + n
+"xvkbd -xsendevent -text '\[Up]'"
+  Mod3 + p
+"xvkbd -xsendevent -text '\S\[Up]'"
+  Shift+Mod3 + p
+"xvkbd -xsendevent -text '\[Right]'"
+  Mod3 + f
+"xvkbd -xsendevent -text '\S\[Right]'"
+  Shift+Mod3 + f
+"xvkbd -xsendevent -text '\[Left]'"
+  Mod3 + b
+"xvkbd -xsendevent -text '\S\[Left]'"
+  Shift+Mod3 + b
+
+"xvkbd -xsendevent -text '\C\[Left]'"
+  Alt+Mod3 + b
+"xvkbd -xsendevent -text '\S\C\[Left]'"
+  Shift+Alt+Mod3 + b
+"xvkbd -xsendevent -text '\C\[Right]'"
+  Alt+Mod3 + f
+"xvkbd -xsendevent -text '\S\C\[Right]'"
+  Shift+Alt+Mod3 + f
+
+# esc
+"xvkbd -xsendevent -text '\e'"
+  Mod3 + bracketleft
+
+# полностью заменить CapsLock на `xkb-switch -n`, в vim на сочетание \<F6>
+# "xbindkeys_show"
+#   m:0x2004 + c:105
+#   # Control + Control_R
+# "vim-capslock.sh"
+#   m:0x2 + c:66
+# "vim-capslock.sh"
+#   m:0x20 + c:66
+"vim-capslock.sh"
+  ISO_Next_Group
+
+# capsplock затем два shift - режим capslock
+"xdotool key Caps_Lock"
+  Shift+Mod3 + Shift_R
+"xdotool key Caps_Lock"
+  Shift+Mod3 + Shift_L
+
+# TODO
+# запятая и точка в любой раскладке
+# "xvkbd -xsendevent -text '\,'"
+#   less
+# "xvkbd -xsendevent -text '\.'"
+#   Shift + less
+# "xvkbd -xsendevent -text '\[KP_Delete]'"
+# "xdotool key KP_Delete"
+#   less
+# "xvkbd -xsendevent -text '\,'"
+#   KP_Delete
+
+# иначе не работает в krusader
+# mouse back
+"xvkbd -xsendevent -text '\[XF86Back]'"
+  m:0x0 + b:8
+
+# mouse forward
+"xvkbd -xsendevent -text '\[XF86Forward]'"
+  m:0x0 + b:9
+
+# TODO не срабатывает
+# XF86AudioPause - Нажатая клавиша не поддерживается в Qt.
+'xdotool key XF86AudioPlay'
+  XF86AudioPause
+
+# TODO
+# вывести текущую дату
+"current-date.sh"
+  Control+Mod3 + d
+
+##################################
+# End of xbindkeys configuration #
+##################################

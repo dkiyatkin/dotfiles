@@ -102,8 +102,9 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'ap/vim-css-color'
 NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'evanmiller/nginx-vim-syntax'
-NeoBundle 'plasticboy/vim-markdown'
-let g:vim_markdown_initial_foldlevel=3
+" тормозит, используем встроенный
+" NeoBundle 'plasticboy/vim-markdown'
+" let g:vim_markdown_initial_foldlevel=3
 
 " Theme Bundles:
 NeoBundle 'junegunn/seoul256.vim'
@@ -182,6 +183,7 @@ nnoremap <F5> :SyntasticCheck<CR>
 " let g:syntastic_html_checkers=['tidy','jshint']
 " autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
+let g:syntastic_jade_checkers = ['jade_lint']
 NeoBundle 'syngan/vim-vimlint', {'depends': 'ynkdir/vim-vimlparser'}
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'honza/vim-snippets'
@@ -237,6 +239,7 @@ filetype plugin indent on
 NeoBundleCheck
 
 " Settings:
+set showcmd " показывать команды справа внизу
 colorscheme seoul256
 set notimeout " отключим таймаут для leader
 set nojoinspaces " не вставлять лишних пробелов при объединении строк
@@ -466,12 +469,9 @@ nnoremap <F1> :<C-u>Unite -buffer-name=help -start-insert help<CR>
 nnoremap <silent> g<F1> :<C-u>UniteWithCursorWord help<CR>
 " TODO обработка команд в visual/select mode
 " менять раскладку с помощью внешних программ
-noremap  <LocalLeader><F6> :let &l:imi = !&l:imi<CR>
-inoremap <LocalLeader><F6> <C-^>
-cnoremap <LocalLeader><F6> <C-^>
-" вставка текущей даты, так же настроен speeddating для этого формата TODO выяснить как подставлять переменну формата даты сюда и в speeddating
-inoremap <LocalLeader><C-D> <C-R>=strftime("%H:%M %a %d.%m.%y")<CR>
-nnoremap <LocalLeader><C-D> o<Esc>"=strftime("%H:%M %a %d.%m.%y")<CR>P
+noremap  <F2> :let &l:imi = !&l:imi<CR>
+inoremap <F2> <C-^>
+cnoremap <F2> <C-^>
 
 " TODO
 " i_CTRL-O в конце строки переходит на один символ назад, убрать из кейбиндов
@@ -496,6 +496,9 @@ nnoremap <LocalLeader><C-D> o<Esc>"=strftime("%H:%M %a %d.%m.%y")<CR>P
 " vim - помечать вкладки
 " ctrl-x вырезать текст в обычный буфер
 " unite bookmark - b,N key conflict
+" rhubarb.vim
+" neovim - так как обычный vim все равно бывает крэшится
+" сохранять NeoBundleLog в файл после обновления, либо научится получать изменения за период с предпоследнего обновления
 
 " показывать preview внизу
 augroup PreviewOnBottom
