@@ -37,10 +37,20 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    },
 \ }
 " для neobundle. быстрый поиск в данных
-NeoBundle 'Shougo/unite.vim', {'depends': ['Shougo/tabpagebuffer.vim', 'Shougo/neomru.vim']}
-NeoBundle 'DeaR/vim-tabpagebuffer-misc', {'depends': 'Shougo/tabpagebuffer.vim'}
-" не удалять вкладочные буферы
-let g:tabpagebuffer#command#bdelete_keeptabpage = 1
+NeoBundle 'Shougo/unite.vim', {'depends': ['Shougo/neomru.vim']}
+
+NeoBundle 'vim-ctrlspace/vim-ctrlspace'
+autocmd BufNewFile,BufRead cs_workspaces setlocal filetype=vim
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+let g:CtrlSpaceGlobCommand = 'ag -l --hidden --nocolor -g ""'
+let g:CtrlSpaceLoadLastWorkspaceOnStart = 1
+
+" ctrlspace
+" NeoBundle 'DeaR/vim-tabpagebuffer-misc', {'depends': 'Shougo/tabpagebuffer.vim'}
+" " не удалять вкладочные буферы
+" " let g:tabpagebuffer#command#bdelete_keeptabpage = 1
+
 NeoBundle 'tacroe/unite-mark'
 NeoBundle 'tsukkee/unite-help'
 autocmd FileType unite call s:unite_settings()
@@ -90,7 +100,7 @@ NeoBundle 'Valloric/MatchTagAlways'
 NeoBundle 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 " let g:vim_json_warnings = 0
-autocmd BufNewFile,BufRead .eslintrc setlocal filetype=json
+autocmd BufNewFile,BufRead .eslintrc,.babelrc setlocal filetype=json
 NeoBundle 'pangloss/vim-javascript'
 let g:javascript_enable_domhtmlcss=1
 " autocmd BufNewFile,BufRead *.jsx setfiletype javascript
@@ -110,12 +120,13 @@ NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundle 'junegunn/seoul256.vim'
 let g:seoul256_background = 235
 NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 let g:airline_theme='tomorrow'
 let g:airline_left_sep = '⮀'
 let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
 let g:airline_right_alt_sep = '⮃'
-" let g:airline_exclude_preview = 1 " ctrlspace
+let g:airline_exclude_preview = 1 " ctrlspace
 
 " Extends:
 NeoBundle 'tpope/vim-speeddating'
@@ -125,12 +136,18 @@ nnoremap gx :Open<CR>
 NeoBundle 'tyru/open-browser.vim'
 vmap gx <Plug>(openbrowser-smart-search)
 vmap <F6> <Plug>(openbrowser-smart-search)
+
+" ctrlspace
 " автосохранение сессий
-NeoBundle 'xolox/vim-session', {'depends': 'xolox/vim-misc'}
-let g:session_autosave='yes'
-let g:session_autoload='yes'
-set sessionoptions-=help
-" set sessionoptions-=buffers
+" NeoBundle 'xolox/vim-session', {'depends': 'xolox/vim-misc'}
+" let g:session_autosave='yes'
+" let g:session_autoload='yes'
+" set sessionoptions-=help
+" " set sessionoptions-=buffers
+" let g:session_command_aliases = 1
+" " TODO t:tabpagebuffer
+" " let g:session_persist_globals = []
+
 " дерево истории
 NeoBundle 'mbbill/undotree'
 function g:Undotree_CustomMap()
@@ -139,21 +156,28 @@ endfunc
 nnoremap <Leader>ut :UndotreeToggle<CR>
 let g:undotree_SetFocusWhenToggle = 1
 let g:undotree_WindowLayout = 4
+
 NeoBundle 'scrooloose/nerdtree'
 " autocmd FileType nerdtree,tagbar setlocal nocursorcolumn
 let g:NERDTreeWinSize=50
 let g:NERDTreeMinimalUI=1
-nnoremap <C-\> :NERDTreeToggle<CR>
-nnoremap <Esc>\ :NERDTreeFind<CR>
 nmap <M-\> <Esc>\
 nnoremap <Leader>\ :NERDTree<CR>
+
+NeoBundle 'jistr/vim-nerdtree-tabs'
+let g:nerdtree_tabs_open_on_gui_startup = 0
+nnoremap <C-\> :NERDTreeTabsToggle<CR>
+nnoremap <Esc>\ :NERDTreeTabsFind<CR>
+
 NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+
 NeoBundle 'tpope/vim-fugitive', {'depends': 'tpope/vim-git'}
 set previewheight=20
 " nmap <Leader>gs :Gstatus<CR><C-w>10+
 nnoremap <Leader>gs :Gstatus<CR>
 " проиндексировать все изменения и сделать коммит
 command IGitAddAllCommit Git add --all . | Gcommit
+
 NeoBundle 'rdolgushin/gitignore.vim'
 autocmd BufNewFile,BufRead .gitignore_global setlocal filetype=gitignore
 NeoBundle 'airblade/vim-gitgutter'
@@ -191,10 +215,10 @@ let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 NeoBundle 'Valloric/YouCompleteMe', {
 \ 'build'      : {
-\     'mac'     : './install.py --clang-completer --omnisharp-completer --gocode-completer',
-\     'unix'    : 'git submodule update --init --recursive; ./install.py --clang-completer --omnisharp-completer --gocode-completer',
-\     'windows' : './install.py --clang-completer --omnisharp-completer --gocode-completer',
-\     'cygwin'  : './install.py --clang-completer --omnisharp-completer --gocode-completer'
+\     'mac'     : './install.py --clang-completer --omnisharp-completer --gocode-completer --tern-completer --racer-completer',
+\     'unix'    : 'git submodule update --init --recursive; ./install.py --clang-completer --omnisharp-completer --gocode-completer --tern-completer --racer-completer',
+\     'windows' : './install.py --clang-completer --omnisharp-completer --gocode-completer --tern-completer --racer-completer',
+\     'cygwin'  : './install.py --clang-completer --omnisharp-completer --gocode-completer --tern-completer --racer-completer'
 \   }
 \ }
 let g:neobundle#install_process_timeout = 1500
@@ -240,12 +264,16 @@ NeoBundleCheck
 
 " Settings:
 set showcmd " показывать команды справа внизу
-colorscheme seoul256
+" не включаем цветную тему для tty терминала
+if $TERM != 'linux'
+  colorscheme seoul256
+endif
 set notimeout " отключим таймаут для leader
 set nojoinspaces " не вставлять лишних пробелов при объединении строк
 set visualbell
 set history=10000 " Number of things to remember in history
 set number " Включает отображение номеров строк
+set relativenumber " номера относительно текущей строки
 " Не выгружать буфер, когда переключаемся на другой
 " Это позволяет редактировать несколько файлов в один и тот же момент без необходимости сохранения каждый раз
 " когда переключаешься между ними
@@ -272,8 +300,6 @@ set foldmethod=indent
 set ttyfast
 " Enable mouse use in all modes
 set mouse=a
-" Don't redraw while executing macros (good performance config)
-set lazyredraw
 " переключение расскладки ctrl-6
 set keymap=russian-jcukenwin
 set iminsert=0
@@ -285,11 +311,14 @@ set wildignore=*~
 " sbuffer переключает на существующую вкладку
 " set switchbuf=useopen,usetab,newtab
 if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
+  silent !mkdir ~/.vim/undo > /dev/null 2>&1
+  set undodir=~/.vim/undo
   set undofile
 endif
-" set directory=.,~/tmp,/var/tmp,/tmp
+silent !mkdir ~/.vim/backup > /dev/null 2>&1
+silent !mkdir ~/.vim/swp > /dev/null 2>&1
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
 
 " подсветка вспомогательных слов в комментариях
 autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|DEBUG\|REMOVE\)')
@@ -353,6 +382,7 @@ nnoremap <silent> <PageDown> <C-D><C-D>
 vnoremap <silent> <PageDown> <C-D><C-D>
 inoremap <silent> <PageDown> <C-\><C-O><C-D><C-\><C-O><C-D>
 
+" TODO
 " удобные знаки препинания для русской расскладки
 " alt-,
 inoremap ¬ ,
@@ -381,8 +411,19 @@ cmap <S-Insert> <C-R>+
 " Uses the paste.vim autoload script.
 exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
 exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
-" imap <S-Insert> <C-V>
+" по умолчанию MiddleMouse
+imap <S-Insert> <C-V>
 " vmap <S-Insert> <C-V>
+
+" отключаем не нужные срабатывания перехода в режим правки
+inoremap <C-Insert> <Nop>
+nnoremap <C-Insert> <Nop>
+cnoremap <C-Insert> <Nop>
+
+" обработка буфера выделения
+inoremap <C-S-Insert> <MiddleMouse>
+nnoremap <C-S-Insert> "*gp
+cnoremap <C-S-Insert> <C-R>*
 
 " TODO http://vim.wikia.com/wiki/Search_for_visually_selected_text
 " Search for selected text, forwards or backwards.
@@ -418,10 +459,13 @@ inoremap <C-F4> <Esc>:tabclose<CR>
 vnoremap <C-F4> <Esc>:tabclose<CR>
 " opens a new tab with the current buffer's path
 nnoremap <Leader>te :tabedit <C-R>=expand("%:p:h")<CR>/
+
+" ctrlspace
 " переключиться на предыдущую активную вкладку
 let g:lasttab = 1
 nnoremap <Leader>tl :exe "tabn ".g:lasttab<CR>
 autocmd TabLeave * let g:lasttab = tabpagenr()
+
 " навигация по вкладкам по Ctrl TAB
 nnoremap <C-Tab> gt
 nnoremap <C-S-Tab> gT
@@ -463,6 +507,7 @@ nnoremap <Leader>r'" :%s/\'/\"/g<CR>
 " q - закрывает справку, syntastic :Errors (qf)
 autocmd FileType help nnoremap <buffer> q ZQ
 autocmd FileType qf nnoremap <buffer> q :bd<CR>
+autocmd FileType nerdtree nnoremap <buffer> q :NERDTreeTabsClose<CR>
 " Execute help.
 nnoremap <F1> :<C-u>Unite -buffer-name=help -start-insert help<CR>
 " Execute help by cursor keyword.
@@ -472,6 +517,10 @@ nnoremap <silent> g<F1> :<C-u>UniteWithCursorWord help<CR>
 noremap  <F2> :let &l:imi = !&l:imi<CR>
 inoremap <F2> <C-^>
 cnoremap <F2> <C-^>
+
+" GitGutter stuff (similar to what unimpaired.vim does).
+nnoremap [h :GitGutterPrevHunk<CR>
+nnoremap ]h :GitGutterNextHunk<CR>
 
 " TODO
 " i_CTRL-O в конце строки переходит на один символ назад, убрать из кейбиндов
@@ -483,6 +532,7 @@ cnoremap <F2> <C-^>
 " Unite ctrl-l не убирает подсветку
 " при свертке фолдов может нарушится расцветка синтаксиса
 " ycm goto decloration, ctags, syntastic goto, ternjs
+" nerdtree при октрытии файла прыгает на вкладку с уже открытым файлом
 " vim-session не сохранять nerdtree
 " vim-session не сохраняет список буферов для каждой вкладки tabpagebuffer
 " начинает тормозить переход между буферами, сплитами и вкладками
@@ -499,14 +549,18 @@ cnoremap <F2> <C-^>
 " rhubarb.vim
 " neovim - так как обычный vim все равно бывает крэшится
 " сохранять NeoBundleLog в файл после обновления, либо научится получать изменения за период с предпоследнего обновления
+" уменьшать, увеличивать шрифт, возвращать размер по умолчанию
+" цифры на вкладках
+" ctrlspace цвет курсора
 
 " показывать preview внизу
-augroup PreviewOnBottom
-  autocmd InsertEnter * set splitbelow
-  autocmd InsertLeave * set splitbelow!
-augroup END
+" augroup PreviewOnBottom
+"   autocmd InsertEnter * set splitbelow
+"   autocmd InsertLeave * set splitbelow!
+" augroup END
 
 " Remember cursor position when switching buffer
+" не переносить курсор в начало строки при смене буферов ctrl-^
 if v:version >= 700
   autocmd BufLeave * let b:winview = winsaveview()
   " Except NERDTree
@@ -514,3 +568,29 @@ if v:version >= 700
   " TODO центрировать буфер
   autocmd BufEnter * if(exists('b:winview')) | call winrestview(b:winview) | endif
 endif
+
+" " tagbar
+" NeoBundle 'majutsushi/tagbar'
+" let g:tagbar_left = 0
+" let g:tagbar_width = 25
+" let g:tagbar_sort = 0
+" let g:tagbar_compact = 1
+" let g:tagbar_foldlevel = 2
+" let g:tagbar_iconchars = ['▸', '▾']
+" let g:tagbar_autofocus = 1
+" nmap <M-\> :TagbarToggle<CR>
+"
+" NeoBundle 'lukaszkorecki/CoffeeTags'
+" let g:CoffeeAutoTagFile="./.git/coffeetags"
+" let g:CoffeeAutoTagIncludeVars=0
+
+" easytags
+" NeoBundle 'xolox/vim-easytags', {'depends': 'xolox/vim-misc'}
+" set tags=./.git/tags
+" let g:easytags_dynamic_files = 1
+
+" TODO
+" backup
+" read file by ext new auto format code
+" project
+" emmet vs sparkup js, neosnippet, html beautify, tern
