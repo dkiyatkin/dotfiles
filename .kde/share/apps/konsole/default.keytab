@@ -43,10 +43,10 @@ key Backspace-Shift+Control : "\E[9;3~"
 # shift up/down are reserved for scrolling.
 # shift left/right are reserved for switching between tabs (this is hardcoded).
 
-# key Up   -Shift-Ansi : "\EA"
-# key Down -Shift-Ansi : "\EB"
-# key Right-Shift-Ansi : "\EC"
-# key Left -Shift-Ansi : "\ED"
+key Up   -Shift-Ansi : "\EA"
+key Down -Shift-Ansi : "\EB"
+key Right-Shift-Ansi : "\EC"
+key Left -Shift-Ansi : "\ED"
 
 # Arrow keys in ANSI mode with Application - and Normal Cursor Mode)
 
@@ -172,12 +172,12 @@ key Space +Control : "\x00"
 # Some keys are used by konsole to cause operations.
 # The scroll* operations refer to the history buffer.
 
-# key Up    +Shift-AppScreen  : scrollLineUp
-# key PgUp +Shift-AppScreen  : scrollPageUp
-# key Home  +Shift-AppScreen  : scrollUpToTop
-# key Down  +Shift-AppScreen  : scrollLineDown
-# key PgDown  +Shift-AppScreen  : scrollPageDown
-# key End   +Shift-AppScreen  : scrollDownToBottom
+key Up    +Shift-AppScreen  : scrollLineUp
+key PgUp +Shift-AppScreen  : scrollPageUp
+key Home  +Shift-AppScreen  : scrollUpToTop
+key Down  +Shift-AppScreen  : scrollLineDown
+key PgDown  +Shift-AppScreen  : scrollPageDown
+key End   +Shift-AppScreen  : scrollDownToBottom
 
 # http://stackoverflow.com/a/31961401/1054723
 key Tab +Ctrl : "\E[27;5;9~"
