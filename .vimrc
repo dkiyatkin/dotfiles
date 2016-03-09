@@ -206,6 +206,26 @@ nnoremap <F5> :SyntasticCheck<CR>
 " let g:syntastic_html_tidy_ignore_errors=['trimming empty <i>', 'trimming empty <span>', '<form> lacks "action" attribute', '<input> proprietary attribute "required"']
 " let g:syntastic_html_checkers=['tidy','jshint']
 " autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jshint']
+" https://github.com/airbnb/javascript/issues/465#issuecomment-173000798
+function! SyntasticESlintChecker()
+  let l:npm_bin = ''
+  let l:eslint = 'eslint'
+
+  if executable('npm')
+      let l:npm_bin = split(system('npm bin'), '\n')[0]
+  endif
+
+  if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
+    let l:eslint = l:npm_bin . '/eslint'
+  endif
+
+  let b:syntastic_javascript_eslint_exec = l:eslint
+endfunction
+
+
+" let g:syntastic_javascript_checkers = ["eslint"]
+
+autocmd FileType javascript,javascript.jsx :call SyntasticESlintChecker()
 let g:syntastic_javascript_checkers = ['eslint', 'flow']
 let g:syntastic_jade_checkers = ['jade_lint']
 NeoBundle 'syngan/vim-vimlint', {'depends': 'ynkdir/vim-vimlparser'}
@@ -359,20 +379,7 @@ nnoremap <silent> <Leader>fg :Unite -buffer-name=grep grep:. -no-empty<CR>
 " nnoremap  [unite]f  :<C-u>Unite source<CR>
 
 " Common Keybindings:
-" Tab делает отступы в noramal и visual TODO visual конфликт с ultisnips
-inoremap <S-Tab> <C-D>
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
-" backspace in Visual mode deletes selection
-vnoremap <BS> d
-vnoremap <C-BS> d
-inoremap <C-BS> <C-W>
-cnoremap <C-BS> <C-W>
-" CTRL-X and SHIFT-Del are Cut
-vnoremap <C-X> "+x
-vnoremap <S-Del> "+x
-nnoremap <C-Del> de
-inoremap <C-Del> <C-O>de
+source ~/.vim/mappings.vim
 
 " чтобы курсор тоже передвигался
 nnoremap <silent> <PageUp> <C-U><C-U>
@@ -381,19 +388,6 @@ inoremap <silent> <PageUp> <C-\><C-O><C-U><C-\><C-O><C-U>
 nnoremap <silent> <PageDown> <C-D><C-D>
 vnoremap <silent> <PageDown> <C-D><C-D>
 inoremap <silent> <PageDown> <C-\><C-O><C-D><C-\><C-O><C-D>
-
-" TODO
-" удобные знаки препинания для русской расскладки
-" alt-,
-inoremap ¬ ,
-" alt-.
-inoremap ® .
-" alt-shift-?
-inoremap ¿ ?
-" alt-;
-inoremap » ;
-" alt-shift-:
-inoremap » º
 
 " вставка/копирование CTRL-V/CTRL-C. CTRL-Q same as old CTRL-V
 " CTRL-C and CTRL-Insert are Copy
@@ -466,17 +460,6 @@ let g:lasttab = 1
 nnoremap <Leader>tl :exe "tabn ".g:lasttab<CR>
 autocmd TabLeave * let g:lasttab = tabpagenr()
 
-" навигация по вкладкам по Ctrl TAB
-nnoremap <C-Tab> gt
-nnoremap <C-S-Tab> gT
-" jumplist without <Tab>
-nnoremap <Leader>i <C-I>
-nnoremap <Leader>o <C-O>
-
-" навигация по сплитам по TAB в командном режиме
-nnoremap <Tab> <C-W>w
-nnoremap <S-Tab> <C-W>W
-
 " Use CTRL-S for saving, also in Insert mode
 noremap <C-S> :update<CR>
 vnoremap <C-S> <Esc>:update<CR>
@@ -528,17 +511,14 @@ nnoremap ]h :GitGutterNextHunk<CR>
 " ctrl-alt-r RestartVim если нет несохраненных изменений
 " слишком яркие diff цвета (кроме gitdiff)
 " vmap добавить пустые строки по краям выделения
-" RestartVim срабатывать только когда все файлы сохранены
+" RestartVim для ctrlspace
 " Unite ctrl-l не убирает подсветку
 " при свертке фолдов может нарушится расцветка синтаксиса
 " ycm goto decloration, ctags, syntastic goto, ternjs
 " nerdtree при октрытии файла прыгает на вкладку с уже открытым файлом
-" vim-session не сохранять nerdtree
-" vim-session не сохраняет список буферов для каждой вкладки tabpagebuffer
 " начинает тормозить переход между буферами, сплитами и вкладками
 " упорядочить конфиг, найти быстрый способ выявить текущий плагин
 " скопировать путь файла относительно pwd
-" Ctrl-Shift-PgDn-PgUp перемещать вкладки
 " попробовать принудительный tw, gq, formatoptions
 " сделать map на отступы по 1 пробелу
 " alt-` = alt-ё - переключение на последнию активную вкладку, также alt-номер вкладки
@@ -550,7 +530,6 @@ nnoremap ]h :GitGutterNextHunk<CR>
 " neovim - так как обычный vim все равно бывает крэшится
 " сохранять NeoBundleLog в файл после обновления, либо научится получать изменения за период с предпоследнего обновления
 " уменьшать, увеличивать шрифт, возвращать размер по умолчанию
-" цифры на вкладках
 " ctrlspace цвет курсора
 
 " показывать preview внизу
