@@ -68,16 +68,10 @@
 #"rxvt"
 #  Control + b:2 + Release
 
-# во всех приложениях убираем ctrl-w как закрытие вкладки, за место этого есть ctlr-f4
-# по ctrl-w удалить предыдущее слово
-# отдельная настройка глобальных клавиш для kde
-# удалить предыдущее слово в firefox, во всех gtk включен режим Emacs:
-# echo 'gtk-key-theme-name = "Emacs"' >>~/.gtkrc-2.0
-# gconftool-2 --set /desktop/gnome/interface/gtk_key_theme Emacs --type string
-# в firefox с помощью плагина Customizable Shortcuts отключен ctrl-w чтобы не закрывались вкладки
-# для всех приложений обычный ctrl-w, для firefox ctrl-backspace
-# "firefox-ctrl-w.sh" # все таки нельзя забирать это сочетание, так как оно, маловероятно, но все-таки может быть использовано в приложениях =(
-#   Control + w
+# назначение Hyper_L, он же Mod3, он же CapsLock
+# так как нету левой Win (Super), это правая Win клавиша для неудобных комбинаций (в xfce настроено, везде где Hyper, по идее должен быть Super)
+# нестандартные абривиатуры, вставка различных символов
+# удобная навигация по тексту (emacs/bash style)
 
 # Настраиваем CapsLock как дополнительный модификатор(Mod3), который будет везде работать
 "xvkbd -xsendevent -text '\C\b'"
@@ -127,10 +121,6 @@
 "xvkbd -xsendevent -text '\S\C\[Right]'"
   Shift+Alt+Mod3 + f
 
-# esc
-"xvkbd -xsendevent -text '\e'"
-  Mod3 + bracketleft
-
 # полностью заменить CapsLock на `xkb-switch -n`, в vim на сочетание \<F6>
 # "xbindkeys_show"
 #   m:0x2004 + c:105
@@ -148,17 +138,41 @@
 "xdotool key Caps_Lock"
   Shift+Mod3 + Shift_L
 
-# TODO
-# запятая и точка в любой раскладке
-# "xvkbd -xsendevent -text '\,'"
-#   less
-# "xvkbd -xsendevent -text '\.'"
-#   Shift + less
-# "xvkbd -xsendevent -text '\[KP_Delete]'"
-# "xdotool key KP_Delete"
-#   less
-# "xvkbd -xsendevent -text '\,'"
-#   KP_Delete
+# # esc # Конфликт в баше со знаками препинания
+# "xvkbd -xsendevent -text '\e'"
+#   Mod3 + bracketleft
+
+# удобные знаки препинания для любой расскладки
+"xvkbd-if-vim.sh '\[F18]' '\[bracketleft]'"
+  Mod3 + bracketleft
+"xvkbd-if-vim.sh '\[F19]' '{'"
+  Mod3 + shift + bracketleft
+"xvkbd-if-vim.sh '\[F20]' ']'"
+  Mod3 + bracketright
+"xvkbd-if-vim.sh '\[F21]' '}'"
+  Mod3 + shift + bracketright
+"xvkbd-if-vim.sh '\[F22]' ','"
+  Mod3 + comma
+"xvkbd-if-vim.sh '\[F23]' '<'"
+  Mod3 + shift + comma
+"xvkbd-if-vim.sh '\[F24]' '.'"
+  Mod3 + period
+"xvkbd-if-vim.sh '\[F25]' '>'"
+  Mod3 + shift + period
+"xvkbd-if-vim.sh '\[F26]' ';'"
+  Mod3 + semicolon
+"xvkbd-if-vim.sh '\[F27]' ':'"
+  Mod3 + shift + semicolon
+"xvkbd-if-vim.sh '\[F28]' '\[slash]'"
+  Mod3 + slash
+"xvkbd-if-vim.sh '\[F29]' '\[question]'"
+  Mod3 + shift + slash
+"xvkbd-if-vim.sh '\[F30]' '\[apostrophe]'"
+  Mod3 + apostrophe
+"xvkbd-if-vim.sh '\[F31]' '\[quotedbl]'"
+  Mod3 + shift + apostrophe
+"xvkbd-if-vim.sh '\[F32]' '\[bar]'"
+  Mod3 + shift + backslash
 
 # иначе не работает в krusader
 # mouse back
@@ -169,10 +183,12 @@
 "xvkbd -xsendevent -text '\[XF86Forward]'"
   m:0x0 + b:9
 
-# TODO не срабатывает
+# TODO срабатывает после 2 раза
 # XF86AudioPause - Нажатая клавиша не поддерживается в Qt.
-'xdotool key XF86AudioPlay'
-  XF86AudioPause
+# 'xdotool key XF86AudioPause'
+#   XF86AudioPause
+# 'xdotool key XF86AudioPause'
+#   XF86AudioPlay
 
 # TODO
 # вывести текущую дату
