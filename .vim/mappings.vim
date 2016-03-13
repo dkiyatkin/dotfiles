@@ -16,9 +16,10 @@ vnoremap <F17> d
 inoremap <F17> <C-W>
 cnoremap <F17> <C-W>
 
-" SHIFT-Del are Cut
-" TODO не работает в терминале
+" SHIFT-Del Cut, Visual Ctrl-a/Ctrl-x для изменения цифр
+set <S-Del>=[3;2~
 vnoremap <S-Del> "+x
+
 nnoremap <C-Del> de
 inoremap <C-Del> <C-O>de
 
@@ -136,10 +137,10 @@ vnoremap <silent> # :<C-U>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
 
 " закрыть вкладку по CTRL-F4
-" TODO в терминале не работает
 nnoremap <C-F4> :tabclose<CR>
 inoremap <C-F4> <Esc>:tabclose<CR>
 vnoremap <C-F4> <Esc>:tabclose<CR>
+cnoremap <C-F4> <Esc>:tabclose<CR>
 
 " Use CTRL-S for saving, also in Insert mode
 noremap <C-S> :update<CR>

@@ -18,12 +18,13 @@ source ~/.vim/mappings.vim
 source ~/.vim/settings-plugins.vim
 
 " нестандартные настройки
-source ~/.vim/scripts.vim
+source ~/.vim/settings-scripts.vim
 
 " ~/.vim/after/plugin/plugin.vim
 " ~/.vim/after/ftplugin.vim
 
 " TODO
+" стиль курсора в cmdline
 " ctrlspace не отключается автосохранение
 " Unite появление не вверху в углу
 " i_CTRL-O в конце строки переходит на один символ назад, убрать из кейбиндов
@@ -43,9 +44,8 @@ source ~/.vim/scripts.vim
 " vim - помечать вкладки
 " unite bookmark - b,N key conflict
 " rhubarb.vim
-" neovim - так как обычный vim все равно бывает крэшится
 " уменьшать, увеличивать шрифт, возвращать размер по умолчанию
-" ctrlspace цвет курсора
+" ctrlspace gui цвет курсора
 
 " " tagbar
 " NeoBundle 'majutsushi/tagbar'

@@ -54,7 +54,7 @@ call dein#add('mxw/vim-jsx', {'depends': 'vim-javascript'})
 call dein#add('hail2u/vim-css3-syntax')
 call dein#add('groenewege/vim-less')
 " call dein#add('wavded/vim-stylus', {'depends': 'lepture/vim-css'})
-" call dein#add('ap/vim-css-color') " TODO #add подсветка только для файлов стилей
+call dein#add('ap/vim-css-color')
 call dein#add('digitaltoad/vim-jade')
 call dein#add('evanmiller/nginx-vim-syntax')
 " call dein#add('plasticboy/vim-markdown') " тормозит, используем встроенный
@@ -65,6 +65,8 @@ call dein#add('junegunn/seoul256.vim')
 call dein#add('bling/vim-airline')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('jszakmeister/vim-togglecursor')
+call dein#add('junegunn/goyo.vim')
+call dein#add('junegunn/limelight.vim')
 " }}}
 
 " Extends: {{{

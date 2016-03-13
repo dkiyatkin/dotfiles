@@ -124,6 +124,47 @@ if dein#tap('vim-togglecursor')
   let g:togglecursor_leave='blinking_block'
 endif
 
+if dein#tap('goyo.vim')
+  " let g:goyo_width (default: 80)
+  " let g:goyo_height (default: 85%)
+  " let g:goyo_linenr (default: 0)
+  nnoremap <C-F11> :Goyo<CR>
+endif
+
+if dein#tap('limelight.vim')
+  nmap <Leader>l <Plug>(Limelight)
+  xmap <Leader>l <Plug>(Limelight)
+  nnoremap <Leader>L :Limelight!!<CR>
+  " Color name (:help cterm-colors) or ANSI code
+  " let g:limelight_conceal_ctermfg = 'gray'
+  " let g:limelight_conceal_ctermfg = 240
+  "
+  " " Color name (:help gui-colors) or RGB color
+  " let g:limelight_conceal_guifg = 'DarkGray'
+  " let g:limelight_conceal_guifg = '#777777'
+
+  " Default: 0.5
+  let g:limelight_default_coefficient = 0.7
+
+  " Number of preceding/following paragraphs to include (default: 0)
+  let g:limelight_paragraph_span = 1
+
+  " Beginning/end of paragraph
+  "   When there's no empty line between the paragraphs
+  "   and each paragraph starts with indentation
+  " let g:limelight_bop = '^\s'
+  " let g:limelight_eop = '\ze\n^\s'
+
+  " Highlighting priority (default: 10)
+  "   Set it to -1 not to overrule hlsearch
+  let g:limelight_priority = -1
+endif
+
+if dein#tap('goyo.vim') && dein#tap('limelight.vim')
+  autocmd! User GoyoEnter Limelight
+  autocmd! User GoyoLeave Limelight!
+endif
+
 " Extends:
 if dein#tap('vim-ctrlspace')
   autocmd BufNewFile,BufRead cs_workspaces setlocal filetype=vim
@@ -151,6 +192,11 @@ endif
 " " let g:session_persist_globals = []
 
 if dein#tap('vim-shell')
+  let g:shell_mappings_enabled=0
+  " скрывать вкладки
+  " inoremap <F11> <C-o>:Fullscreen<CR>
+  " nnoremap <F11> :Fullscreen<CR>
+  " let g:shell_fullscreen_items='mT'
   nnoremap gx :Open<CR>
 endif
 
@@ -172,14 +218,18 @@ if dein#tap('nerdtree')
   " autocmd FileType nerdtree,tagbar setlocal nocursorcolumn
   let g:NERDTreeWinSize=50
   let g:NERDTreeMinimalUI=1
-  nmap <M-\> <Esc>\
   nnoremap <Leader>\ :NERDTree<CR>
 endif
 
 if dein#tap('vim-nerdtree-tabs')
   let g:nerdtree_tabs_open_on_gui_startup = 0
   nnoremap <C-\> :NERDTreeTabsToggle<CR>
-  nnoremap <Esc>\ :NERDTreeTabsFind<CR>
+  " тут ошибка в nvim, но в нем и так работает без этого условия
+  if has('nvim') | else
+    " для konsole
+    set <A-\>=\
+  endif
+  nnoremap <A-\> :NERDTreeTabsFind<CR>
 endif
 
 if dein#tap('vim-fugitive')

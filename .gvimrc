@@ -1,29 +1,27 @@
 scriptencoding utf-8
 set guifont=InconsolataCyr\ 12
+
 hi lCursor guifg=NONE guibg=Cyan
 hi Cursor gui=reverse guifg=red guibg=NONE
 
 set go=agit
 
-function ToggleFullScreen()
+function ToggleToolbar()
   if &go =~ 'mT'
     set go-=mT
-    silent !wmctrl -r :ACTIVE: -b add,fullscreen
   else
     set go+=mT
-    silent !wmctrl -r :ACTIVE: -b remove,fullscreen
   endif
 endfunction
 
-map <F11> <Esc>:call ToggleFullScreen()<cr>
+command ToggleToolbar call ToggleToolbar()
 
-function SetFullScreen()
-  " silent !wmctrl -r :ACTIVE: -e '0,-3,-27,1921,1085' " set guifont=InconsolataCyr\ 13
-  silent !wmctrl -r :ACTIVE: -e '0,-4,-28,1924,1085'
-  silent !wmctrl -r :ACTIVE: -b toggle,above
-endfunction
-
-map <A-F11> <Esc>:call SetFullScreen()<CR>
+" vim-shell
+" открывать меню, скрывать/показывать
+nnoremap <F10> <F10>:call ToggleToolbar()<CR>
+inoremap <F10> <C-o><F10>:call ToggleToolbar()<CR>
+vnoremap <F10> <Esc><F10>:call ToggleToolbar()<CR>gv
+cnoremap <F10> <C-f><F10>:call ToggleToolbar()<CR>:redraw!<CR><C-c>
 
 set linespace=1
 
