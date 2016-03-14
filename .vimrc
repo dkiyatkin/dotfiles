@@ -24,6 +24,7 @@ source ~/.vim/settings-scripts.vim
 " ~/.vim/after/ftplugin.vim
 
 " TODO
+" включать timeout при нажатии esc
 " стиль курсора в cmdline
 " ctrlspace не отключается автосохранение
 " Unite появление не вверху в углу

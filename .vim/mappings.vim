@@ -1,4 +1,10 @@
 " Common:
+" навигация стрелками для всей страницы
+nnoremap <Left> z<Left>
+nnoremap <Right> z<Right>
+nnoremap <Up> <C-y>
+nnoremap <Down> <C-e>
+
 " Tab делает отступы в noramal и visual TODO visual конфликт с ultisnips
 inoremap <S-Tab> <C-D>
 " не убирать выделение
@@ -35,6 +41,12 @@ nnoremap <F14> gT
 " навигация по сплитам по TAB и Alt+{h,j,k,l}
 nnoremap <Tab> <C-W>w
 nnoremap <S-Tab> <C-W>W
+if has('nvim') | else
+  set <A-h>=h
+  set <A-j>=j
+  set <A-k>=k
+  set <A-l>=l
+endif
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -51,6 +63,12 @@ endif
 
 " убираем подсветку по esc
 nnoremap <Esc><Esc> :nohlsearch<CR>
+
+" поиск по F3
+nnoremap <F3> n
+nnoremap <S-F3> N
+vnoremap <F3> n
+vnoremap <S-F3> N
 
 " навигация по Alt-n как в браузере
 nnoremap <A-1> 1gt

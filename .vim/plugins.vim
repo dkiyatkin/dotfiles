@@ -81,6 +81,7 @@ call dein#add('jistr/vim-nerdtree-tabs')
 call dein#add('Xuyuanp/nerdtree-git-plugin')
 call dein#add('tpope/vim-git')
 call dein#add('tpope/vim-fugitive', {'depends': 'vim-git'})
+call dein#add('gregsexton/gitv', {'depends': 'vim-fugitive'})
 call dein#add('rdolgushin/gitignore.vim')
 call dein#add('airblade/vim-gitgutter')
 call dein#add('kshenoy/vim-signature') " метки

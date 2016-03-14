@@ -24,7 +24,13 @@ nnoremap <silent> <C-^> <C-^>:call RestoreLinePosition()<CR>
 autocmd FileType help nnoremap <buffer> q ZQ
 autocmd FileType qf nnoremap <buffer> q :bd<CR>
 autocmd FileType nerdtree nnoremap <buffer> q :NERDTreeTabsClose<CR>
+
 " навигация в Cmdwin
 autocmd CmdwinEnter * nnoremap <silent> <buffer> q :q<CR>
 autocmd CmdwinEnter * nnoremap <buffer> <Tab> <C-c>
 autocmd CmdwinEnter * nnoremap <buffer> <S-Tab> <C-c>
+
+" gitv
+" навигация по diff git
+nnoremap <Leader>/dg /^diff --git<CR>:call histdel("search", -1)<CR>
+nnoremap <Leader>/gd /^diff --git<CR>:call histdel("search", -1)<CR>

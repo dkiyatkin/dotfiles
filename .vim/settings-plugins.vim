@@ -134,7 +134,7 @@ endif
 if dein#tap('limelight.vim')
   nmap <Leader>l <Plug>(Limelight)
   xmap <Leader>l <Plug>(Limelight)
-  nnoremap <Leader>L :Limelight!!<CR>
+  nnoremap <silent> <Leader>L :Limelight!!<CR>
   " Color name (:help cterm-colors) or ANSI code
   " let g:limelight_conceal_ctermfg = 'gray'
   " let g:limelight_conceal_ctermfg = 240
@@ -238,6 +238,12 @@ if dein#tap('vim-fugitive')
   nnoremap <Leader>gs :Gstatus<CR>
   " проиндексировать все изменения и сделать коммит
   command IGitAddAllCommit Git add --all . | Gcommit
+endif
+
+if dein#tap('gitv')
+  nnoremap <Leader>gv :Gitv --all<CR>
+  nnoremap <Leader>gV :Gitv! --all<CR>
+  vnoremap <Leader>gV :Gitv! --all<CR>
 endif
 
 if dein#tap('gitignore.vim')
