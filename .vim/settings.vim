@@ -17,6 +17,7 @@ let &showbreak = '+++ ' " индикатор переноса
 set cpoptions+=n " отображение переноса в столбике с цифрами
 " set shiftwidth=8 tabstop=8 " Размер табулации по умолчанию
 " set expandtab " пробелы за мето табов
+set tabstop=2 shiftwidth=2 expandtab
 set cursorline " Подсветка текущей строки --тормозит
 set cursorcolumn " подсветка колонки
 set hlsearch " Включаем подсветку выражения, которое ищется в тексте

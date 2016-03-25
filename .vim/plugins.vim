@@ -41,25 +41,6 @@ call dein#add('vim-scripts/PreserveNoEOL') " оставлять окончани
 call dein#add('editorconfig/editorconfig-vim') " общие конфигурации для файлов
 " }}}
 
-" Filetypes: {{{
-call dein#add('kchmck/vim-coffee-script')
-call dein#add('mustache/vim-mustache-handlebars')
-call dein#add('derekwyatt/vim-scala')
-call dein#add('junegunn/vim-redis')
-call dein#add('othree/html5.vim')
-call dein#add('Valloric/MatchTagAlways') " подсветка тэгов
-call dein#add('elzr/vim-json')
-call dein#add('pangloss/vim-javascript')
-call dein#add('mxw/vim-jsx', {'depends': 'vim-javascript'})
-call dein#add('hail2u/vim-css3-syntax')
-call dein#add('groenewege/vim-less')
-" call dein#add('wavded/vim-stylus', {'depends': 'lepture/vim-css'})
-call dein#add('ap/vim-css-color')
-call dein#add('digitaltoad/vim-jade')
-call dein#add('evanmiller/nginx-vim-syntax')
-" call dein#add('plasticboy/vim-markdown') " тормозит, используем встроенный
-" }}}
-
 " Themes: {{{
 call dein#add('junegunn/seoul256.vim')
 call dein#add('bling/vim-airline')
@@ -102,6 +83,26 @@ call dein#add('honza/vim-snippets')
 " \ })
 call dein#add('ternjs/tern_for_vim', {'build' : { 'linux': 'npm install' }})
 call dein#add('justinmk/vim-sneak')
+call dein#add('godlygeek/tabular')
+" }}}
+
+" Filetypes: {{{
+call dein#add('kchmck/vim-coffee-script')
+call dein#add('mustache/vim-mustache-handlebars')
+call dein#add('derekwyatt/vim-scala')
+call dein#add('junegunn/vim-redis')
+call dein#add('othree/html5.vim')
+call dein#add('Valloric/MatchTagAlways') " подсветка тэгов
+call dein#add('elzr/vim-json')
+call dein#add('pangloss/vim-javascript')
+call dein#add('mxw/vim-jsx', {'depends': 'vim-javascript'})
+call dein#add('hail2u/vim-css3-syntax')
+call dein#add('groenewege/vim-less')
+" call dein#add('wavded/vim-stylus', {'depends': 'lepture/vim-css'})
+call dein#add('ap/vim-css-color')
+call dein#add('digitaltoad/vim-jade')
+call dein#add('evanmiller/nginx-vim-syntax')
+call dein#add('plasticboy/vim-markdown', {'depends': 'tabular'})
 " }}}
 
 " Required:

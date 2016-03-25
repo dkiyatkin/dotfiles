@@ -1,5 +1,13 @@
 " Common:
-" навигация стрелками для всей страницы
+" http://vim.wikia.com/wiki/Short_mappings_for_common_tasks
+nnoremap Y y$
+" remap j and k to scroll by visual lines
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
+" скролл стрелками для нормального режима
 nnoremap <Left> z<Left>
 nnoremap <Right> z<Right>
 nnoremap <Up> <C-y>
@@ -26,6 +34,7 @@ cnoremap <F17> <C-W>
 set <S-Del>=[3;2~
 vnoremap <S-Del> "+x
 
+" TODO C-Del не работает в терминале (кроме nvim), не назначается через set
 nnoremap <C-Del> de
 inoremap <C-Del> <C-O>de
 
@@ -61,8 +70,9 @@ if exists(':tnoremap')
   tnoremap <Esc><Esc> <C-\><C-n>
 endif
 
+" vim-sensible <C-l>
 " убираем подсветку по esc
-nnoremap <Esc><Esc> :nohlsearch<CR>
+" nnoremap <Esc><Esc> :nohlsearch<CR>
 
 " поиск по F3
 nnoremap <F3> n
@@ -70,7 +80,19 @@ nnoremap <S-F3> N
 vnoremap <F3> n
 vnoremap <S-F3> N
 
-" навигация по Alt-n как в браузере
+" навигация по Alt-n как в браузере (alt-0 ?)
+if has('nvim') | else
+  set <A-`>=`
+  set <A-1>=1
+  set <A-2>=2
+  set <A-3>=3
+  set <A-4>=4
+  set <A-5>=5
+  set <A-6>=6
+  set <A-7>=7
+  set <A-8>=8
+  set <A-9>=9
+endif
 nnoremap <A-1> 1gt
 nnoremap <A-2> 2gt
 nnoremap <A-3> 3gt
@@ -96,6 +118,7 @@ set <F16>=[6;9~
 nnoremap <F16> :tabmove +1<CR>
 
 " jumplist without <Tab>
+" TODO может быть заменить на alt
 nnoremap <Leader>i <C-I>
 nnoremap <Leader>o <C-O>
 
@@ -198,3 +221,6 @@ noremap q <Nop>
 " заменить везде кавычки двойные на одинарные и наоборот
 nnoremap <Leader>r"' :%s/\"/\'/g<CR>
 nnoremap <Leader>r'" :%s/\'/\"/g<CR>
+
+" http://superuser.com/questions/216411/go-to-middle-of-line-in-vim
+nnoremap <Leader>gm :exe 'normal '.(virtcol('$')/2).'\|'<CR>

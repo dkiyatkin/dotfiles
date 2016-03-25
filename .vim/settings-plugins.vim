@@ -18,7 +18,7 @@ if dein#tap('unite.vim')
   let g:unite_source_grep_default_opts = '-i --line-numbers --nocolor --nogroup --hidden -S'
   let g:unite_source_grep_recursive_opt = ''
 
-  call unite#custom#profile('default', 'context', {'direction': 'aboveleft'})
+  call unite#custom#profile('default', 'context', {'direction': 'top'})
   call unite#filters#matcher_default#use(['matcher_fuzzy'])
   call unite#filters#sorter_default#use(['sorter_rank'])
   nnoremap <silent> <Leader>ur :<C-u>UniteResume<CR>
@@ -82,9 +82,11 @@ if dein#tap('vim-jsx')
   let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 endif
 
-" if dein#tap('vim-markdown')
-"   let g:vim_markdown_initial_foldlevel=3
-" endif
+if dein#tap('vim-markdown')
+  " let g:vim_markdown_initial_foldlevel=3
+  " let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
+  " TODO комментарии по gcc
+endif
 
 " Themes:
 if dein#tap('seoul256.vim')
@@ -129,6 +131,9 @@ if dein#tap('goyo.vim')
   " let g:goyo_height (default: 85%)
   " let g:goyo_linenr (default: 0)
   nnoremap <C-F11> :Goyo<CR>
+  inoremap <C-F11> <C-o>:Goyo<CR>
+  vnoremap <C-F11> <Esc>:Goyo<CR>gv
+  cnoremap <C-F11> <C-f>:Goyo<CR>:redraw!<CR><C-c>
 endif
 
 if dein#tap('limelight.vim')

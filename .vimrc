@@ -24,6 +24,11 @@ source ~/.vim/settings-scripts.vim
 " ~/.vim/after/ftplugin.vim
 
 " TODO
+" хоткей для чеклистов: отметить, добавить новый в списке
+" TAB в visual mode, konsole
+" коммандный режим: разные диапозоны слов для ctrl-left|right, ctrl-backspace
+" коммандный режим: не работает ctrl-delete
+" горизонтальный скролл когда курсор на пустой строке (:set virtualedit=all)
 " включать timeout при нажатии esc
 " стиль курсора в cmdline
 " ctrlspace не отключается автосохранение
@@ -38,7 +43,6 @@ source ~/.vim/settings-scripts.vim
 " при свертке фолдов может нарушится расцветка синтаксиса
 " ycm goto decloration, ctags, syntastic goto, ternjs
 " nerdtree при октрытии файла прыгает на вкладку с уже открытым файлом
-" скопировать путь файла относительно pwd
 " попробовать принудительный tw, gq, formatoptions
 " сделать map на отступы по 1 пробелу
 " vim - при bd не закрывать вкладку, если в ней есть еще другие буфферы
