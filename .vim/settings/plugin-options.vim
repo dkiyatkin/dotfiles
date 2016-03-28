@@ -44,6 +44,11 @@ if dein#tap('unite.vim')
   " nnoremap <silent> [unite]me
   " 		\ :<C-u>Unite output:message<CR>
   " nnoremap  [unite]f  :<C-u>Unite source<CR>
+
+  " включаем панель строк в unite
+  " https://github.com/Shougo/unite.vim/issues/1042
+  autocmd FileType unite setlocal number relativenumber
+  " autocmd BufWinEnter,BufEnter * setlocal number relativenumber
 endif
 
 if dein#tap('unite-help')
@@ -60,6 +65,10 @@ endif
 
 if dein#tap('editorconfig-vim')
   let g:EditorConfig_preserve_formatoptions = 1
+endif
+
+if dein#tap('confirm-quit')
+  let g:confirm_quit_nomap = 1
 endif
 
 " Filetypes:
@@ -130,10 +139,10 @@ if dein#tap('goyo.vim')
   " let g:goyo_width (default: 80)
   " let g:goyo_height (default: 85%)
   " let g:goyo_linenr (default: 0)
-  nnoremap <C-F11> :Goyo<CR>
-  inoremap <C-F11> <C-o>:Goyo<CR>
+  noremap <C-F11> :Goyo<CR>
   vnoremap <C-F11> <Esc>:Goyo<CR>gv
-  cnoremap <C-F11> <C-f>:Goyo<CR>:redraw!<CR><C-c>
+  inoremap <C-F11> <Esc>:Goyo<CR>
+  cnoremap <C-F11> <C-c>:Goyo<CR>
 endif
 
 if dein#tap('limelight.vim')
@@ -196,6 +205,16 @@ endif
 " " TODO t:tabpagebuffer
 " " let g:session_persist_globals = []
 
+if dein#tap('vim-ctrlspace')
+  let g:speeddating_no_mappings=1
+  nmap  <A-a>     <Plug>SpeedDatingUp
+  nmap  <A-x>     <Plug>SpeedDatingDown
+  xmap  <A-a>     <Plug>SpeedDatingUp
+  xmap  <A-x>     <Plug>SpeedDatingDown
+  nmap d<A-a>     <Plug>SpeedDatingNowUTC
+  nmap d<A-x>     <Plug>SpeedDatingNowLocal
+endif
+
 if dein#tap('vim-shell')
   let g:shell_mappings_enabled=0
   " скрывать вкладки
@@ -229,11 +248,6 @@ endif
 if dein#tap('vim-nerdtree-tabs')
   let g:nerdtree_tabs_open_on_gui_startup = 0
   nnoremap <C-\> :NERDTreeTabsToggle<CR>
-  " тут ошибка в nvim, но в нем и так работает без этого условия
-  if !has('nvim')
-    " для konsole
-    set <A-\>=\
-  endif
   nnoremap <A-\> :NERDTreeTabsFind<CR>
 endif
 

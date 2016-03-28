@@ -1,17 +1,15 @@
 " Управление буфферами, окнами, вкладками
 
-" jumps and indent with alt
-if !has('nvim')
-  set <A-i>=i
-  set <A-o>=o
-  set <A-t>=t
-  set <A-d>=d
-endif
+" Tab key confict, jumps and indent with alt
 nnoremap <A-i> <C-i>
 nnoremap <A-o> <C-o>
 nnoremap <A-t> <C-t>
+" create new tab confict CTRL-t
 inoremap <A-t> <C-t>
 inoremap <A-d> <C-d>
+" tags
+nnoremap <A-]> <C-]>
+nnoremap <A-t> <C-t>
 
 " навигация по вкладкам по Ctrl TAB
 nnoremap <C-Tab> gt
@@ -25,12 +23,6 @@ nnoremap <F14> gT
 " навигация по сплитам по TAB и Alt+{h,j,k,l}
 nnoremap <Tab> <C-W>w
 nnoremap <S-Tab> <C-W>W
-if !has('nvim')
-  set <A-h>=h
-  set <A-j>=j
-  set <A-k>=k
-  set <A-l>=l
-endif
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -46,18 +38,6 @@ if exists(':tnoremap')
 endif
 
 " навигация по Alt-n как в браузере (alt-0 ?)
-if !has('nvim')
-  set <A-`>=`
-  set <A-1>=1
-  set <A-2>=2
-  set <A-3>=3
-  set <A-4>=4
-  set <A-5>=5
-  set <A-6>=6
-  set <A-7>=7
-  set <A-8>=8
-  set <A-9>=9
-endif
 nnoremap <A-1> 1gt
 nnoremap <A-2> 2gt
 nnoremap <A-3> 3gt

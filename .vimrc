@@ -2,38 +2,39 @@ scriptencoding utf-8
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
-source ~/.vim/leader.vim
+source ~/.vim/settings/leader.vim
 
-source ~/.vim/plugins.vim
+source ~/.vim/settings/plugins.vim
 
-" настройки для редактора
-source ~/.vim/settings.vim
+" базовые настройки для редактора
+source ~/.vim/settings/options.vim
+
+source ~/.vim/settings/escape.vim
+source ~/.vim/settings/common-hotkeys.vim
+source ~/.vim/settings/jump-buf-win-tab.vim
+source ~/.vim/settings/save.vim
 
 " языковые настройки
-source ~/.vim/language.vim
+source ~/.vim/settings/language.vim
 
-source ~/.vim/mappings.vim
+source ~/.vim/settings/mappings.vim
 
 " настройки связанные с плагинами
-source ~/.vim/settings-plugins.vim
+source ~/.vim/settings/plugin-options.vim
 
 " нестандартные настройки
-source ~/.vim/settings-scripts.vim
+source ~/.vim/settings/scripts.vim
 
-" source ~/.vim/settings/escape.vim
-source ~/.vim/settings/save.vim
 source ~/.vim/settings/copy-filename.vim
-source ~/.vim/settings/buf-win-tab.vim
-source ~/.vim/settings/copy-paste.vim
 source ~/.vim/settings/q-exit.vim
 
+" /usr/share/vim/vim74/mswin.vim
 " ~/.vim/after/plugin/plugin.vim
 " ~/.vim/after/ftplugin.vim
 
 " TODO
-" alt-a, alt-]
-" better all modes
-" cnoremap Esc to C-c
+" get persistent undo file
+" CTRL-\ CTRL-N and CTRL-\ CTRL-G
 " better-f, sneak, ;, :
 " хоткей для чеклистов: отметить, добавить новый в списке
 " TAB в visual mode, konsole

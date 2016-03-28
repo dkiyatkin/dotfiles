@@ -6,10 +6,8 @@
 "
 " " отключаем перенос набираемого текста по ширине textwidth, за место этого используем gq
 " autocmd FileType vim,jade setlocal formatoptions-=t formatoptions-=c formatoptions+=q
-"
-" включаем панель строк в unite
-" https://github.com/Shougo/unite.vim/issues/1042
-autocmd FileType unite setlocal number relativenumber
-" autocmd BufWinEnter,BufEnter * setlocal number relativenumber
 
 autocmd BufNewFile,BufRead ecosystem.json setlocal filetype=javascript
+
+autocmd BufNewFile,BufRead .npmrc setlocal filetype=dosini
+autocmd BufNewFile,BufRead .bash_aliases setlocal filetype=sh

@@ -13,7 +13,7 @@ call dein#begin(expand('~/.vim-dein'))
 
 " Let dein manage dein
 " Required:
-call dein#add('~/.vim-dein/repos/github.com/Shougo/dein.vim')
+call dein#add(expand('~/.vim-dein/repos/github.com/Shougo/dein.vim'))
 
 " Add or remove your plugins here:
 " System: {{{
@@ -39,6 +39,8 @@ call dein#add('tpope/vim-unimpaired', {'depends': 'vim-repeat'})
 call dein#add('tomtom/tcomment_vim')
 call dein#add('vim-scripts/PreserveNoEOL') " оставлять окончание файла как есть
 call dein#add('editorconfig/editorconfig-vim') " общие конфигурации для файлов
+call dein#add('vim-utils/vim-alt-mappings', {'if': '!has("nvim")'}) " включить alt клавиши для терминала
+call dein#add('vim-scripts/confirm-quit') " спрашивать закрытие окон
 " }}}
 
 " Themes: {{{

@@ -1,4 +1,3 @@
-" Settings:
 set showcmd " показывать команды справа внизу
 set notimeout " отключим таймаут для leader
 set nojoinspaces " не вставлять лишних пробелов при объединении строк
@@ -17,13 +16,12 @@ let &showbreak = '+++ ' " индикатор переноса
 set cpoptions+=n " отображение переноса в столбике с цифрами
 " set shiftwidth=8 tabstop=8 " Размер табулации по умолчанию
 " set expandtab " пробелы за мето табов
-set tabstop=2 shiftwidth=2 expandtab
+" set tabstop=2 shiftwidth=2 expandtab
 set cursorline " Подсветка текущей строки --тормозит
 set cursorcolumn " подсветка колонки
 set hlsearch " Включаем подсветку выражения, которое ищется в тексте
 set ignorecase
 set smartcase
-set whichwrap+=<,>,[,] " cursor keys wrap to previous/next line
 set foldlevel=16
 set foldmethod=indent
 " let g:xml_syntax_folding=1 " jsx syntax bug
@@ -67,7 +65,3 @@ endif
 "   let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 "   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " endif
-
-" Filetypes:
-autocmd BufNewFile,BufRead .npmrc setlocal filetype=dosini
-autocmd BufNewFile,BufRead .bash_aliases setlocal filetype=sh

@@ -33,10 +33,6 @@ vnoremap <F17> d
 inoremap <F17> <C-W>
 cnoremap <F17> <C-W>
 
-" SHIFT-Del Cut, Visual Ctrl-a/Ctrl-x для изменения цифр
-set <S-Del>=[3;2~
-vnoremap <S-Del> "+x
-
 " TODO C-Del не работает в терминале (кроме nvim), не назначается через set
 nnoremap <C-Del> de
 inoremap <C-Del> <C-O>de
