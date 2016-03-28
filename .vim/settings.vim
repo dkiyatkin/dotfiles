@@ -31,6 +31,8 @@ set foldmethod=indent
 " vnoremap <Space> zf
 " Enable mouse use in all modes
 set mouse=a
+" Don't redraw while executing macros (good performance config)
+set lazyredraw
 " set wildignore=*.o,*~,*.pyc,.git/,.hg/,.svn/,.DS_Store
 " set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.exe
 set wildignore=*~

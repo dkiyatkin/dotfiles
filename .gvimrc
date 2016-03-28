@@ -12,16 +12,22 @@ function ToggleToolbar()
   else
     set go+=mT
   endif
+  return ''
+endfunction
+
+function! <SID>ToggleToolbarCMD()
+  call ToggleToolbar()
+  return getcmdline()
 endfunction
 
 command ToggleToolbar call ToggleToolbar()
 
 " vim-shell
 " открывать меню, скрывать/показывать
-nnoremap <F10> <F10>:call ToggleToolbar()<CR>
-inoremap <F10> <C-o><F10>:call ToggleToolbar()<CR>
-vnoremap <F10> <Esc><F10>:call ToggleToolbar()<CR>gv
-cnoremap <F10> <C-f><F10>:call ToggleToolbar()<CR>:redraw!<CR><C-c>
+noremap <F10> <C-c><F10>:call ToggleToolbar()<CR>
+vnoremap <F10> <C-c><F10>:call ToggleToolbar()<CR>gv
+inoremap <F10> <F10><C-r>=ToggleToolbar()<CR>
+cnoremap <F10> <F10><C-\>e<SID>ToggleToolbarCMD()<CR>
 
 set linespace=1
 

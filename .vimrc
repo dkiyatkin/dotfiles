@@ -20,10 +20,21 @@ source ~/.vim/settings-plugins.vim
 " нестандартные настройки
 source ~/.vim/settings-scripts.vim
 
+" source ~/.vim/settings/escape.vim
+source ~/.vim/settings/save.vim
+source ~/.vim/settings/copy-filename.vim
+source ~/.vim/settings/buf-win-tab.vim
+source ~/.vim/settings/copy-paste.vim
+source ~/.vim/settings/q-exit.vim
+
 " ~/.vim/after/plugin/plugin.vim
 " ~/.vim/after/ftplugin.vim
 
 " TODO
+" alt-a, alt-]
+" better all modes
+" cnoremap Esc to C-c
+" better-f, sneak, ;, :
 " хоткей для чеклистов: отметить, добавить новый в списке
 " TAB в visual mode, konsole
 " коммандный режим: разные диапозоны слов для ctrl-left|right, ctrl-backspace

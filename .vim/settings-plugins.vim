@@ -230,7 +230,7 @@ if dein#tap('vim-nerdtree-tabs')
   let g:nerdtree_tabs_open_on_gui_startup = 0
   nnoremap <C-\> :NERDTreeTabsToggle<CR>
   " тут ошибка в nvim, но в нем и так работает без этого условия
-  if has('nvim') | else
+  if !has('nvim')
     " для konsole
     set <A-\>=\
   endif
