@@ -16,44 +16,9 @@ nnoremap <Right> z<Right>
 nnoremap <Up> <C-y>
 nnoremap <Down> <C-e>
 
-" Tab делает отступы в noramal и visual TODO visual конфликт с ultisnips
-inoremap <S-Tab> <C-D>
-" не убирать выделение
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
-
-" backspace in Visual mode deletes selection
-vnoremap <BS> d
-vnoremap <C-BS> d
-inoremap <C-BS> <C-W>
-cnoremap <C-BS> <C-W>
-" http://superuser.com/a/402247/377338
-set <F17>=[9;3~
-vnoremap <F17> d
-inoremap <F17> <C-W>
-cnoremap <F17> <C-W>
-
-" TODO C-Del не работает в терминале (кроме nvim), не назначается через set
-nnoremap <C-Del> de
-inoremap <C-Del> <C-O>de
-
 " vim-sensible <C-l>
 " убираем подсветку по esc
 " nnoremap <Esc><Esc> :nohlsearch<CR>
-
-" поиск по F3
-nnoremap <F3> n
-nnoremap <S-F3> N
-vnoremap <F3> n
-vnoremap <S-F3> N
-
-" чтобы курсор тоже передвигался
-nnoremap <silent> <PageUp> <C-U><C-U>
-vnoremap <silent> <PageUp> <C-U><C-U>
-inoremap <silent> <PageUp> <C-\><C-O><C-U><C-\><C-O><C-U>
-nnoremap <silent> <PageDown> <C-D><C-D>
-vnoremap <silent> <PageDown> <C-D><C-D>
-inoremap <silent> <PageDown> <C-\><C-O><C-D><C-\><C-O><C-D>
 
 " TODO http://vim.wikia.com/wiki/Search_for_visually_selected_text
 " Search for selected text, forwards or backwards.
@@ -96,3 +61,10 @@ onoremap <A-LeftMouse> <C-C><4-LeftMouse>
 noremap <A-LeftDrag> <LeftDrag>
 inoremap <A-LeftDrag> <LeftDrag>
 onoremap <A-LeftDrag> <C-C><LeftDrag>
+
+" TODO k - ag
+
+" заменить два символа http://vimcasts.org/episodes/creating-repeatable-mappings-with-repeat-vim/
+nnoremap <silent> <Plug>TransposeCharacters xp
+  \:call repeat#set("\<Plug>TransposeCharacters")<CR>
+nmap cp <Plug>TransposeCharacters

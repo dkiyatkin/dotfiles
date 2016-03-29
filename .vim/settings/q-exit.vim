@@ -6,8 +6,8 @@ noremap <C-q> <C-c>:qall<CR>
 inoremap <C-q> <C-c>:qall<CR>
 cnoremap <C-q> <C-c>:qall<CR>
 
-" из-за частых ошибок (во многих сплитах q означает выход), ставим макросы на <Alt>-q
-noremap <A-q> q
+" из-за частых ошибок (во многих сплитах q означает выход), ставим макросы на <Shift>-q
+noremap <S-q> q
 if dein#tap('confirm-quit')
   noremap <silent> q :call confirm_quit#confirm(0, 'always')<CR>
 else

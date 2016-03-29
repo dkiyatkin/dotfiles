@@ -33,6 +33,8 @@ source ~/.vim/settings/q-exit.vim
 " ~/.vim/after/ftplugin.vim
 
 " TODO
+" iskeyword
+" bad gf
 " get persistent undo file
 " CTRL-\ CTRL-N and CTRL-\ CTRL-G
 " better-f, sneak, ;, :

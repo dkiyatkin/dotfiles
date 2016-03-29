@@ -18,6 +18,16 @@ nnoremap [om :set selection=exclusive<CR>
 nnoremap ]om :set selection=inclusive<CR>
 nnoremap com :call ToggleSelection()<CR>
 
+" backspace in Visual mode deletes selection
+vnoremap <C-BS> d
+inoremap <C-BS> <C-w>
+cnoremap <C-BS> <C-w>
+" http://superuser.com/a/402247/377338
+set <F17>=[9;3~
+vnoremap <F17> d
+inoremap <F17> <C-w>
+cnoremap <F17> <C-w>
+
 " undo/redo для visual mode
 vnoremap <C-z> <C-c>ugv
 vnoremap <C-y> <C-c><C-r>gv
@@ -62,3 +72,27 @@ cnoremap <C-Insert> <Nop>
 nnoremap <C-S-Insert> "*gp
 inoremap <C-S-Insert> <MiddleMouse>
 cnoremap <C-S-Insert> <C-r>*
+
+" поиск по F3
+nnoremap <F3> n
+nnoremap <S-F3> N
+vnoremap <F3> n
+vnoremap <S-F3> N
+
+" чтобы курсор тоже передвигался
+nnoremap <silent> <PageUp> <C-U><C-U>
+vnoremap <silent> <PageUp> <C-U><C-U>
+inoremap <silent> <PageUp> <C-\><C-O><C-U><C-\><C-O><C-U>
+nnoremap <silent> <PageDown> <C-D><C-D>
+vnoremap <silent> <PageDown> <C-D><C-D>
+inoremap <silent> <PageDown> <C-\><C-O><C-D><C-\><C-O><C-D>
+
+" Tab делает отступы в noramal и visual TODO visual конфликт с ultisnips
+inoremap <S-Tab> <C-d>
+" не убирать выделение
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" TODO C-Del не работает в терминале (кроме nvim), не назначается через set
+nnoremap <C-Del> de
+inoremap <C-Del> <C-o>de

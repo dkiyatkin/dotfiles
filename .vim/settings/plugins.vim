@@ -41,6 +41,7 @@ call dein#add('vim-scripts/PreserveNoEOL') " оставлять окончани
 call dein#add('editorconfig/editorconfig-vim') " общие конфигурации для файлов
 call dein#add('vim-utils/vim-alt-mappings', {'if': '!has("nvim")'}) " включить alt клавиши для терминала
 call dein#add('vim-scripts/confirm-quit') " спрашивать закрытие окон
+call dein#add('ap/vim-you-keep-using-that-word') " change cw, cW
 " }}}
 
 " Themes: {{{
