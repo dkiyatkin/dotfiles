@@ -16,7 +16,8 @@ function _vimSwitch {
 
 function vimSwitch {
   TITLE=$1
-  if [[ ( $TITLE == *": nvim"* ) || ( $TITLE == *": vim"* ) ]]; then
+  # notify-send "$TITLE"
+  if [[ ( $TITLE == *": nvim"* ) || ( $TITLE == *": vim"* ) || ( $TITLE == *"- VIM\"" ) ]]; then
     _vimSwitch
   fi
 }
@@ -32,4 +33,6 @@ elif [[ $S1 == *"\"konsole\", \"konsole\""* ]]; then
 elif [[ $S1 == *"\"yakuake\", \"yakuake\""* ]]; then
   TITLE=$(qdbus org.kde.yakuake /yakuake/tabs tabTitle $(qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.activeSessionId))
   vimSwitch "$TITLE"
+# else
+#   notify-send "$S1"
 fi
