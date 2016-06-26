@@ -5,6 +5,7 @@ source $VIMRUNTIME/mswin.vim
 " inclusive лучше
 set selection=inclusive
 
+" TODO а так же переключать Ctrl-z, Ctrl-y
 " like unimpaired.vim, m - mouse selection
 function ToggleSelection()
   if &selection == 'inclusive'
@@ -22,11 +23,12 @@ nnoremap com :call ToggleSelection()<CR>
 vnoremap <C-BS> d
 inoremap <C-BS> <C-w>
 cnoremap <C-BS> <C-w>
-" http://superuser.com/a/402247/377338
-set <F17>=[9;3~
-vnoremap <F17> d
-inoremap <F17> <C-w>
-cnoremap <F17> <C-w>
+vnoremap <C-w> d
+" " http://superuser.com/a/402247/377338
+" set <F17>=[9;3~
+" vnoremap <F17> d
+" inoremap <F17> <C-w>
+" cnoremap <F17> <C-w>
 
 " undo/redo для visual mode
 vnoremap <C-z> <C-c>ugv

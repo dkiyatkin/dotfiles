@@ -1,0 +1,6 @@
+# полностью заменить клавишу переключения раскладки на `xkb-switch -n` для vim на сочетание <F2>
+"vim-key.sh 'xkb-switch -n && xvkbd -xsendevent -text "\[F2]"'"
+  ISO_Next_Group
+
+"vim-key.sh 'xvkbd -xsendevent -text "\Cw"' 'xvkbd -xsendevent -text "\C\b"'"
+  Control + BackSpace

@@ -1,17 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-# для всех приложений xkb-switch -n, для vim <F2>
 # если gvim отправлять через xvkbd, то в нем может появляться предупреждение о изменении файла
-# Установить xkb-switch, xkb-switch
 
 # TODO
 # фильтровать другие терминалы с запущенным vim
 # не определяется konsole-tmux, konsole-ssh
 # как вариант: попробовать менять title через tmux
 
+C1="$1"
+C2="$2"
+
 function _vimSwitch {
-  xkb-switch -n # переключаем обратно
-  xvkbd -xsendevent -text '\[F2]'
+  sh -c "$C1"
 }
 
 function vimSwitch {
@@ -19,6 +19,8 @@ function vimSwitch {
   # notify-send "$TITLE"
   if [[ ( $TITLE == *": nvim"* ) || ( $TITLE == *": vim"* ) || ( $TITLE == *"- VIM\"" ) ]]; then
     _vimSwitch
+  else
+    sh -c "$C2"
   fi
 }
 
