@@ -1,0 +1,2 @@
+"xvkbd -xsendevent -text '\e'"
+  Control + bracketleft
