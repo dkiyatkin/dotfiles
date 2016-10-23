@@ -14,11 +14,11 @@ nnoremap <A-t> <C-t>
 " навигация по вкладкам по Ctrl TAB
 nnoremap <C-Tab> gt
 nnoremap <C-S-Tab> gT
-" http://stackoverflow.com/a/31961401/1054723
-set <F13>=[27;5;9~
-nnoremap <F13> gt
-set <F14>=[27;6;9~
-nnoremap <F14> gT
+" " http://stackoverflow.com/a/31961401/1054723
+" set <F13>=[27;5;9~
+" nnoremap <F13> gt
+" set <F14>=[27;6;9~
+" nnoremap <F14> gT
 
 " навигация по сплитам по TAB и Alt+{h,j,k,l}
 nnoremap <Tab> <C-W>w
@@ -57,10 +57,10 @@ autocmd TabLeave * let g:lasttab = tabpagenr()
 " перемещение вкладок
 nnoremap <C-S-PageUp> :tabmove -1<CR>
 nnoremap <C-S-PageDown> :tabmove +1<CR>
-set <F15>=[5;9~
-nnoremap <F15> :tabmove -1<CR>
-set <F16>=[6;9~
-nnoremap <F16> :tabmove +1<CR>
+" set <F15>=[5;9~
+" nnoremap <F15> :tabmove -1<CR>
+" set <F16>=[6;9~
+" nnoremap <F16> :tabmove +1<CR>
 
 " навигация по сплитам по TAB в командном режиме
 nnoremap <Tab> <C-w>w

@@ -17,6 +17,7 @@ set cpoptions+=n " отображение переноса в столбике �
 " set shiftwidth=8 tabstop=8 " Размер табулации по умолчанию
 " set expandtab " пробелы за мето табов
 " set tabstop=2 shiftwidth=2 expandtab
+" TODO цвет скрытых символов
 set cursorline " Подсветка текущей строки --тормозит
 set cursorcolumn " подсветка колонки
 set hlsearch " Включаем подсветку выражения, которое ищется в тексте
@@ -37,24 +38,27 @@ set wildignore=*~
 " sbuffer переключает на существующую вкладку
 " set switchbuf=useopen,usetab,newtab
 
+" служебные файлы рядом с редактируемым файлом, они должны быть в ~/.gitignore_global
 if has("nvim")
   silent !mkdir ~/.local/share/nvim/undo > /dev/null 2>&1
-  set undodir=~/.local/share/nvim/undo
+  set undodir=.,~/.local/share/nvim/undo
   set undofile
   silent !mkdir ~/.local/share/nvim/backup > /dev/null 2>&1
-  set backupdir=~/.local/share/nvim/backup//
+  set backupdir=.,~/.local/share/nvim/backup//
+  set directory=.,~/.local/share/nvim/swap//
 
+  set termguicolors
   " vim-togglecursor
   " let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " cursor
   let g:terminal_scrollback_buffer_size = 10000
 else
-  silent !mkdir ~/.vim/undo > /dev/null 2>&1
-  set undodir=~/.vim/undo
+  silent !mkdir ~/.local/share/vim/undo > /dev/null 2>&1
+  set undodir=.,~/.local/share/vim/undo
   set undofile
-  silent !mkdir ~/.vim/backup > /dev/null 2>&1
-  set backupdir=~/.vim/backup//
-  silent !mkdir ~/.vim/swap > /dev/null 2>&1
-  set directory=~/.vim/swap//
+  silent !mkdir ~/.local/share/vim/backup > /dev/null 2>&1
+  set backupdir=.,~/.local/share/vim/backup//
+  silent !mkdir ~/.local/share/vim/swap > /dev/null 2>&1
+  set directory=.,~/.local/share/vim/swap//
 endif
 
 " vim-togglecursor

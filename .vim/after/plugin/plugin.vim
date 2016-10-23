@@ -42,6 +42,7 @@ endif
 
 
 " toggle-indent-style {{{
+" TODO подвечивать табы или пробелы вначале в зависимости от expandtab
 " нету setlocal noexpandtab tabstop=4 shiftwidth=4<CR>
 
 autocmd BufNewFile,BufReadPost,BufFilePost * let [b:toggle_indent_style_expandtab, b:toggle_indent_style_shiftwidth, b:toggle_indent_style_tabstop] = [&l:expandtab, &l:shiftwidth, &l:tabstop]
@@ -75,6 +76,11 @@ function s:TabToggleDefault()
   echo '[set default style] - expandtab='.b:toggle_indent_style_expandtab.' tabstop='.b:toggle_indent_style_tabstop.' shiftwidth='.b:toggle_indent_style_shiftwidth
   return ''
 endfunction
+
+command TabToggle1 call <SID>TabToggle1()
+command TabToggle2 call <SID>TabToggle2()
+command TabToggle3 call <SID>TabToggle3()
+command TabToggleDefault call <SID>TabToggleDefault()
 
 noremap <silent> <F9> :call <SID>TabToggle1()<CR>
 vnoremap <silent> <F9> <C-c>:call <SID>TabToggle1()<CR>gv
