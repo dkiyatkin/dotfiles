@@ -9,5 +9,7 @@
 
 autocmd BufNewFile,BufRead ecosystem.json setlocal filetype=javascript
 
+autocmd BufNewFile,BufRead seafile-ignore.txt setlocal filetype=conf
+
 autocmd BufNewFile,BufRead .npmrc setlocal filetype=dosini
 autocmd BufNewFile,BufRead .bash_aliases setlocal filetype=sh

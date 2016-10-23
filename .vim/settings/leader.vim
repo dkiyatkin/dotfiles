@@ -5,4 +5,4 @@ let g:mapleader = "_"
 map <Space> <Leader>
 " <Bslash> для LocalLeader
 " хоткеи: системные, режим правки, очень редкие, персональные для определенного буфера
-let g:maplocalleader = "\<F12>"
+let g:maplocalleader = "\\"

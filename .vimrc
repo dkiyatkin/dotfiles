@@ -20,6 +20,7 @@ source ~/.vim/settings/language.vim
 source ~/.vim/settings/mappings.vim
 
 " настройки связанные с плагинами
+source ~/.vim/settings/unite-options.vim
 source ~/.vim/settings/plugin-options.vim
 
 " нестандартные настройки
@@ -33,6 +34,9 @@ source ~/.vim/settings/q-exit.vim
 " ~/.vim/after/ftplugin.vim
 
 " TODO
+" session, автосохранение, RestartVim
+" справка по своим функциям и клавишам, например как менять стиль отступов? (узнать что это F9)
+" nolist cursorline Highlighting tab or space, space end of line
 " iskeyword
 " bad gf
 " get persistent undo file
@@ -45,14 +49,12 @@ source ~/.vim/settings/q-exit.vim
 " горизонтальный скролл когда курсор на пустой строке (:set virtualedit=all)
 " включать timeout при нажатии esc
 " стиль курсора в cmdline
-" ctrlspace не отключается автосохранение
 " Unite появление не вверху в углу
 " i_CTRL-O в конце строки переходит на один символ назад, убрать из кейбиндов
 " курсор в normal mode не меняется от iminsert
 " ctrl-alt-r RestartVim если нет несохраненных изменений
 " слишком яркие diff цвета (кроме gitdiff)
 " vmap добавить пустые строки по краям выделения
-" RestartVim для ctrlspace
 " Unite ctrl-l не убирает подсветку
 " при свертке фолдов может нарушится расцветка синтаксиса
 " ycm goto decloration, ctags, syntastic goto, ternjs
@@ -64,7 +66,6 @@ source ~/.vim/settings/q-exit.vim
 " unite bookmark - b,N key conflict
 " rhubarb.vim
 " уменьшать, увеличивать шрифт, возвращать размер по умолчанию
-" ctrlspace gui цвет курсора
 
 " " tagbar
 " NeoBundle 'majutsushi/tagbar'
@@ -87,7 +88,6 @@ source ~/.vim/settings/q-exit.vim
 " let g:easytags_dynamic_files = 1
 
 " TODO
-" backup
 " read file by ext new auto format code
 " project
 " emmet vs sparkup js, neosnippet, html beautify, tern

@@ -8,7 +8,7 @@ nnoremap gj j
 nnoremap gk k
 
 " открывать новый буфер, даже если файл не существует
-nnoremap gf :e <cfile><CR>
+nnoremap <Leader>gf :e <cfile><CR>
 
 " скролл стрелками для нормального режима
 nnoremap <Left> z<Left>
@@ -43,12 +43,14 @@ nnoremap <Leader>r'" :%s/\'/\"/g<CR>
 " http://superuser.com/questions/216411/go-to-middle-of-line-in-vim
 nnoremap <Leader>gm :exe 'normal '.(virtcol('$')/2).'\|'<CR>
 
-" http://vim.wikia.com/wiki/Map_semicolon_to_colon
-" enter command mode without using shift key
-" noremap ; :
-" noremap : ;
-map ; :
-noremap ;; ;
+" altGr == :
+" xmodmap semicolon/colon => colon/semicolon
+" " http://vim.wikia.com/wiki/Map_semicolon_to_colon
+" " enter command mode without using shift key
+" " noremap ; :
+" " noremap : ;
+" map ; :
+" noremap ;; ;
 
 " Remove the Windows ^M - when the encodings get messed up
 noremap <Leader>mm mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm

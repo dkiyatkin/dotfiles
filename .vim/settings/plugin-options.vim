@@ -1,64 +1,4 @@
 " System:
-if dein#tap('unite.vim')
-  autocmd FileType unite call s:unite_settings()
-  function! s:unite_settings()
-    " Disable cursor looping
-    silent! nunmap <buffer> <Up>
-    silent! nunmap <buffer> <Down>
-    silent! nunmap <buffer> k
-    silent! nunmap <buffer> j
-    " Возвращаем <Leader> для sneak, TODO придумать замену для Space (Shift-j-k)
-    silent! nunmap <buffer> <Space>
-    " Unite Tab не то делает, остается работать в режиме правки
-    silent! nunmap <buffer> <Tab>
-  endfunction
-  let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
-  " Use ag in unite grep source.
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '-i --line-numbers --nocolor --nogroup --hidden -S'
-  let g:unite_source_grep_recursive_opt = ''
-
-  call unite#custom#profile('default', 'context', {'direction': 'top'})
-  call unite#filters#matcher_default#use(['matcher_fuzzy'])
-  call unite#filters#sorter_default#use(['sorter_rank'])
-  nnoremap <silent> <Leader>ur :<C-u>UniteResume<CR>
-  nnoremap <silent> <Leader>fa :<C-u>Unite -buffer-name=files -start-insert file_rec/async:!<CR>
-  nnoremap <silent> <Leader>fg :Unite -buffer-name=grep grep:. -no-empty<CR>
-  " let g:unite_source_history_yank_enable = 1
-  " nnoremap <Leader>y :<C-u>Unite history/yank<CR>
-  " " The prefix key.
-  " nnoremap    [unite]   <Nop>
-  " nmap    f [unite]
-  "
-  " nnoremap <silent> [unite]c  :<C-u>UniteWithCurrentDir
-  " 		\ -buffer-name=files buffer bookmark file<CR>
-  " nnoremap <silent> [unite]b  :<C-u>UniteWithBufferDir
-  " 		\ -buffer-name=files buffer bookmark file<CR>
-  " nnoremap <silent> [unite]r  :<C-u>Unite
-  " 		\ -buffer-name=register register<CR>
-  " nnoremap <silent> [unite]o  :<C-u>Unite outline<CR>
-  " nnoremap <silent> [unite]f
-  " 		\ :<C-u>Unite -buffer-name=resume resume<CR>
-  " nnoremap <silent> [unite]ma
-  " 		\ :<C-u>Unite mapping<CR>
-  " nnoremap <silent> [unite]me
-  " 		\ :<C-u>Unite output:message<CR>
-  " nnoremap  [unite]f  :<C-u>Unite source<CR>
-
-  " включаем панель строк в unite
-  " https://github.com/Shougo/unite.vim/issues/1042
-  autocmd FileType unite setlocal number relativenumber
-  " autocmd BufWinEnter,BufEnter * setlocal number relativenumber
-endif
-
-if dein#tap('unite-help')
-  " TODO F1 изменить
-  " Execute help.
-  nnoremap <F1> :<C-u>Unite -buffer-name=help -start-insert help<CR>
-  " Execute help by cursor keyword.
-  nnoremap <silent> g<F1> :<C-u>UniteWithCursorWord help<CR>
-endif
-
 if dein#tap('PreserveNoEOL')
   let g:PreserveNoEOL = 1
 endif
@@ -95,17 +35,31 @@ if dein#tap('vim-markdown')
   " let g:vim_markdown_initial_foldlevel=3
   " let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini']
   " TODO комментарии по gcc
+  " let html_no_rendering=1
 endif
 
 " Themes:
 if dein#tap('seoul256.vim')
   " не включаем цветную тему для tty терминала
   if $TERM != 'linux'
-    if has("gui_running") " цвета не совпадают в терминале и в gui
+    if has("gui_running") || has("nvim") " цвета не совпадают в терминале и в gui
       let g:seoul256_background = 235
     else
       let g:seoul256_background = 236
     endif
+    " vim-unimpaired TODO
+    " function s:mapUnimpaired()
+    "   nnoremap [ob :set background=light<CR>
+    "   nnoremap ]ob :set background=dark<CR>
+    "   nnoremap cob :set background=<C-R>=&background == 'dark' ? 'light' : 'dark'<CR><CR>
+    " endfunction
+    " function s:mapSeoulUnimpaired()
+    "   nnoremap [ob :colorscheme seoul256-light<CR>
+    "   nnoremap ]ob :colorscheme seoul256<CR>
+    "   nnoremap cob :colorscheme <C-R>=&background == 'dark' ? 'seoul256-light' : 'seoul256'<CR><CR>
+    " endfunction
+    " autocmd ColorScheme * call <SID>mapUnimpaired()
+    " autocmd ColorScheme seoul256 call <SID>mapSeoulUnimpaired()
     colorscheme seoul256
   endif
 endif
@@ -123,6 +77,15 @@ if dein#tap('vim-airline')
   let g:airline_right_sep = ''
   let g:airline_right_alt_sep = ''
   let g:airline_detect_iminsert = 1
+
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#show_splits = 0
+  let g:airline#extensions#tabline#show_buffers = 0
+  let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+  let g:airline#extensions#tabline#show_tab_type = 0
+  let g:airline#extensions#tabline#fnamecollapse = 0
+  let g:airline#extensions#tabline#tab_min_count = 2 " при скольки вкладках показывать tabline
+  let g:airline#extensions#tabline#show_close_button = 0 " переключает на буферы
 endif
 
 if dein#tap('vim-airline-themes')
@@ -242,7 +205,10 @@ if dein#tap('nerdtree')
   " autocmd FileType nerdtree,tagbar setlocal nocursorcolumn
   let g:NERDTreeWinSize=50
   let g:NERDTreeMinimalUI=1
+  " let g:NERDTreeWinPos='right'
   nnoremap <Leader>\ :NERDTree<CR>
+  " показывать все скрытые файлы
+  let NERDTreeIgnore=[]
 endif
 
 if dein#tap('vim-nerdtree-tabs')
