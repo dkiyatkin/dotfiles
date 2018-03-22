@@ -1,6 +1,6 @@
 [user]
 	name = Dmitriy Kiyatkin
-	email = info@dkiyatkin.com
+	email = dkiyatkin@gmail.com
 [github]
 	user = dkiyatkin
 [diff]
@@ -14,3 +14,6 @@
 [core]
 	excludesfile = ~/.gitignore_global
 	quotepath = false
+	editor = nvim
+[instaweb]
+	httpd=webrick

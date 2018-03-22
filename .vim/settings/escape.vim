@@ -1,3 +1,7 @@
+if has("nvim")
+  finish
+endif
+
 " https://raw.githubusercontent.com/sunaku/.vim/config/plugin/escape.vim
 
 " TLDR: Use <C-c> instead of <Esc> to always unambiguously exit insert mode!

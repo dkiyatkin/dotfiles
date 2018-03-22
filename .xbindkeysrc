@@ -73,115 +73,106 @@
 # нестандартные абривиатуры, вставка различных символов
 # удобная навигация по тексту (emacs/bash style)
 
-# Настраиваем CapsLock как дополнительный модификатор(Mod3), который будет везде работать
-"xvkbd -xsendevent -text '\C\b'"
-  Mod3 + w
-"xvkbd -xsendevent -text '\b'"
-  Mod3 + h
-"xvkbd -xsendevent -text '\Cu'"
-  Mod3 + u
-"xvkbd -xsendevent -text '\Ck'"
-  Mod3 + k
-"xvkbd -xsendevent -text '\[Home]'"
-  Mod3 + a
-"xvkbd -xsendevent -text '\S\[Home]'"
-  Shift+Mod3 + a
-"xvkbd -xsendevent -text '\[End]'"
-  Mod3 + e
-"xvkbd -xsendevent -text '\S\[End]'"
-  Shift+Mod3 + e
-"xvkbd -xsendevent -text '\d'"
-  Mod3 + d
-"xvkbd -xsendevent -text '\C\d'"
-  Alt+Mod3 + d
+# # Настраиваем CapsLock как дополнительный модификатор(Mod3), который будет везде работать
+# "xvkbd -xsendevent -text '\C\b'"
+#   Mod3 + w
+# "xvkbd -xsendevent -text '\b'"
+#   Mod3 + h
+# "xvkbd -xsendevent -text '\Cu'"
+#   Mod3 + u
+# "xvkbd -xsendevent -text '\Ck'"
+#   Mod3 + k
+# "xvkbd -xsendevent -text '\[Home]'"
+#   Mod3 + a
+# "xvkbd -xsendevent -text '\S\[Home]'"
+#   Shift+Mod3 + a
+# "xvkbd -xsendevent -text '\[End]'"
+#   Mod3 + e
+# "xvkbd -xsendevent -text '\S\[End]'"
+#   Shift+Mod3 + e
+# "xvkbd -xsendevent -text '\d'"
+#   Mod3 + d
+# "xvkbd -xsendevent -text '\C\d'"
+#   Alt+Mod3 + d
+#
+# "xvkbd -xsendevent -text '\[Down]'"
+#   Mod3 + n
+# "xvkbd -xsendevent -text '\S\[Down]'"
+#   Shift+Mod3 + n
+# "xvkbd -xsendevent -text '\[Up]'"
+#   Mod3 + p
+# "xvkbd -xsendevent -text '\S\[Up]'"
+#   Shift+Mod3 + p
+# "xvkbd -xsendevent -text '\[Right]'"
+#   Mod3 + f
+# "xvkbd -xsendevent -text '\S\[Right]'"
+#   Shift+Mod3 + f
+# "xvkbd -xsendevent -text '\[Left]'"
+#   Mod3 + b
+# "xvkbd -xsendevent -text '\S\[Left]'"
+#   Shift+Mod3 + b
+#
+# "xvkbd -xsendevent -text '\C\[Left]'"
+#   Alt+Mod3 + b
+# "xvkbd -xsendevent -text '\S\C\[Left]'"
+#   Shift+Alt+Mod3 + b
+# "xvkbd -xsendevent -text '\C\[Right]'"
+#   Alt+Mod3 + f
+# "xvkbd -xsendevent -text '\S\C\[Right]'"
+#   Shift+Alt+Mod3 + f
 
-"xvkbd -xsendevent -text '\[Down]'"
-  Mod3 + n
-"xvkbd -xsendevent -text '\S\[Down]'"
-  Shift+Mod3 + n
-"xvkbd -xsendevent -text '\[Up]'"
-  Mod3 + p
-"xvkbd -xsendevent -text '\S\[Up]'"
-  Shift+Mod3 + p
-"xvkbd -xsendevent -text '\[Right]'"
-  Mod3 + f
-"xvkbd -xsendevent -text '\S\[Right]'"
-  Shift+Mod3 + f
-"xvkbd -xsendevent -text '\[Left]'"
-  Mod3 + b
-"xvkbd -xsendevent -text '\S\[Left]'"
-  Shift+Mod3 + b
-
-"xvkbd -xsendevent -text '\C\[Left]'"
-  Alt+Mod3 + b
-"xvkbd -xsendevent -text '\S\C\[Left]'"
-  Shift+Alt+Mod3 + b
-"xvkbd -xsendevent -text '\C\[Right]'"
-  Alt+Mod3 + f
-"xvkbd -xsendevent -text '\S\C\[Right]'"
-  Shift+Alt+Mod3 + f
-
-# полностью заменить CapsLock на `xkb-switch -n`, в vim на сочетание \<F6>
-# "xbindkeys_show"
-#   m:0x2004 + c:105
-#   # Control + Control_R
-# "vim-capslock.sh"
-#   m:0x2 + c:66
-# "vim-capslock.sh"
-#   m:0x20 + c:66
-"vim-capslock.sh"
-  ISO_Next_Group
-
-# capsplock затем два shift - режим capslock
-"xdotool key Caps_Lock"
-  Shift+Mod3 + Shift_R
-"xdotool key Caps_Lock"
-  Shift+Mod3 + Shift_L
-
-# # esc # Конфликт в баше со знаками препинания
-# "xvkbd -xsendevent -text '\e'"
+# # capsplock затем два shift - режим capslock
+# "xdotool key Caps_Lock"
+#   Shift+Mod3 + Shift_R
+# "xdotool key Caps_Lock"
+#   Shift+Mod3 + Shift_L
+#
+# # # esc # Конфликт в баше со знаками препинания
+# # "xvkbd -xsendevent -text '\e'"
+# #   Mod3 + bracketleft
+#
+# # удобные знаки препинания для любой расскладки
+# "xvkbd-if-vim.sh '\[F18]' '\[bracketleft]'"
 #   Mod3 + bracketleft
+# "xvkbd-if-vim.sh '\[F19]' '{'"
+#   Mod3 + shift + bracketleft
+# "xvkbd-if-vim.sh '\[F20]' ']'"
+#   Mod3 + bracketright
+# "xvkbd-if-vim.sh '\[F21]' '}'"
+#   Mod3 + shift + bracketright
+# "xvkbd-if-vim.sh '\[F22]' ','"
+#   Mod3 + comma
+# "xvkbd-if-vim.sh '\[F23]' '<'"
+#   Mod3 + shift + comma
+# "xvkbd-if-vim.sh '\[F24]' '.'"
+#   Mod3 + period
+# "xvkbd-if-vim.sh '\[F25]' '>'"
+#   Mod3 + shift + period
+# "xvkbd-if-vim.sh '\[F26]' ';'"
+#   Mod3 + semicolon
+# "xvkbd-if-vim.sh '\[F27]' ':'"
+#   Mod3 + shift + semicolon
+# "xvkbd-if-vim.sh '\[F28]' '\[slash]'"
+#   Mod3 + slash
+# "xvkbd-if-vim.sh '\[F29]' '\[question]'"
+#   Mod3 + shift + slash
+# "xvkbd-if-vim.sh '\[F30]' '\[apostrophe]'"
+#   Mod3 + apostrophe
+# "xvkbd-if-vim.sh '\[F31]' '\[quotedbl]'"
+#   Mod3 + shift + apostrophe
+# "xvkbd-if-vim.sh '\[F32]' '\[bar]'"
+#   Mod3 + shift + backslash
 
-# удобные знаки препинания для любой расскладки
-"xvkbd-if-vim.sh '\[F18]' '\[bracketleft]'"
-  Mod3 + bracketleft
-"xvkbd-if-vim.sh '\[F19]' '{'"
-  Mod3 + shift + bracketleft
-"xvkbd-if-vim.sh '\[F20]' ']'"
-  Mod3 + bracketright
-"xvkbd-if-vim.sh '\[F21]' '}'"
-  Mod3 + shift + bracketright
-"xvkbd-if-vim.sh '\[F22]' ','"
-  Mod3 + comma
-"xvkbd-if-vim.sh '\[F23]' '<'"
-  Mod3 + shift + comma
-"xvkbd-if-vim.sh '\[F24]' '.'"
-  Mod3 + period
-"xvkbd-if-vim.sh '\[F25]' '>'"
-  Mod3 + shift + period
-"xvkbd-if-vim.sh '\[F26]' ';'"
-  Mod3 + semicolon
-"xvkbd-if-vim.sh '\[F27]' ':'"
-  Mod3 + shift + semicolon
-"xvkbd-if-vim.sh '\[F28]' '\[slash]'"
-  Mod3 + slash
-"xvkbd-if-vim.sh '\[F29]' '\[question]'"
-  Mod3 + shift + slash
-"xvkbd-if-vim.sh '\[F30]' '\[apostrophe]'"
-  Mod3 + apostrophe
-"xvkbd-if-vim.sh '\[F31]' '\[quotedbl]'"
-  Mod3 + shift + apostrophe
-"xvkbd-if-vim.sh '\[F32]' '\[bar]'"
-  Mod3 + shift + backslash
-
-# иначе не работает в krusader
+# иначе не работает в krusader, dolphin, krita
 # mouse back
-"xvkbd -xsendevent -text '\[XF86Back]'"
-  m:0x0 + b:8
+# "xvkbd -xsendevent -text '\[XF86Back]'"
+# "xvkbd -xsendevent -text '\A\[Left]'"
+#   m:0x0 + b:8
 
 # mouse forward
-"xvkbd -xsendevent -text '\[XF86Forward]'"
-  m:0x0 + b:9
+# "xvkbd -xsendevent -text '\[XF86Forward]'"
+# "xvkbd -xsendevent -text '\A\[Right]'"
+#   m:0x0 + b:9
 
 # TODO срабатывает после 2 раза
 # XF86AudioPause - Нажатая клавиша не поддерживается в Qt.
@@ -190,10 +181,59 @@
 # 'xdotool key XF86AudioPause'
 #   XF86AudioPlay
 
-# TODO
+# открыть меню
+"sleep 0.1; xvkbd -xsendevent -text '\[Menu]'"
+  Mod4 + space
+
+# переключить режим работы
+"work-toggle.sh"
+  Mod4 + w
+
 # вывести текущую дату
 "current-date.sh"
-  Control+Mod3 + d
+  Control+Mod4 + d
+
+# https://bugs.kde.org/show_bug.cgi?id=183458#c49
+# тайлинг
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom Left'"
+  Alt+Mod4 + KP_1
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom Right'"
+  Alt+Mod4 + KP_3
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top Left'"
+  Alt+Mod4 + KP_7
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top Right'"
+  Alt+Mod4 + KP_9
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Left' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Vertical'"
+  Alt+Mod4 + KP_4
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Right' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Vertical'"
+  Alt+Mod4 + KP_6
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Horizontal'"
+  Alt+Mod4 + KP_2
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Horizontal'"
+  Alt+Mod4 + KP_8
+"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize'"
+  Alt+Mod4 + KP_5
+
+# перемещение окон
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Remove Window From Group' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'"
+"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'"
+  Shift+Mod4 + KP_4
+"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'"
+  Shift+Mod4 + KP_6
+"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
+  Shift+Mod4 + KP_8
+"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
+  Shift+Mod4 + KP_2
+"window-unset-tile.sh ; window-move-center.sh"
+  Shift+Mod4 + KP_5
+"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
+  Shift+Mod4 + KP_7
+"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
+  Shift+Mod4 + KP_9
+"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
+  Shift+Mod4 + KP_1
+"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
+  Shift+Mod4 + KP_3
 
 ##################################
 # End of xbindkeys configuration #

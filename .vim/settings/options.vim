@@ -34,7 +34,9 @@ set mouse=a
 set lazyredraw
 " set wildignore=*.o,*~,*.pyc,.git/,.hg/,.svn/,.DS_Store
 " set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.exe
-set wildignore=*~
+" set wildignore=*~
+" TODO respect .gitignore
+set wildignore=.git,.DS_Store,node_modules,.*.session.vim,.*.swp
 " sbuffer переключает на существующую вкладку
 " set switchbuf=useopen,usetab,newtab
 
@@ -45,7 +47,7 @@ if has("nvim")
   set undofile
   silent !mkdir ~/.local/share/nvim/backup > /dev/null 2>&1
   set backupdir=.,~/.local/share/nvim/backup//
-  set directory=.,~/.local/share/nvim/swap//
+  set directory=~/.local/share/nvim/swap//
 
   set termguicolors
   " vim-togglecursor
@@ -58,7 +60,7 @@ else
   silent !mkdir ~/.local/share/vim/backup > /dev/null 2>&1
   set backupdir=.,~/.local/share/vim/backup//
   silent !mkdir ~/.local/share/vim/swap > /dev/null 2>&1
-  set directory=.,~/.local/share/vim/swap//
+  set directory=~/.local/share/vim/swap//
 endif
 
 " vim-togglecursor

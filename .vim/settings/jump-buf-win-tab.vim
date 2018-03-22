@@ -86,13 +86,13 @@ nnoremap <Leader>bd :bd<CR>
 " close all buffers or bufferonly TODO
 nnoremap <Leader>bo :bufdo bd<CR>
 " list buffers
-nnoremap <silent> <Leader>bt :<C-u>Unite -buffer-name=buffers_tab buffer_tab<CR>
-nnoremap <silent> <Leader>ba :<C-u>Unite -buffer-name=buffers buffer<CR>
+" nnoremap <silent> <Leader>bt :<C-u>Unite -buffer-name=buffers_tab buffer_tab<CR>
+nnoremap <silent> <Leader>bf :<C-u>Unite -buffer-name=buffers buffer<CR>
 " managing tabs
 nnoremap <Leader>tn :tabnew<CR>
 nnoremap <Leader>to :tabonly<CR>
 nnoremap <Leader>tc :tabclose<CR>
 nnoremap <Leader>tm :tabmove 
-nnoremap <silent> <Leader>ta :<C-u>Unite -buffer-name=tabs tab:no-current<CR>
+nnoremap <silent> <Leader>tf :<C-u>Unite -buffer-name=tabs tab:no-current<CR>
 " opens a new tab with the current buffer's path
 nnoremap <Leader>te :tabedit <C-R>=expand("%:p:h")<CR>/

@@ -31,14 +31,14 @@ func! GetScriptNumber(script_name)
   return -1
 endfunc
 
-if dein#tap('vim-you-keep-using-that-word')
-  " переопределяем вместе с <silent>
-  function s:DoWordMotion(wordmotion, endmotion)
-    call eval(printf("<SNR>%d_DoWordMotion('".a:wordmotion."','".a:endmotion."')", GetScriptNumber("ykutw.vim")))
-  endfunc
-  onoremap <silent> w :<C-U>call <SID>DoWordMotion('w','e')<CR>
-  onoremap <silent> W :<C-U>call <SID>DoWordMotion('W','E')<CR>
-endif
+" if dein#tap('vim-you-keep-using-that-word')
+"   " переопределяем вместе с <silent>
+"   function s:DoWordMotion(wordmotion, endmotion)
+"     call eval(printf("<SNR>%d_DoWordMotion('".a:wordmotion."','".a:endmotion."')", GetScriptNumber("ykutw.vim")))
+"   endfunc
+"   onoremap <silent> w :<C-U>call <SID>DoWordMotion('w','e')<CR>
+"   onoremap <silent> W :<C-U>call <SID>DoWordMotion('W','E')<CR>
+" endif
 
 
 " toggle-indent-style {{{

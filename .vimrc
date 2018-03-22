@@ -2,13 +2,21 @@ scriptencoding utf-8
 " Note: Skip initialization for vim-tiny or vim-small.
 if !1 | finish | endif
 
+" определение <Leader> и <LocalLeader> в самом начале
 source ~/.vim/settings/leader.vim
 
+" определение плагинов, загружаются в последнюю очередь
 source ~/.vim/settings/plugins.vim
 
 " базовые настройки для редактора
 source ~/.vim/settings/options.vim
 
+" настройки плагинов
+source ~/.vim/settings/unite.vim
+source ~/.vim/settings/plugin-options.vim
+source ~/.vim/settings/themes.vim
+
+" дополнительные настройки и собственные плагины
 source ~/.vim/settings/escape.vim
 source ~/.vim/settings/common-hotkeys.vim
 source ~/.vim/settings/jump-buf-win-tab.vim
@@ -17,15 +25,11 @@ source ~/.vim/settings/save.vim
 " языковые настройки
 source ~/.vim/settings/language.vim
 
+" собственные маппинги
 source ~/.vim/settings/mappings.vim
-
-" настройки связанные с плагинами
-source ~/.vim/settings/unite-options.vim
-source ~/.vim/settings/plugin-options.vim
 
 " нестандартные настройки
 source ~/.vim/settings/scripts.vim
-
 source ~/.vim/settings/copy-filename.vim
 source ~/.vim/settings/q-exit.vim
 
@@ -34,12 +38,12 @@ source ~/.vim/settings/q-exit.vim
 " ~/.vim/after/ftplugin.vim
 
 " TODO
-" session, автосохранение, RestartVim
+" увеличить высоту GStatus, большой список съезжает при добавлении в git файлов
+" возможно стандартное управление нуждно везде одинаковое, для кода `o` например не должно делать дополнительный отступ
+" отключить автоперенос строк в комментариях
 " справка по своим функциям и клавишам, например как менять стиль отступов? (узнать что это F9)
 " nolist cursorline Highlighting tab or space, space end of line
 " iskeyword
-" bad gf
-" get persistent undo file
 " CTRL-\ CTRL-N and CTRL-\ CTRL-G
 " better-f, sneak, ;, :
 " хоткей для чеклистов: отметить, добавить новый в списке
@@ -63,7 +67,6 @@ source ~/.vim/settings/q-exit.vim
 " сделать map на отступы по 1 пробелу
 " vim - при bd не закрывать вкладку, если в ней есть еще другие буфферы
 " vim - помечать вкладки
-" unite bookmark - b,N key conflict
 " rhubarb.vim
 " уменьшать, увеличивать шрифт, возвращать размер по умолчанию
 

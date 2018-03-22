@@ -1,4 +1,18 @@
 " Themes:
+if dein#tap('unite-colorscheme')
+  let g:unite_colorscheme_blacklist = [
+  \ 'blue', 'darkblue', 'delek', 'evening',
+  \ 'desert', 'elflord', 'koehler', 'morning',
+  \ 'murphy', 'pablo', 'peachpuff', 'ron',
+  \ 'slate', 'torte', 'zellner',
+  \ ]
+  " иногда нужно запустить `:AirlineRefresh` если перестали подсвечиваться табы
+  call AddCmd('common',
+  \ 'colorscheme | цветовые схемы                                                                ', '<Leader>cs',
+  \ 'Unite colorscheme -auto-preview'
+  \ )
+endif
+
 if dein#tap('seoul256.vim')
   " не включаем цветную тему для tty терминала
   if $TERM != 'linux'
@@ -56,26 +70,27 @@ if dein#tap('vim-airline')
   " let g:airline_exclude_preview = 1 " ctrlspace
 
   " let g:airline_powerline_fonts = 1
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
+  " let g:airline_left_sep = ''
+  " let g:airline_left_alt_sep = ''
+  " let g:airline_right_sep = ''
+  " let g:airline_right_alt_sep = ''
   let g:airline_detect_iminsert = 1
 
   let g:airline#extensions#tabline#enabled = 1
   let g:airline#extensions#tabline#show_splits = 0
   let g:airline#extensions#tabline#show_buffers = 0
-  let g:airline#extensions#tabline#tab_nr_type = 2 " splits and tab number
+  let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
   let g:airline#extensions#tabline#show_tab_type = 0
   let g:airline#extensions#tabline#fnamecollapse = 0
   let g:airline#extensions#tabline#tab_min_count = 2 " при скольки вкладках показывать tabline
   let g:airline#extensions#tabline#show_close_button = 0 " переключает на буферы
 
-  " TODO `)` после номера
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  let g:airline#extensions#tabline#right_sep = ''
-  let g:airline#extensions#tabline#right_alt_sep = ''
+  let g:airline_symbols_ascii = 1
+  " " TODO `)` после номера
+  " let g:airline#extensions#tabline#left_sep = ''
+  " let g:airline#extensions#tabline#left_alt_sep = '|'
+  " let g:airline#extensions#tabline#right_sep = ''
+  " let g:airline#extensions#tabline#right_alt_sep = ''
 endif
 
 if dein#tap('vim-togglecursor')

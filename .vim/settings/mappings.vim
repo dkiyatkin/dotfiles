@@ -70,3 +70,11 @@ onoremap <A-LeftDrag> <C-C><LeftDrag>
 nnoremap <silent> <Plug>TransposeCharacters xp
   \:call repeat#set("\<Plug>TransposeCharacters")<CR>
 nmap cp <Plug>TransposeCharacters
+
+" TODO folding
+" " show only this fold section
+" nnoremap <Leader>z zMzv
+
+" TODO
+" autocmd BufDelete * let g:latestdeletedbuffer = expand("<afile>:p")
+" nnoremap <F8> :e <C-R>=fnameescape(g:latestdeletedbuffer)<CR><CR>
