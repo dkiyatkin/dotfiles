@@ -39,7 +39,7 @@ safe_append_prompt_command prompt_setter
 
 # exports
 
-PATH=$PATH:$HOME/.local/bin:$HOME/bin:$HOME/.yarn/bin
+PATH=$HOME/bin:$HOME/.yarn/bin:$PATH
 
 export PATH
 
