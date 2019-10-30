@@ -19,6 +19,10 @@ nmap <A-O> [<Space>ki
 noremap ' `
 noremap ` '
 
+" нажатие : без шифта
+noremap ; :
+noremap ;; <Plug>Sneak_;
+
 " http://vim.wikia.com/wiki/Short_mappings_for_common_tasks
 nnoremap Y y$
 

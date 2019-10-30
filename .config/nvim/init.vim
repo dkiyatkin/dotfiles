@@ -3,6 +3,10 @@ scriptencoding utf-8
 " skip initialization for vim-tiny or vim-small
 if !1 | finish | endif
 
+" https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
+set modelines=0
+set nomodeline
+
 " определение <Leader> и <LocalLeader> в самом начале {{{
 " <Space> для Leader удобно нажимать и видно что в showcmd(_)
 " все основные пользовательские хоткеи, только для нормального режима
@@ -33,7 +37,7 @@ set ignorecase
 set smartcase
 set foldlevel=16
 set foldmethod=indent
-set mouse=a " enable mouse use in all modes
+" set mouse=a " enable mouse use in all modes
 set lazyredraw " don't redraw while executing macros (good performance config)
 set showtabline=1
 
