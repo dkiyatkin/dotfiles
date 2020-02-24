@@ -32,6 +32,10 @@ autocmd VimEnter * :call NERDTreeAddKeyMap({ 'key': 'o', 'callback': 'NERDTreeMy
 " plugin:nerdtree-git {{{
 " }}}
 
+" " plugin:ranger {{{
+" let g:ranger_map_keys = 0
+" " }}}
+
 " plugin:startify {{{
 let g:startify_disable_at_vimenter = 1
 let g:startify_session_dir         = '~/.local/share/nvim/sessions/'

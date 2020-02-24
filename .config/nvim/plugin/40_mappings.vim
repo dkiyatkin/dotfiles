@@ -81,6 +81,11 @@ vnoremap <C-BS> d
 inoremap <C-BS> <C-w>
 cnoremap <C-BS> <C-w>
 vnoremap <C-w> d
+
+" ~/.inputrc ctrl + backspace
+inoremap <C-h> <C-w>
+cnoremap <C-h> <C-w>
+
 " alacritty ctrl + backspace
 vnoremap <M-C-H> d
 inoremap <M-C-H> <C-w>
@@ -231,6 +236,12 @@ nnoremap <unique> <Leader>\ :NERDTree<CR>
 nnoremap <unique> <C-\> :NERDTreeToggle<CR>
 nnoremap <unique> <A-\> :NERDTreeFind<CR>
 " }}}
+
+" " plugin:ranger {{{
+" nnoremap <unique> <Leader>\ :RangerWorkingDirectory<CR>
+" nnoremap <unique> <C-\> :RangerCurrentDirectory<CR>
+" nnoremap <unique> <A-\> :RangerCurrentFile<CR>
+" " }}}
 
 " plugin:sneak {{{
 " label-mode

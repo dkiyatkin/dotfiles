@@ -4,6 +4,8 @@
 " endif
 
 " plugin:sensible {{{
+" term
+set sidescrolloff=0
 " }}}
 
 " plugin:speeddating {{{

@@ -1,11 +1,11 @@
 scriptencoding utf-8
 
-" skip initialization for vim-tiny or vim-small
-if !1 | finish | endif
-
 " https://github.com/numirias/security/blob/master/doc/2019-06-04_ace-vim-neovim.md
 set modelines=0
 set nomodeline
+
+" skip initialization for vim-tiny or vim-small
+if !1 | finish | endif
 
 " определение <Leader> и <LocalLeader> в самом начале {{{
 " <Space> для Leader удобно нажимать и видно что в showcmd(_)
@@ -19,6 +19,7 @@ let g:maplocalleader = "\\"
 " }}}
 
 " базовые настройки для редактора {{{
+set synmaxcol=500
 set showcmd " показывать команды справа внизу
 set notimeout " отключим таймаут для leader
 set nojoinspaces " не вставлять лишних пробелов при объединении строк
@@ -37,7 +38,7 @@ set ignorecase
 set smartcase
 set foldlevel=16
 set foldmethod=indent
-" set mouse=a " enable mouse use in all modes
+set mouse=a " enable mouse use in all modes
 set lazyredraw " don't redraw while executing macros (good performance config)
 set showtabline=1
 
@@ -50,14 +51,19 @@ set backupdir=.,~/.local/share/nvim/backup//
 set directory=~/.local/share/nvim/swap//
 
 set scrollback=100000
-set termguicolors
-set background=dark
-" set background=light
+" set termguicolors
 set cursorline
 set cursorcolumn
 set previewheight=7
 
-colorscheme pencil
+" plugin:seoul256 {{{
+" https://vi.stackexchange.com/questions/2938/can-the-split-separator-in-vim-be-less-than-a-full-column-wide
+set fillchars+=vert:\ 
+autocmd ColorScheme * highlight VertSplit ctermbg=NONE guibg=NONE
+let g:seoul256_background = 236
+colorscheme seoul256
+set background=light
+" }}}
 
 " https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally
 set splitbelow splitright
@@ -65,7 +71,7 @@ set splitbelow splitright
 set sessionoptions-=help
 set wildignore=Session.vim
 
-set shell=/bin/sh
+set shell=/bin/bash
 
 " https://github.com/onivim/oni/issues/962
 augroup TerminalStuff
@@ -90,11 +96,12 @@ endif
 
 let g:myPackConfOpt = 1
 
-if (exists('g:myPackConfOpt') && g:myPackConfOpt)
+if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   " ~/.config/nvim/plugin/my-pack-conf/enhancement.vim {{{
   packadd! undotree
   packadd! nerdtree
   packadd! nerdtree-git
+  " packadd! ranger
   packadd! startify
   packadd! fzf
   packadd! fzf-quickfix
