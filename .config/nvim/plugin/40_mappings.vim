@@ -3,6 +3,10 @@ if (exists('g:loaded_myMappings') && g:loaded_myMappings)
 endif
 let g:loaded_myMappings = 1
 
+" plugin:sensible {{{
+nnoremap <silent> <A-8> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+" }}}
+
 " http://vim.wikia.com/wiki/Make_search_results_appear_in_the_middle_of_the_screen
 " plugin:visualstar
 " nnoremap n nzz
@@ -112,12 +116,6 @@ cnoremap <C-Insert> <Nop>
 nnoremap <C-S-Insert> "*gp
 inoremap <C-S-Insert> <MiddleMouse>
 cnoremap <C-S-Insert> <C-r>*
-
-" Tab делает отступы в noramal и visual TODO visual конфликт с ultisnips
-inoremap <S-Tab> <C-d>
-" не убирать выделение
-vnoremap <Tab> >gv
-vnoremap <S-Tab> <gv
 " }}}
 
 " copy-filename {{{
@@ -128,6 +126,9 @@ vnoremap <S-Tab> <gv
 
 " filename, copy, absolute | скопировать абсолютный путь файла (/something/src/foo.txt)
 nnoremap <unique> yp :<C-u>let @+=expand("%:p") \| call system("tmux loadb -",expand("%:p"))<CR>
+" plugin:tmux {{{
+nnoremap <unique> <A-\> :<C-u>let @+=expand("%:p") \| call system("tmux loadb -",expand("%:p")) \| call system("tmux select-pane -t 1")<CR>
+" }}}
 
 " " filename, copy, basename | скопировать базовое имя файла (foo.txt)
 " nnoremap <unique> <Leader>fcb :<C-u>let @+=expand("%:t")<CR>
@@ -161,11 +162,6 @@ xnoremap <A-a> <C-c>ggVG
 inoremap <unique> <A-d> <C-k>
 cnoremap <unique> <A-d> <C-k>
 
-" plugin:ultisnips {{{
-inoremap <unique> <C-k> <Nop>
-inoremap <unique> <C-j> <Nop>
-" }}}
-
 " :h terminal-input
 tnoremap <Esc> <C-\><C-n>
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -191,14 +187,6 @@ nnoremap <A-W> <C-w>W
 tnoremap <A-;> <C-\><C-N><C-w>p
 inoremap <A-;> <C-\><C-N><C-w>p
 nnoremap <A-;> <C-w>p
-
-" tmux-navigator {{{
-nnoremap <silent> <A-H> :TmuxNavigateLeft<CR>
-nnoremap <silent> <A-J> :TmuxNavigateDown<CR>
-nnoremap <silent> <A-K> :TmuxNavigateUp<CR>
-nnoremap <silent> <A-L> :TmuxNavigateRight<CR>
-nnoremap <silent> <A-P> :TmuxNavigatePrevious<CR>
-" }}}
 
 " bufmru {{{
 nnoremap ]m  :BufMRUPrev<CR>
@@ -230,18 +218,6 @@ autocmd CmdwinEnter * nnoremap <silent> <buffer> q :q<CR>
 " }}}
 
 autocmd FileType help nnoremap <silent><buffer> gO :call ShowToc()<CR><C-w>L:vertical resize 29<CR>
-
-" plugin:nerdtree {{{
-nnoremap <unique> <Leader>\ :NERDTree<CR>
-nnoremap <unique> <C-\> :NERDTreeToggle<CR>
-nnoremap <unique> <A-\> :NERDTreeFind<CR>
-" }}}
-
-" " plugin:ranger {{{
-" nnoremap <unique> <Leader>\ :RangerWorkingDirectory<CR>
-" nnoremap <unique> <C-\> :RangerCurrentDirectory<CR>
-" nnoremap <unique> <A-\> :RangerCurrentFile<CR>
-" " }}}
 
 " plugin:sneak {{{
 " label-mode
@@ -307,26 +283,10 @@ nnoremap <unique><silent> <Leader>gs :Gstatus<CR>:20wincmd_<CR>
 " переключиться на предыдущую активную вкладку
 nnoremap <unique> <Leader>tl :exe "tabn ".g:LastTab<CR>
 
-" plugin:languageclient {{{
-if !exists('g:gui_oni')
-  nnoremap <unique><silent> <Leader>lc :call LanguageClient_contextMenu()<CR>
-  nnoremap <unique><silent> <Leader>lh :call LanguageClient_textDocument_hover()<CR>
-  nnoremap <unique><silent> <Leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-  nnoremap <unique><silent> <Leader>lS :call LanguageClient_workspace_symbol()<CR>
-  nnoremap <unique><silent> <Leader>lr :call LanguageClient_textDocument_references()<CR>
-
-  autocmd FileType javascript
-    \ nnoremap <silent><buffer> <C-]> :call LanguageClient_textDocument_definition()<CR>
-
-  autocmd FileType javascript
-    \ nnoremap <silent><buffer> <F2> :call LanguageClient_textDocument_rename()<CR>
-end
-" }}}
-
 " plugin:fzf {{{
-nnoremap <unique> <Leader>bf :Buffers<CR>
-nnoremap <unique> <A-Space>  :AllBuffers<CR>
-nnoremap <unique> <C-Space>  :TabBuffers<CR>
+nnoremap <unique> <Leader>bb :Buffers<CR>
+nnoremap <unique> <Leader>ba :AllBuffers<CR>
+nnoremap <unique> <Leader>bt :TabBuffers<CR>
 nnoremap <unique> <Leader>pf :Files<CR>
 nnoremap <unique> <Leader>pg :Ag<Space>
 nnoremap <unique> <Leader>/  :BLines<CR>
@@ -345,9 +305,6 @@ imap <unique> <C-x><C-j> <plug>(fzf-complete-file-ag)
 " plugin:miniyank {{{
 nnoremap <A-p> :YanksAfter<CR>
 nnoremap <A-P> :YanksBefore<CR>
-" }}}
-
-" plugin:deoplete {{{
 " }}}
 
 " plugin:windowswap {{{

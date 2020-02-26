@@ -9,9 +9,6 @@ let g:loaded_myPackConfFiletype = 1
 " plugin:syntax-vim-ex {{{
 " }}}
 
-" plugin:coffee-script {{{
-" }}}
-
 " plugin:mustache-handlebars {{{
 " }}}
 

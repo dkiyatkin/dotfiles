@@ -121,7 +121,6 @@ let g:windowswap_map_keys = 0
 " }}}
 
 " plugin:tmux-navigator {{{
-let g:tmux_navigator_no_mappings = 1
 " }}}
 
 " plugin:tmux {{{

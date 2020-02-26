@@ -3,6 +3,10 @@ if (exists('g:loaded_myCommands') && g:loaded_myCommands)
 endif
 let g:loaded_myCommands = 1
 
+" https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
+" CDC = Change to Directory of Current file
+command CDC cd %:p:h
+
 " https://vi.stackexchange.com/questions/8378/dump-the-output-of-internal-vim-command-into-buffer
 command -nargs=+ -complete=command Redir let s:reg = @@ | redir @"> | silent execute <q-args> | redir END | new | pu | 1,2d_ | let @@ = s:reg
 
@@ -11,7 +15,6 @@ command W w !sudo tee % > /dev/null
 
 command PrintBuffers redir => s:buffers | silent ls | redir END | echo s:buffers
 
-" plugin:ale ALEFix trim_whitespace
 command TrimWhitespace call TrimWhitespace()
 
 " plugin:fugitive {{{

@@ -7,5 +7,7 @@ cnoreabbrev <expr> h getcmdtype() == ':' && getcmdline() == 'h' ? 'vertical help
 
 cnoreabbrev <expr> help CmdAbbr('help', 'vertical help')
 
+" plugin:ack {{{
 cnoreabbrev <expr> Ack CmdAbbr('Ack', 'Ack!')
 cnoreabbrev <expr> AckHelp CmdAbbr('AckHelp', 'AckHelp!')
+" }}}

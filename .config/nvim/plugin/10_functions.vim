@@ -195,13 +195,6 @@ endfunction
 " }}}
 " }}}
 
-" plugin:deoplete {{{
-function CheckBackSpace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-" }}}
-
 " https://stackoverflow.com/questions/3155461/how-to-delete-multiple-buffers-in-vim
 function DeleteOtherBuffers() abort
   let s:bufNr = bufnr("$")

@@ -97,12 +97,15 @@ endif
 let g:myPackConfOpt = 1
 
 if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
+  " ~/.config/nvim/plugin/my-pack-conf/tmux.vim {{{
+  packadd! tmux-focus-events
+  packadd! tmux-clipboard
+  packadd! tmux-navigator
+  packadd! tmux
+  " }}}
+
   " ~/.config/nvim/plugin/my-pack-conf/enhancement.vim {{{
   packadd! undotree
-  packadd! nerdtree
-  packadd! nerdtree-git
-  " packadd! ranger
-  packadd! startify
   packadd! fzf
   packadd! fzf-quickfix
   packadd! ft-gitcommit-plugin
@@ -113,35 +116,26 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   packadd! signature
   packadd! vimlparser
   packadd! vimlint
-  packadd! ultisnips
-  packadd! ale
-  if !exists('g:gui_oni')
-    packadd! languageclient
-    packadd! deoplete
-  end
+  packadd! coc
+  packadd! ctrlspace
   " }}}
 
   " ~/.config/nvim/plugin/my-pack-conf/filetype.vim {{{
+  packadd! json
+  packadd! typescript
+  packadd! javascript
+  packadd! jsx
   packadd! syntax-vim-ex
-  packadd! coffee-script
   packadd! mustache-handlebars
-  packadd! scala
   packadd! redis
   packadd! html5
   packadd! npr
-  packadd! json
   packadd! css3-syntax
   packadd! less
   packadd! css-color
-  packadd! pug
   packadd! markdown
-  if !exists('g:gui_oni')
-    packadd! typescript
-    packadd! javascript
-    packadd! jsx
-  end
   packadd! nginx
-  packadd! stylus
+  packadd! fish
   " }}}
 
   " ~/.config/nvim/plugin/my-pack-conf/appearance.vim {{{
