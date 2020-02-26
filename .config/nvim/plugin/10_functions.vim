@@ -16,7 +16,7 @@ function ListBuffers() abort
 endfunction
 
 function PrintBuffers() abort
-  redir => s:buffers | silent ls | redir END
+  redir => s:buffers | silent ls! | redir END
   return s:buffers
 endfunction
 

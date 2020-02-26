@@ -76,7 +76,7 @@ set shell=/bin/bash
 " https://github.com/onivim/oni/issues/962
 augroup TerminalStuff
   au!
-  autocmd TermOpen * setlocal nonumber norelativenumber
+  autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
 augroup END
 
 " https://www.reddit.com/r/vim/comments/3ae4qf/psa_set_clipboardunnamed/

@@ -24,5 +24,16 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 let g:fzf_layout = { 'window': 'aboveleft 12split enew' }
 
-command! -nargs=* Ag call fzf#vim#ag(<q-args>, '-i --line-numbers --hidden -S', g:fzf_layout)
+command! -nargs=* Ag call fzf#vim#ag(<q-args>, '--ignore-case --line-numbers --hidden --smart-case', g:fzf_layout)
+" }}}
+
+" plugin:ctrlspace {{{
+let g:CtrlSpaceGlobCommand = 'ag --files-with-matches --nocolor -g ""'
+let g:CtrlSpaceUseMouseAndArrowsInTerm = 1
+let g:CtrlSpaceSaveWorkspaceOnExit = 1
+let g:CtrlSpaceSaveWorkspaceOnSwitch = 1
+hi CtrlSpaceNormal   ctermfg=252 ctermbg=236
+hi CtrlSpaceSelected ctermfg=252 ctermbg=23
+autocmd BufDelete CtrlSpace setlocal signcolumn=no
+autocmd BufNewFile,BufRead cs_workspaces setlocal filetype=vim
 " }}}

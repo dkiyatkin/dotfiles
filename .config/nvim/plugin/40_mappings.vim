@@ -277,7 +277,7 @@ nnoremap <unique> <Leader>ut :UndotreeToggle<CR>
 " }}}
 
 " plugin:fugitive {{{
-nnoremap <unique><silent> <Leader>gs :Gstatus<CR>:20wincmd_<CR>
+nnoremap <unique><silent> <Leader>gs :Gstatus<CR>
 " }}}
 
 " переключиться на предыдущую активную вкладку
@@ -320,4 +320,8 @@ autocmd FileType javascript
   \ nmap <buffer> <LocalLeader><C-w><C-f> <Plug>NodeSplitGotoFile
 autocmd FileType javascript
   \ nmap <buffer> <LocalLeader><C-w>gf <Plug>NodeTabGotoFile
+" }}}
+
+" plugin:ctrlspace {{{
+let g:CtrlSpaceDefaultMappingKey = "<C-Space> "
 " }}}
