@@ -21,6 +21,7 @@ autocmd BufNewFile,BufRead seafile-ignore.txt setlocal filetype=conf
 autocmd BufNewFile,BufRead .npmrc setlocal filetype=dosini
 autocmd BufNewFile,BufRead .bash_aliases setlocal filetype=sh
 autocmd FileType vim setlocal foldmethod=marker
+autocmd FileType man setlocal signcolumn=auto
 autocmd BufNewFile,BufRead .gitignore_global setlocal filetype=conf
 
 " plugin:fish {{{
@@ -42,9 +43,6 @@ autocmd BufNewFile,BufRead .eslintrc,.babelrc setlocal filetype=json
 
 " https://www.reddit.com/r/vim/comments/793s17/setting_quickfix_window_height/
 autocmd FileType qf 7wincmd_
-
-" TODO не переключается в vim-sneak
-" TODO не работает вместе с `r`, `f`, `F`, `t`, `T` (можно перемапить их на функцию где будет выбираться нужная раскладка и ставится нужный символ, а потом возвращаться старая раскладка)
 
 " всегда переключаться на английскую раскладку клавиатуры
 " autocmd InsertLeave * silent exe "!gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval 'imports.ui.status.keyboard.getInputSourceManager().inputSources[0].activate()'"

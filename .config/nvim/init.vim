@@ -26,7 +26,7 @@ set nojoinspaces " не вставлять лишних пробелов при 
 set visualbell
 set history=10000 " Number of things to remember in history
 set number " Включает отображение номеров строк
-set relativenumber " номера относительно текущей строки
+" set relativenumber " номера относительно текущей строки
 set hidden
 set linebreak
 set list
@@ -56,27 +56,21 @@ set cursorline
 set cursorcolumn
 set previewheight=7
 
-" plugin:seoul256 {{{
-" https://vi.stackexchange.com/questions/2938/can-the-split-separator-in-vim-be-less-than-a-full-column-wide
-set fillchars+=vert:\ 
-autocmd ColorScheme * highlight VertSplit ctermbg=NONE guibg=NONE
-let g:seoul256_background = 236
-colorscheme seoul256
-set background=light
-" }}}
-
 " https://robots.thoughtbot.com/vim-splits-move-faster-and-more-naturally
 set splitbelow splitright
 
 set sessionoptions-=help
 set wildignore=Session.vim
 
-set shell=/bin/bash
+set shell=/bin/zsh
 
 " https://github.com/onivim/oni/issues/962
 augroup TerminalStuff
   au!
   autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
+  autocmd TermOpen * startinsert
+  autocmd BufEnter term://* startinsert
+  autocmd BufLeave term://* stopinsert
 augroup END
 
 " https://www.reddit.com/r/vim/comments/3ae4qf/psa_set_clipboardunnamed/
@@ -97,12 +91,19 @@ endif
 let g:myPackConfOpt = 1
 
 if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
-  " ~/.config/nvim/plugin/my-pack-conf/tmux.vim {{{
+  " plugin:seoul256 {{{
+  " https://vi.stackexchange.com/questions/2938/can-the-split-separator-in-vim-be-less-than-a-full-column-wide
+  set fillchars+=vert:\ 
+  autocmd ColorScheme * highlight VertSplit ctermbg=NONE guibg=NONE
+  let g:seoul256_background = 236
+  colorscheme seoul256
+  set background=light
+  " }}}
+
   packadd! tmux-focus-events
   packadd! tmux-clipboard
-  packadd! tmux-navigator
+  " packadd! tmux-navigator
   packadd! tmux
-  " }}}
 
   " ~/.config/nvim/plugin/my-pack-conf/enhancement.vim {{{
   packadd! undotree
@@ -122,9 +123,9 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
 
   " ~/.config/nvim/plugin/my-pack-conf/filetype.vim {{{
   packadd! json
-  packadd! typescript
   packadd! javascript
-  packadd! jsx
+  packadd! yats
+  packadd! jsx-pretty
   packadd! syntax-vim-ex
   packadd! mustache-handlebars
   packadd! redis

@@ -51,7 +51,16 @@ let g:vim_json_syntax_conceal = 0
 " plugin:javascript {{{
 " }}}
 
-" plugin:jsx {{{
+" plugin:jsx-pretty {{{
+let g:vim_jsx_pretty_enable_jsx_highlight = 0
+highlight def link jsxTag Function
+highlight def link jsxTagName Function
+highlight def link jsxString String
+highlight def link jsxNameSpace Function
+highlight def link jsxComment Error
+highlight def link jsxAttrib Type
+highlight def link jsxCloseTag Identifier
+highlight def link jsxCloseString Identifier
 " }}}
 
 " plugin:nginx {{{

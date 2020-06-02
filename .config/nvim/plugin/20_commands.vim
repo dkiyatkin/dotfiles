@@ -9,6 +9,8 @@ command CDC cd %:p:h
 
 " https://vi.stackexchange.com/questions/8378/dump-the-output-of-internal-vim-command-into-buffer
 command -nargs=+ -complete=command Redir let s:reg = @@ | redir @"> | silent execute <q-args> | redir END | new | pu | 1,2d_ | let @@ = s:reg
+" system, messages | системные сообщения
+" :Redir messages
 
 " :W sudo saves the file (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
@@ -73,3 +75,7 @@ command Z call fzf#run(fzf#wrap('Z', {
 " обновить wildignore
 command WildignoreReset set wildignore=Session.vim | WildignoreFromGitignore .
 " }}}
+
+" https://marketplace.visualstudio.com/items?itemName=jonsmithers.open-in-vim
+command OpenCwdInVSCode exe "silent !vscodium '" . getcwd() . "' --goto '" . expand("%") . ":" . line(".") . ":" . col(".") . "'" | redraw!
+

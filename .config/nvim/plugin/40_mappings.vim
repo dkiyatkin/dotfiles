@@ -4,7 +4,6 @@ endif
 let g:loaded_myMappings = 1
 
 " plugin:sensible {{{
-nnoremap <silent> <A-8> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 " }}}
 
 " http://vim.wikia.com/wiki/Make_search_results_appear_in_the_middle_of_the_screen
@@ -24,8 +23,9 @@ noremap ' `
 noremap ` '
 
 " нажатие : без шифта
-noremap ; :
-noremap ;; <Plug>Sneak_;
+noremap <unique> ; :
+noremap <unique> ;; ;
+noremap <unique> ,, ,
 
 " http://vim.wikia.com/wiki/Short_mappings_for_common_tasks
 nnoremap Y y$
@@ -33,14 +33,7 @@ nnoremap Y y$
 " открывать новый буфер, даже если файл не существует
 nnoremap <Leader>gf :e <cfile><CR>
 
-" скролл стрелками для нормального режима
-nnoremap <Left> z<Left>
-nnoremap <Right> z<Right>
-nnoremap <Up> <C-y>
-nnoremap <Down> <C-e>
-
-nnoremap <LocalLeader>ev :vsplit $MYVIMRC<CR>
-nnoremap <LocalLeader>sv :source $MYVIMRC<CR>
+nnoremap <unique> <LocalLeader>T :edit TODO.md<CR>
 
 " заменить везде кавычки двойные на одинарные и наоборот
 nnoremap <Leader>r"' :%s/\"/\'/g<CR>
@@ -65,9 +58,6 @@ nmap cp <Plug>TransposeCharacters
 " TODO folding
 " " show only this fold section
 " nnoremap <Leader>z zMzv
-
-" system, messages | системные сообщения
-nnoremap <unique> <Leader>sm :<C-u>Redir messages<CR>
 
 " common-hotkeys {{{
 
@@ -118,6 +108,8 @@ inoremap <C-S-Insert> <MiddleMouse>
 cnoremap <C-S-Insert> <C-r>*
 " }}}
 
+nnoremap <expr><unique> <C-\> empty(bufname("term://*//*:ranger")) ? ":terminal ranger<CR>" : ":buffer ranger<CR>"
+
 " copy-filename {{{
 " copy current file name (relative/absolute) to system clipboard
 
@@ -125,10 +117,7 @@ cnoremap <C-S-Insert> <C-r>*
 " nnoremap <unique> <Leader>fcr :<C-u>let @+=expand("%")<CR>
 
 " filename, copy, absolute | скопировать абсолютный путь файла (/something/src/foo.txt)
-nnoremap <unique> yp :<C-u>let @+=expand("%:p") \| call system("tmux loadb -",expand("%:p"))<CR>
-" plugin:tmux {{{
-nnoremap <unique> <A-\> :<C-u>let @+=expand("%:p") \| call system("tmux loadb -",expand("%:p")) \| call system("tmux select-pane -t 1")<CR>
-" }}}
+nnoremap <unique> yp :<C-u>let @+=expand("%:p") \| call system("tmux loadb -",expand("%:p")) \| echo "clipboard:" expand("%:p")<CR>
 
 " " filename, copy, basename | скопировать базовое имя файла (foo.txt)
 " nnoremap <unique> <Leader>fcb :<C-u>let @+=expand("%:t")<CR>
@@ -147,31 +136,36 @@ inoremap <C-a> <Home>
 cnoremap <C-a> <Home>
 inoremap <C-e> <C-R>=pumvisible() ? "\<lt>C-e>" : "\<lt>End>"<CR>
 
-" select all
-nnoremap <A-a> ggVG
-inoremap <A-a> <C-c>ggVG
-onoremap <A-a> <C-c>ggVG
-snoremap <A-a> <C-c>gggH<C-o>G
-xnoremap <A-a> <C-c>ggVG
-" }}}
-
 " jump-buf-win-tab {{{
 " Управление буфферами, окнами, вкладками
+tnoremap <unique> <C-PageUp>   <C-\><C-n>:tabprev<CR>
+tnoremap <unique> <C-PageDown> <C-\><C-n>:tabnext<CR>
+tnoremap <unique> <C-S-PageUp>   <C-\><C-n>:tabmove -1<CR>
+tnoremap <unique> <C-S-PageDown> <C-\><C-n>:tabmove +1<CR>
 
-" digraph remap, free <C-k>
-inoremap <unique> <A-d> <C-k>
-cnoremap <unique> <A-d> <C-k>
+inoremap <unique> <C-PageUp>   <C-\><C-n>:tabprev<CR>
+inoremap <unique> <C-PageDown> <C-\><C-n>:tabnext<CR>
+inoremap <unique> <C-S-PageUp>   <C-\><C-n>:tabmove -1<CR>
+inoremap <unique> <C-S-PageDown> <C-\><C-n>:tabmove +1<CR>
+
+nnoremap <unique> <C-PageUp>   :tabprev<CR>
+nnoremap <unique> <C-PageDown> :tabnext<CR>
+nnoremap <unique> <C-S-PageUp>   :tabmove -1<CR>
+nnoremap <unique> <C-S-PageDown> :tabmove +1<CR>
 
 " :h terminal-input
 tnoremap <Esc> <C-\><C-n>
+
 tnoremap <A-h> <C-\><C-n><C-w>h
 tnoremap <A-j> <C-\><C-n><C-w>j
 tnoremap <A-k> <C-\><C-n><C-w>k
 tnoremap <A-l> <C-\><C-n><C-w>l
+
 inoremap <A-h> <C-\><C-n><C-w>h
 inoremap <A-j> <C-\><C-n><C-w>j
 inoremap <A-k> <C-\><C-n><C-w>k
 inoremap <A-l> <C-\><C-n><C-w>l
+
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
@@ -219,32 +213,18 @@ autocmd CmdwinEnter * nnoremap <silent> <buffer> q :q<CR>
 
 autocmd FileType help nnoremap <silent><buffer> gO :call ShowToc()<CR><C-w>L:vertical resize 29<CR>
 
-" plugin:sneak {{{
-" label-mode
-nmap <unique> <Leader>s <Plug>SneakLabel_s
-nmap <unique> <Leader>S <Plug>SneakLabel_S
-xmap <unique> <Leader>s <Plug>SneakLabel_s
-xmap <unique> <Leader>S <Plug>SneakLabel_S
-omap <unique> <Leader>s <Plug>SneakLabel_s
-omap <unique> <Leader>S <Plug>SneakLabel_S
-" 1-character enhanced 'f'
-nmap <unique> f <Plug>Sneak_f
-nmap <unique> F <Plug>Sneak_F
-" visual-mode
-xmap <unique> f <Plug>Sneak_f
-xmap <unique> F <Plug>Sneak_F
-" operator-pending-mode
-omap <unique> f <Plug>Sneak_f
-omap <unique> F <Plug>Sneak_F
-" 1-character enhanced 't'
-nmap <unique> t <Plug>Sneak_t
-nmap <unique> T <Plug>Sneak_T
-" visual-mode
-xmap <unique> t <Plug>Sneak_t
-xmap <unique> T <Plug>Sneak_T
-" operator-pending-mode
-omap <unique> t <Plug>Sneak_t
-omap <unique> T <Plug>Sneak_T
+" plugin:matchup {{{
+" xmap <unique> <Leader>%            <Plug>(matchup-z%)
+" nmap <unique> <Leader>%            <Plug>(matchup-z%)
+" omap <unique> <Leader>%            <Plug>(matchup-o_)<Plug>(matchup-z%)
+nmap <unique> <F7>                 <plug>(matchup-hi-surround)
+" }}}
+
+" plugin:easymotion {{{
+map <unique> , <Plug>(easymotion-prefix)
+nmap <unique> s <Plug>(easymotion-overwin-f)
+xmap <unique> s <Plug>(easymotion-bd-f)
+omap <unique> s <Plug>(easymotion-bd-f)
 " }}}
 
 " plugin:css-color {{{
@@ -280,14 +260,58 @@ nnoremap <unique> <Leader>ut :UndotreeToggle<CR>
 nnoremap <unique><silent> <Leader>gs :Gstatus<CR>
 " }}}
 
+tnoremap <unique> <C-^> <C-\><C-n><C-^>
+inoremap <unique> <C-^> <C-\><C-n><C-^>
+nnoremap <unique> <C-^> <C-^>
+
+tnoremap <unique> <A-1> <C-\><C-n>1gt
+tnoremap <unique> <A-2> <C-\><C-n>2gt
+tnoremap <unique> <A-3> <C-\><C-n>3gt
+tnoremap <unique> <A-4> <C-\><C-n>4gt
+tnoremap <unique> <A-5> <C-\><C-n>5gt
+tnoremap <unique> <A-6> <C-\><C-n>6gt
+tnoremap <unique> <A-7> <C-\><C-n>7gt
+tnoremap <unique> <A-8> <C-\><C-n>8gt
+tnoremap <unique> <A-9> <C-\><C-n>:tablast<CR>
+
+inoremap <unique> <A-1> <C-\><C-n>1gt
+inoremap <unique> <A-2> <C-\><C-n>2gt
+inoremap <unique> <A-3> <C-\><C-n>3gt
+inoremap <unique> <A-4> <C-\><C-n>4gt
+inoremap <unique> <A-5> <C-\><C-n>5gt
+inoremap <unique> <A-6> <C-\><C-n>6gt
+inoremap <unique> <A-7> <C-\><C-n>7gt
+inoremap <unique> <A-8> <C-\><C-n>8gt
+inoremap <unique> <A-9> <C-\><C-n>:tablast<CR>
+
+nnoremap <unique> <A-1> 1gt
+nnoremap <unique> <A-2> 2gt
+nnoremap <unique> <A-3> 3gt
+nnoremap <unique> <A-4> 4gt
+nnoremap <unique> <A-5> 5gt
+nnoremap <unique> <A-6> 6gt
+nnoremap <unique> <A-7> 7gt
+nnoremap <unique> <A-8> 8gt
+nnoremap <unique> <A-9> :tablast<CR>
+
 " переключиться на предыдущую активную вкладку
-nnoremap <unique> <Leader>tl :exe "tabn ".g:LastTab<CR>
+tnoremap <unique> <A-`> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
+inoremap <unique> <A-`> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
+nnoremap <unique> <A-`> :exe "tabn ".g:LastTab<CR>
+
+nnoremap <unique> <Leader>t :tabnew<CR>
+nnoremap <unique> <Leader>n :enew<CR>
+nnoremap <unique> <Leader>` :terminal /usr/bin/zsh<CR>
+nnoremap <unique> <Leader>c :tabnew \| terminal<CR>
+nnoremap <unique> <Leader>" :split \| terminal<CR>
+nnoremap <unique> <Leader>% :vsplit \| terminal<CR>
 
 " plugin:fzf {{{
 nnoremap <unique> <Leader>bb :Buffers<CR>
 nnoremap <unique> <Leader>ba :AllBuffers<CR>
 nnoremap <unique> <Leader>bt :TabBuffers<CR>
 nnoremap <unique> <Leader>pf :Files<CR>
+nnoremap <unique> <C-p> :Files<CR>
 nnoremap <unique> <Leader>pg :Ag<Space>
 nnoremap <unique> <Leader>/  :BLines<CR>
 nnoremap <unique> <Leader>?  :Lines<CR>
@@ -323,5 +347,7 @@ autocmd FileType javascript
 " }}}
 
 " plugin:ctrlspace {{{
+tnoremap <C-Space> <C-\><C-n>:CtrlSpace<CR>
+inoremap <C-Space> <C-\><C-n>:CtrlSpace<CR>
 let g:CtrlSpaceDefaultMappingKey = "<C-Space> "
 " }}}

@@ -12,8 +12,9 @@ let g:EditorConfig_preserve_formatoptions = 1
 " }}}
 
 " plugin:matchup {{{
-let g:matchup_matchparen_status_offscreen = 0
 let loaded_matchit = 1
+let g:matchup_matchparen_status_offscreen = 0
+" let g:matchup_matchparen_offscreen = {'method': 'popup'}
 " }}}
 
 " умная вставка, i_ctrl-r не применяется
@@ -65,8 +66,8 @@ set viewoptions=cursor,folds,slash,unix
 " plugin:tcomment {{{
 " }}}
 
-" plugin:sneak {{{
-" let g:sneak#label = 1
+" plugin:easymotion {{{
+let g:EasyMotion_startofline = 0
 " }}}
 
 " plugin:tabular {{{
@@ -83,8 +84,10 @@ let g:ack_apply_lmappings = 0
 
 " plugin:scratch {{{
 let g:scratch_insert_autohide = 0
-let g:scratch_autohide = 0
+" let g:scratch_autohide = 0
 let g:scratch_height = 10
+let g:scratch_persistence_file = 'SCRATCH.md'
+let g:scratch_filetype = 'markdown'
 " }}}
 
 " оставлять окончание файла как есть
