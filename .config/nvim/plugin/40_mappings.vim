@@ -111,19 +111,20 @@ cnoremap <C-S-Insert> <C-r>*
 nnoremap <expr><unique> <C-\> empty(bufname("term://*//*:ranger")) ? ":terminal ranger<CR>" : ":buffer ranger<CR>"
 
 " copy-filename {{{
-" copy current file name (relative/absolute) to system clipboard
-
-" " filename, copy, relative | скопировать относительный путь файла (src/foo.txt)
+" filename, copy, relative | скопировать относительный путь файла (src/foo.txt)
 " nnoremap <unique> <Leader>fcr :<C-u>let @+=expand("%")<CR>
+
+" filename, copy, dirname | скопировать полный путь до директории файла (/something/src)
+nnoremap <unique> yd :<C-u>let @+=expand("%:p:h") \| call system("tmux loadb -",expand("%:p:h")) \| echo "clipboard:" expand("%:p:h")<CR>
+
+" filename, copy, basename | скопировать базовое имя файла (foo.txt)
+nnoremap <unique> yn :<C-u>let @+=expand("%:t") \| call system("tmux loadb -",expand("%:t")) \| echo "clipboard:" expand("%:t")<CR>
+
+" filename, copy, basename, extname | скопировать базовое имя файла без расширения (foo)
+nnoremap <unique> y. :<C-u>let @+=expand("%:t:r") \| call system("tmux loadb -",expand("%:t:r")) \| echo "clipboard:" expand("%:t:r")<CR>
 
 " filename, copy, absolute | скопировать абсолютный путь файла (/something/src/foo.txt)
 nnoremap <unique> yp :<C-u>let @+=expand("%:p") \| call system("tmux loadb -",expand("%:p")) \| echo "clipboard:" expand("%:p")<CR>
-
-" " filename, copy, basename | скопировать базовое имя файла (foo.txt)
-" nnoremap <unique> <Leader>fcb :<C-u>let @+=expand("%:t")<CR>
-
-" " filename, copy, dirname | скопировать полный путь до директории файла (/something/src)
-" nnoremap <unique> <Leader>fcd :<C-u>let @+=expand("%:p:h")<CR>
 " }}}
 
 " перемещение в всплывающем меню
