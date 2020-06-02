@@ -73,10 +73,6 @@ let g:EasyMotion_startofline = 0
 " plugin:tabular {{{
 " }}}
 
-" plugin:bufferize {{{
-let g:bufferize_command = 'vnew'
-" }}}
-
 " plugin:ack {{{
 let g:ack_apply_qmappings = 0
 let g:ack_apply_lmappings = 0
