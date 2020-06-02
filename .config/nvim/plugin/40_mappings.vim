@@ -330,6 +330,8 @@ imap <unique> <C-x><C-j> <plug>(fzf-complete-file-ag)
 " plugin:miniyank {{{
 nnoremap <A-p> :YanksAfter<CR>
 nnoremap <A-P> :YanksBefore<CR>
+inoremap <A-p> <Nop>
+inoremap <A-P> <Nop>
 " }}}
 
 " plugin:windowswap {{{
