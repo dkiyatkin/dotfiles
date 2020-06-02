@@ -145,7 +145,6 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   packadd! dracula
   packadd! airline
   packadd! airline-themes
-  packadd! togglecursor
   packadd! goyo
   packadd! limelight
   " }}}

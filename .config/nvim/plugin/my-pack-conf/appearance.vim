@@ -49,10 +49,6 @@ if (exists('g:colors_name'))
 endif
 " }}}
 
-" plugin:togglecursor {{{
-let g:togglecursor_leave='blinking_block'
-" }}}
-
 " plugin:goyo {{{
 " }}}
 
