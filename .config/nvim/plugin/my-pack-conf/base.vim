@@ -119,8 +119,5 @@ let g:windowswap_map_keys = 0
 " plugin:tmux-clipboard {{{
 " }}}
 
-" plugin:tmux-navigator {{{
-" }}}
-
 " plugin:tmux {{{
 " }}}

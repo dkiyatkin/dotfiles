@@ -102,7 +102,6 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
 
   packadd! tmux-focus-events
   packadd! tmux-clipboard
-  " packadd! tmux-navigator
   packadd! tmux
 
   " ~/.config/nvim/plugin/my-pack-conf/enhancement.vim {{{
