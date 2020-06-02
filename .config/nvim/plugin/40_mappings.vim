@@ -313,7 +313,7 @@ nnoremap <unique> <Leader>ba :AllBuffers<CR>
 nnoremap <unique> <Leader>bt :TabBuffers<CR>
 nnoremap <unique> <Leader>pf :Files<CR>
 nnoremap <unique> <C-p> :Files<CR>
-nnoremap <unique> <Leader>pg :Ag<Space>
+nnoremap <unique> <Leader>pg :Rg<Space>
 nnoremap <unique> <Leader>/  :BLines<CR>
 nnoremap <unique> <Leader>?  :Lines<CR>
 nnoremap <unique> <Leader>'r :MRU<CR>
