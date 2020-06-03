@@ -70,28 +70,7 @@ nnoremap [om :set selection=exclusive<CR>
 nnoremap ]om :set selection=inclusive<CR>
 nnoremap yom :call ToggleSelection()<CR>
 
-" ctrl + backspace
-vnoremap <C-BS> d
-inoremap <C-BS> <C-w>
-cnoremap <C-BS> <C-w>
-vnoremap <C-w> d
-
-" ~/.inputrc ctrl + backspace
-inoremap <C-h> <C-w>
-cnoremap <C-h> <C-w>
-
-" alacritty ctrl + backspace
-vnoremap <M-C-H> d
-inoremap <M-C-H> <C-w>
-cnoremap <M-C-H> <C-w>
-
-" alacritty arrows TODO part-word
-cnoremap <M-b> <C-Left>
-cnoremap <M-f> <C-Right>
-inoremap <M-b> <C-Left>
-inoremap <M-f> <C-Right>
-
-" " http://superuser.com/a/402247/377338
+" http://superuser.com/a/402247/377338
 " set <F17>=[9;3~
 " vnoremap <F17> d
 " inoremap <F17> <C-w>
@@ -131,11 +110,14 @@ nnoremap <unique> yp :<C-u>let @+=expand("%:p") \| call system("tmux loadb -",ex
 inoremap <C-f> <C-R>=pumvisible() ? "\<lt>PageDown>" : "\<lt>C-f>"<CR>
 inoremap <C-b> <C-R>=pumvisible() ? "\<lt>PageUp>"   : "\<lt>C-b>"<CR>
 
-" de-emacs-theme {{{
-" emacs theme
+" emacs, bash maps
 inoremap <C-a> <Home>
-cnoremap <C-a> <Home>
 inoremap <C-e> <C-R>=pumvisible() ? "\<lt>C-e>" : "\<lt>End>"<CR>
+
+" plugin:husk {{{
+cnoremap <expr> <C-Left> husk#left()
+cnoremap <expr> <C-Right> husk#right()
+" }}}
 
 " jump-buf-win-tab {{{
 " Управление буфферами, окнами, вкладками
