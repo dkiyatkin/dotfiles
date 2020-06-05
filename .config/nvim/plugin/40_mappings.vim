@@ -87,7 +87,7 @@ inoremap <C-S-Insert> <MiddleMouse>
 cnoremap <C-S-Insert> <C-r>*
 " }}}
 
-nnoremap <expr><unique> <C-\> empty(bufname("term://*//*:ranger")) ? ":terminal ranger<CR>" : ":buffer ranger<CR>"
+" nnoremap <expr><unique> <C-\> empty(bufname("term://*//*:ranger")) ? ":terminal ranger<CR>" : ":buffer ranger<CR>"
 
 " copy-filename {{{
 " filename, copy, relative | скопировать относительный путь файла (src/foo.txt)
@@ -282,12 +282,24 @@ tnoremap <unique> <A-`> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
 inoremap <unique> <A-`> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
 nnoremap <unique> <A-`> :exe "tabn ".g:LastTab<CR>
 
+nnoremap <unique> <Leader>` :terminal<CR>
 nnoremap <unique> <Leader>t :tabnew<CR>
 nnoremap <unique> <Leader>n :enew<CR>
-nnoremap <unique> <Leader>` :terminal /usr/bin/zsh<CR>
-nnoremap <unique> <Leader>c :tabnew \| terminal<CR>
-nnoremap <unique> <Leader>" :split \| terminal<CR>
-nnoremap <unique> <Leader>% :vsplit \| terminal<CR>
+
+nnoremap <unique> <Leader><A-h> :leftabove vnew<CR>
+nnoremap <unique> <Leader><A-j> :rightbelow new<CR>
+nnoremap <unique> <Leader><A-k> :leftabove new<CR>
+nnoremap <unique> <Leader><A-l> :rightbelow vnew<CR>
+
+nnoremap <unique> <Leader><A-H> :topleft vnew<CR>
+nnoremap <unique> <Leader><A-J> :botright new<CR>
+nnoremap <unique> <Leader><A-K> :topleft new<CR>
+nnoremap <unique> <Leader><A-L> :botright vnew<CR>
+
+nnoremap <unique> <Leader>w+ :resize +10<CR>
+nnoremap <unique> <Leader>w- :resize -10<CR>
+nnoremap <unique> <Leader>w< :vertical-resize -40<CR>
+nnoremap <unique> <Leader>w> :vertical-resize +40<CR>
 
 " plugin:fzf {{{
 nnoremap <unique> <Leader>bb :Buffers<CR>
