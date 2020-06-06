@@ -36,8 +36,8 @@ nnoremap <Leader>gf :e <cfile><CR>
 nnoremap <unique> <LocalLeader>T :edit TODO.md<CR>
 
 " заменить везде кавычки двойные на одинарные и наоборот
-nnoremap <Leader>r"' :%s/\"/\'/g<CR>
-nnoremap <Leader>r'" :%s/\'/\"/g<CR>
+" nnoremap <Leader>r"' :%s/\"/\'/g<CR>
+" nnoremap <Leader>r'" :%s/\'/\"/g<CR>
 
 " http://superuser.com/questions/216411/go-to-middle-of-line-in-vim
 nnoremap <Leader>gm :exe 'normal '.(virtcol('$')/2).'\|'<CR>
@@ -302,6 +302,11 @@ nnoremap <unique> <Leader>w< :vertical-resize -40<CR>
 nnoremap <unique> <Leader>w> :vertical-resize +40<CR>
 
 " plugin:fzf {{{
+nnoremap <unique> <Leader>r :PopRegisters<CR>
+nnoremap <unique> <Leader>k :PopKeyMaps<CR>
+nnoremap <unique> <Leader>m :PopMarks<CR>
+
+nnoremap <unique> <F1> :Helptags<CR>
 nnoremap <unique> <Leader>bb :Buffers<CR>
 nnoremap <unique> <Leader>ba :AllBuffers<CR>
 nnoremap <unique> <Leader>bt :TabBuffers<CR>

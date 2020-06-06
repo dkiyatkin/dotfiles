@@ -29,6 +29,27 @@ command RemoveMSMEndOfLine execute "normal! mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm"
 " noremap <Leader>mm mmHmt:%s/<C-V><CR>//ge<CR>'tzt'm
 
 " plugin:fzf {{{
+command PopRegisters call fzf#run(fzf#wrap('PopRegisters', {
+\ 'source':  FZFPopRegistersList(),
+\ 'sink':    function('FZFEmptyHandler'),
+\ 'options': '--no-extended --exact +i --tac --no-sort --prompt="PopRegisters> "',
+\ 'window': { 'width': 0.5, 'height': 0.5, 'xoffset': 1, 'yoffset': 0 },
+\ }))
+
+command PopKeyMaps call fzf#run(fzf#wrap('PopKeyMaps', {
+\ 'source':  FZFPopKeyMapsList(),
+\ 'sink':    function('FZFEmptyHandler'),
+\ 'options': '--no-extended --exact +i --no-sort --prompt="PopKeyMaps> "',
+\ 'window': { 'width': 0.5, 'height': 0.5, 'xoffset': 1, 'yoffset': 0 },
+\ }))
+
+command PopMarks call fzf#run(fzf#wrap('PopMarks', {
+\ 'source':  FZFPopMarksList(),
+\ 'sink':    function('FZFEmptyHandler'),
+\ 'options': '--no-extended --exact +i --tac --no-sort --prompt="PopMarks> "',
+\ 'window': { 'width': 0.5, 'height': 0.5, 'xoffset': 1, 'yoffset': 0 },
+\ }))
+
 command MRU call fzf#run(fzf#wrap('MRU', {
 \ 'source':  reverse(FZFMruFiles()),
 \ 'options': '--multi --no-sort --prompt="MRU> "',
@@ -65,7 +86,7 @@ command FileMarks call fzf#run(fzf#wrap('FileMarks', {
 \ }))
 
 command Z call fzf#run(fzf#wrap('Z', {
-\ 'source':  'fish -c "z -l"',
+\ 'source':  'zsh -c "z -l"',
 \ 'sink*':    function('FZFZHandler'),
 \ 'options': '--no-sort --prompt="Z> "',
 \ }))

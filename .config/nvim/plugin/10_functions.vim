@@ -20,6 +20,21 @@ function PrintBuffers() abort
   return s:buffers
 endfunction
 
+function FZFPopRegistersList(...) abort
+  redir => s:registers | silent registers | redir END
+  return split(s:registers, '\n')[1:]
+endfunction
+
+function FZFPopKeyMapsList(...) abort
+  redir => s:keyMaps | silent map | redir END
+  return split(s:keyMaps, '\n')
+endfunction
+
+function FZFPopMarksList(...) abort
+  redir => s:marks | silent marks | redir END
+  return split(s:marks, '\n')[1:]
+endfunction
+
 function FZFBuffersList(...) abort
   redir => s:buffers | silent ls | redir END
   if (a:0)
@@ -183,6 +198,9 @@ function FZFYankList() abort
     return a:key.' '.line
   endfunction
   return map(miniyank#read(), function('KeyValue'))
+endfunction
+
+function FZFEmptyHandler(line) abort
 endfunction
 
 function FZFYankHandler(opt, line) abort

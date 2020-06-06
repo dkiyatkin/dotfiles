@@ -109,15 +109,6 @@ let g:miniyank_delete_maxlines = 0
 let g:miniyank_filename = $HOME."/.local/share/nvim/.miniyank.mpack"
 " }}}
 
-" plugin:peekaboo {{{
-" when you hit " or @ in normal mode or <CTRL-R> in insert mode
-let g:peekaboo_window = 'leftabove 12new'
-let g:peekaboo_delay = 0
-let g:peekaboo_compact = 1
-let g:peekaboo_prefix = ''
-let g:peekaboo_ins_prefix = ''
-" }}}
-
 " plugin:windowswap {{{
 let g:windowswap_map_keys = 0
 " }}}
