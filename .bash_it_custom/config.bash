@@ -7,7 +7,7 @@ HISTFILESIZE=1000000
 HISTFILE=/home/dkiyatkin/.bash_history_new
 
 HISTTIMEFORMAT='%F %T '
-HISTIGNORE='ls:bg:fg:history'
+HISTIGNORE='ls:bg:fg:history:j:t:e:forget'
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -21,21 +21,10 @@ shopt -s globstar
 # http://stackoverflow.com/a/791800/1054723
 [[ $- == *i* ]] && stty -ixon
 
-prompt_setter() {
-  local exit_status=$?
-  if [[ $exit_status -eq 0 ]]; then PROMPT_END=$PROMPT_END_CLEAN
-    else PROMPT_END=$PROMPT_END_DIRTY
-  fi
-  # Save history
-  history -a
-  # history -c
-  # history -r
-  PS1="($(clock_prompt)${reset_color}) ${PATH_COLOR}\w${reset_color}$(scm_prompt_info) ${reset_color}\n$(prompt_end) "
-  PS2='> '
-  PS4='+ '
+# https://unix.stackexchange.com/a/233625
+function forget() {
+    history -d $(expr $(history | tail -n 1 | grep -oP '^ \d+') - 1);
 }
-
-safe_append_prompt_command prompt_setter
 
 # exports
 
@@ -47,3 +36,19 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 export MANPAGER="nvim -c 'set ft=man' -"
+
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgrep/rc
+
+# TODO https://github.com/ranger/ranger/wiki/Common-Changes
+if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger]$PS1"; fi
+
+# одна копия nvim для каждого окна tmux или вcего терминала
+# ~/bin/e
+# https://www.reddit.com/r/neovim/comments/aex45u/integrating_nvr_and_tmux_to_use_a_single_tmux_per/
+if [[ -v TMUX ]]; then
+  export NVIM_LISTEN_ADDRESS=/tmp/nvim_$USER_$(tmux display -p "#{window_id}")
+fi
+
+# https://superuser.com/questions/212446/binding-backward-kill-word-to-ctrlw
+stty werase undef
+bind '"\C-w": backward-kill-word'
