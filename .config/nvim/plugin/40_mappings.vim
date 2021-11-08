@@ -90,8 +90,8 @@ cnoremap <C-S-Insert> <C-r>*
 " nnoremap <expr><unique> <C-\> empty(bufname("term://*//*:ranger")) ? ":terminal ranger<CR>" : ":buffer ranger<CR>"
 
 " copy-filename {{{
-" filename, copy, relative | скопировать относительный путь файла (src/foo.txt)
-" nnoremap <unique> <Leader>fcr :<C-u>let @+=expand("%")<CR>
+" filename, copy, relative | скопировать относительный путь файла (src/foo.txt) TODO относительный путь файла от рута гита
+nnoremap <unique> yr :<C-u>let @+=expand("%") \| call system("tmux loadb -",expand("%")) \| echo "clipboard:" expand("%")<CR>
 
 " filename, copy, dirname | скопировать полный путь до директории файла (/something/src)
 nnoremap <unique> yd :<C-u>let @+=expand("%:p:h") \| call system("tmux loadb -",expand("%:p:h")) \| echo "clipboard:" expand("%:p:h")<CR>
@@ -139,10 +139,10 @@ nnoremap <unique> <C-S-PageDown> :tabmove +1<CR>
 " :h terminal-input
 tnoremap <Esc> <C-\><C-n>
 
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k
+tnoremap <C-w>l <C-\><C-n><C-w>l
 
 inoremap <A-h> <C-\><C-n><C-w>h
 inoremap <A-j> <C-\><C-n><C-w>j
@@ -313,6 +313,8 @@ nnoremap <unique> <Leader>bt :TabBuffers<CR>
 nnoremap <unique> <Leader>pf :Files<CR>
 nnoremap <unique> <C-p> :Files<CR>
 nnoremap <unique> <Leader>pg :Rg<Space>
+" alacritty ctrl+shift+f
+nnoremap <unique> <F21> :Rg<Space>
 nnoremap <unique> <Leader>/  :BLines<CR>
 nnoremap <unique> <Leader>?  :Lines<CR>
 nnoremap <unique> <Leader>'r :MRU<CR>
