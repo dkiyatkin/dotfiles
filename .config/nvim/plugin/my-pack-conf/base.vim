@@ -82,8 +82,7 @@ let g:ack_apply_lmappings = 0
 let g:scratch_insert_autohide = 0
 " let g:scratch_autohide = 0
 let g:scratch_height = 10
-let g:scratch_persistence_file = 'SCRATCH.md'
-let g:scratch_filetype = 'markdown'
+let g:scratch_persistence_file = $HOME.'/.local/share/nvim/scratch.txt'
 " }}}
 
 " оставлять окончание файла как есть
@@ -106,14 +105,11 @@ let g:highlightedyank_highlight_duration = 250
 
 " plugin:miniyank {{{
 let g:miniyank_delete_maxlines = 0
-let g:miniyank_filename = $HOME."/.local/share/nvim/.miniyank.mpack"
+let g:miniyank_filename = $HOME.'/.local/share/nvim/miniyank.mpack'
 " }}}
 
 " plugin:windowswap {{{
 let g:windowswap_map_keys = 0
-" }}}
-
-" plugin:tmux-focus-events {{{
 " }}}
 
 " plugin:tmux-clipboard {{{

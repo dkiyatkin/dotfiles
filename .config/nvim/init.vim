@@ -21,7 +21,9 @@ let g:maplocalleader = "\\"
 " базовые настройки для редактора {{{
 set synmaxcol=500
 set showcmd " показывать команды справа внизу
-set notimeout " отключим таймаут для leader
+" plugin:which-key {{{
+set timeoutlen=1500
+" }}}
 set nojoinspaces " не вставлять лишних пробелов при объединении строк
 set visualbell
 set history=10000 " Number of things to remember in history
@@ -84,11 +86,13 @@ if exists('g:gui_oni')
   set noshowmode
 endif
 
-" ~/.local/share/nvim/site/pack/git/repos.conf
+" /usr/local/share/nvim/site/pack/git/repos.conf
 
 " ~/.config/nvim/plugin/my-pack-conf/base.vim
 
 let g:myPackConfOpt = 1
+let g:loaded_myPackConfCoc = 1
+let g:loaded_myMappings = 0
 
 if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   " plugin:seoul256 {{{
@@ -100,24 +104,22 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   set background=light
   " }}}
 
-  packadd! tmux-focus-events
   packadd! tmux-clipboard
   packadd! tmux
 
-  " ~/.config/nvim/plugin/my-pack-conf/enhancement.vim {{{
+  " /usr/local/share/nvim/site/plugin/my-pack-conf/enhancement.vim {{{
   packadd! undotree
   packadd! fzf
   packadd! fzf-quickfix
   packadd! ft-gitcommit-plugin
   packadd! fugitive
-  packadd! gv
-  packadd! gitv
   packadd! gitgutter
   packadd! signature
   packadd! vimlparser
   packadd! vimlint
-  packadd! coc
+  " packadd! coc
   packadd! ctrlspace
+  packadd! which-key
   " }}}
 
   " ~/.config/nvim/plugin/my-pack-conf/filetype.vim {{{
@@ -140,8 +142,8 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
 
   " ~/.config/nvim/plugin/my-pack-conf/appearance.vim {{{
   packadd! seoul256
-  packadd! base16
-  packadd! dracula
+  " packadd! base16
+  " packadd! dracula
   packadd! airline
   packadd! airline-themes
   packadd! goyo

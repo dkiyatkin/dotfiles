@@ -43,6 +43,8 @@ let g:vim_json_syntax_conceal = 0
 
 " NOTE раньше в файле `syntax/markdown.vim` была закомментирована строка: `syn match   mkdInlineURL`
 " plugin:markdown {{{
+let g:vim_markdown_strikethrough = 1
+let g:vim_markdown_no_extensions_in_markdown = 1
 " }}}
 
 " plugin:typescript {{{

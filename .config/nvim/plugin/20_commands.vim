@@ -53,7 +53,7 @@ command PopMarks call fzf#run(fzf#wrap('PopMarks', {
 \ }))
 
 command MRU call fzf#run(fzf#wrap('MRU', {
-\ 'source':  reverse(FZFMruFiles()),
+\ 'source':  FZFMruFiles(),
 \ 'options': '--multi --no-sort --prompt="MRU> "',
 \ }))
 
