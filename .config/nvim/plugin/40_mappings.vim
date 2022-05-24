@@ -236,11 +236,11 @@ nnoremap ]h :GitGutterNextHunk<CR>
 " }}}
 
 " plugin:undotree {{{
-nnoremap <unique> <Leader>ut :UndotreeToggle<CR>
+nnoremap <unique> <Leader>u :UndotreeToggle<CR>
 " }}}
 
 " plugin:fugitive {{{
-nnoremap <unique><silent> <Leader>gs :Gstatus<CR>
+nnoremap <unique><silent> <Leader>gs :Git<CR>
 " }}}
 
 tnoremap <unique> <C-^> <C-\><C-n><C-^>
@@ -277,14 +277,16 @@ nnoremap <unique> <A-7> 7gt
 nnoremap <unique> <A-8> 8gt
 nnoremap <unique> <A-9> :tablast<CR>
 
+nnoremap <C-Tab> gt
+nnoremap <C-S-Tab> gT
+
 " переключиться на предыдущую активную вкладку
-tnoremap <unique> <A-`> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
-inoremap <unique> <A-`> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
-nnoremap <unique> <A-`> :exe "tabn ".g:LastTab<CR>
+tnoremap <unique> <A-0> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
+inoremap <unique> <A-0> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
+nnoremap <unique> <A-0> :exe "tabn ".g:LastTab<CR>
 
 nnoremap <unique> <Leader>` :terminal<CR>
-nnoremap <unique> <Leader>t :tabnew<CR>
-nnoremap <unique> <Leader>n :enew<CR>
+nnoremap <unique> <C-t> :tabnew<CR>
 
 nnoremap <unique> <Leader><A-h> :leftabove vnew<CR>
 nnoremap <unique> <Leader><A-j> :rightbelow new<CR>
@@ -304,21 +306,24 @@ nnoremap <unique> <Leader>w> :vertical-resize +40<CR>
 " plugin:fzf {{{
 nnoremap <unique> <Leader>r :PopRegisters<CR>
 nnoremap <unique> <Leader>k :PopKeyMaps<CR>
-nnoremap <unique> <Leader>m :PopMarks<CR>
+" nnoremap <unique> <Leader>m :PopMarks<CR>
 
 nnoremap <unique> <F1> :Helptags<CR>
 nnoremap <unique> <Leader>bb :Buffers<CR>
 nnoremap <unique> <Leader>ba :AllBuffers<CR>
 nnoremap <unique> <Leader>bt :TabBuffers<CR>
+
 nnoremap <unique> <Leader>pf :Files<CR>
 nnoremap <unique> <C-p> :Files<CR>
+
 nnoremap <unique> <Leader>pg :Rg<Space>
 " alacritty ctrl+shift+f
 nnoremap <unique> <F21> :Rg<Space>
+
 nnoremap <unique> <Leader>/  :BLines<CR>
 nnoremap <unique> <Leader>?  :Lines<CR>
-nnoremap <unique> <Leader>'r :MRU<CR>
-nnoremap <unique> <Leader>'m :FileMarks<CR>
+nnoremap <unique> <Leader>m :MRU<CR>
+" nnoremap <unique> <Leader>'m :FileMarks<CR>
 nnoremap <unique> <Leader>'z :Z<CR>
 " Mapping selecting mappings
 nmap <unique> <Leader><Tab> <plug>(fzf-maps-n)

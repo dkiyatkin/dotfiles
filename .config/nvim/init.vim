@@ -43,6 +43,7 @@ set foldmethod=indent
 set mouse=a " enable mouse use in all modes
 set lazyredraw " don't redraw while executing macros (good performance config)
 set showtabline=1
+set title
 
 " служебные файлы рядом с редактируемым файлом, они должны быть в ~/.gitignore_global
 silent !mkdir ~/.local/share/nvim/undo > /dev/null 2>&1

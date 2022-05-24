@@ -21,6 +21,7 @@ autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType qf setlocal nonumber
 autocmd FileType help setlocal conceallevel=0 nolist nonumber
 autocmd FileType man setlocal signcolumn=auto
+autocmd FileType markdown setlocal spell
 autocmd BufNewFile,BufRead .gitignore_global setlocal filetype=conf
 
 " plugin:fish {{{
