@@ -96,10 +96,6 @@ let g:PreserveNoEOL = 1
 " plugin:colors-pencil {{{
 " }}}
 
-" plugin:highlightedyank {{{
-let g:highlightedyank_highlight_duration = 250
-" }}}
-
 " plugin:targets {{{
 " }}}
 
