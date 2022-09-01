@@ -126,7 +126,7 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   packadd! which-key
   " }}}
 
-  " ~/.config/nvim/plugin/my-pack-conf/filetype.vim {{{
+  " /usr/local/share/nvim/site/plugin/my-pack-conf/filetype.vim {{{
   packadd! json
   packadd! javascript
   packadd! yats
@@ -142,6 +142,7 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   packadd! markdown
   packadd! nginx
   packadd! fish
+  packadd! treesitter
   " }}}
 
   " ~/.config/nvim/plugin/my-pack-conf/appearance.vim {{{
