@@ -1,0 +1,116 @@
+# https://wiki.archlinux.org/index.php/Zsh#On-demand_rehash
+# /etc/pacman.d/hooks/zsh.hook
+# mkdir /var/cache/zsh
+
+zshcache_time="$(date +%s%N)"
+
+autoload -Uz add-zsh-hook
+
+rehash_precmd() {
+  if [[ -a /var/cache/zsh/pacman ]]; then
+    local paccache_time="$(date -r /var/cache/zsh/pacman +%s%N)"
+    if (( zshcache_time < paccache_time )); then
+      rehash
+      zshcache_time="$paccache_time"
+    fi
+  fi
+}
+
+add-zsh-hook -Uz precmd rehash_precmd
+
+# echo ; fortune -c -o
+
+# enable Ctrl+s Ctrl+q
+stty -ixon -ixoff
+
+setopt noincappendhistory
+setopt nosharehistory
+setopt no_auto_remove_slash
+setopt histignoredups
+unsetopt correct_all
+unsetopt correct
+
+# up and down search
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+
+# Ctrl+w, Ctrl arrows
+WORDCHARS=${WORDCHARS//[\/\-\.]}
+
+# Ctrl arrows moves the caret to the beginning of the next word
+bindkey "^[[1;5C" emacs-forward-word
+bindkey "^[[1;5D" emacs-backward-word
+
+# enable Ctrl+x+e to edit command line
+autoload -U edit-command line
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
+# rupa z.sh
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
+# pure prompt
+autoload -U promptinit; promptinit
+zstyle :prompt:pure:user color white
+zstyle :prompt:pure:user:root color red
+local container=lxc
+prompt pure
+
+precmd_pipestatus() {
+  RPROMPT="%F{red}${(j.|.)pipestatus} %F{green}%*"
+  if [[ ${(j.|.)pipestatus} = 0 ]]; then
+    RPROMPT='%F{green}%*'
+  fi
+}
+unsetopt TRANSIENT_RPROMPT
+
+add-zsh-hook precmd precmd_pipestatus
+PROMPT='%(1j.[%j] .)%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-$}%f '
+PS2='\`%_> '
+PS3='?# '
+PS4='+%N:%i:%_> '
+
+# nnn, ranger
+if [ -n "$NNNLVL" ]; then export PS1="[nnn$NNNLVL:$nnn]$PS1"; fi
+if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger$RANGER_LEVEL]$PS1"; fi
+
+# https://github.com/ranger/ranger/blob/master/examples/shell_automatic_cd.sh
+,ranger_cd() {
+    temp_file="$(mktemp -t "ranger_cd.XXXXXXXXXX")"
+    /usr/bin/ranger --choosedir="$temp_file" -- "${@:-$PWD}"
+    if chosen_dir="$(cat -- "$temp_file")" && [ -n "$chosen_dir" ] && [ "$chosen_dir" != "$PWD" ]; then
+        cd -- "$chosen_dir"
+    fi
+    rm -f -- "$temp_file"
+}
+
+# https://wiki.archlinux.org/title/Ranger#Preventing_nested_ranger_instances
+,r() {
+    if [ -z "$RANGER_LEVEL" ]; then
+        ,ranger_cd "$@"
+    else
+        exit
+    fi
+}
+
+# https://wikimatze.de/show-the-most-common-used-terminal-commands/
+function ,zsh-stats() {
+  fc -l 1 | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl | head -n25
+}
+
+# https://www.reddit.com/r/neovim/comments/aex45u/integrating_nvr_and_tmux_to_use_a_single_tmux_per/
+if [[ -n $TMUX ]]; then
+  export NVIM_LISTEN_ADDRESS=/tmp/nvim_$USER_$(tmux display -p "#{window_id}")
+fi
+
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
+
+builtin fc -R /etc/important_commands > /dev/null 2>&1
+
+if [ -f /usr/share/nvm/init-nvm.sh ]; then
+  source /usr/share/nvm/init-nvm.sh
+fi

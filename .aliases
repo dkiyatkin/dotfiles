@@ -1,0 +1,54 @@
+# alias sudo='sudo '
+# aur/advcp progress bar for cp and mv https://github.com/jarun/advcpmv
+# alias cp='/usr/bin/advcp -g'
+# alias mv='/usr/bin/advmv -g'
+
+alias vim='/usr/bin/nvim'
+alias ,e="/usr/bin/nvr -s"
+
+alias ,t='task'
+
+alias ,date-utc='date -u +"%Y-%m-%dT%H:%M:%SZ"'
+alias ,touch-utc-md='FILE=$(date -u +"%Y-%m-%dT%H:%M:%SZ").md && touch $FILE && echo $FILE'
+alias ,ls-utc='TZ=utc /usr/bin/ls --time-style="+%Y-%m-%dT%H:%M:%SZ" -l'
+
+alias ,gs='/usr/bin/git status'
+alias ,gst=',gs'
+alias ,ga='/usr/bin/git add'
+
+alias ,fzf-gss="git -c color.ui=always status -s -z | fzf -m --ansi --read0 | cut -c 4-"
+alias ,ga-fzf=',fzf-gss | while read line; do git add "$line" ; done'
+
+alias ,ls-sort='LC_COLLATE=C /usr/bin/ls -a -1 -F -h --group-directories-first'
+alias ,l='exa --all --classify --sort=Name --group-directories-first'
+alias ,ll=',l --all --long --group --links --time-style=long-iso --git'
+
+# find with default ignore-case
+# -s, --case-sensitive
+# -i, --ignore-case
+alias ,f='/usr/bin/fd --hidden --no-ignore-vcs --ignore-case'
+
+# grep with default ignore-case
+# -S, --smart-case
+# -s, --case-sensitive
+# -i, --ignore-case
+alias ,g='/usr/bin/rg --hidden --no-ignore-vcs --ignore-case --line-number --column --max-columns 120 --max-columns-preview'
+alias ,ga='/usr/bin/rga --hidden --no-ignore-vcs --ignore-case --line-number --column --max-columns 120 --max-columns-preview'
+
+# rsync (`--update` means skip destination files that is newer than source files)
+alias                ,rsync-cp='/usr/bin/rsync --verbose --archive --progress --human-readable'
+alias                ,rsync-mv='/usr/bin/rsync --verbose --archive --progress --human-readable --remove-source-files'
+alias                ,rsync-up='/usr/bin/rsync --verbose --archive --progress --human-readable --update'
+alias              ,rsync-sync='/usr/bin/rsync --verbose --archive --progress --human-readable --update --delete'
+alias        ,rsync-force-sync='/usr/bin/rsync --verbose --archive --progress --human-readable --delete'
+alias ,rsync-hlinks-force-sync='/usr/bin/rsync --verbose --archive --progress --human-readable --delete --hard-links'
+
+alias ,mount='mount | column -t'
+
+alias ,cat-nnn-sel="cat ${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}"
+
+# alias nvr-git='nvr -s --servername $(git rev-parse --show-toplevel)/.git/nvimsocket'
+# alias vim-session='nvr -s --servername $(git rev-parse --show-toplevel)/.git/nvimsocket -c "source Session.vim"'
+
+alias ,vim-with-log='savelog -t -n $HOME/log/vim.log ; vim -V0$HOME/log/vim.log'
+alias ,nvim-with-log='savelog -t -n $HOME/log/nvim.log ; nvim -V0$HOME/log/nvim.log'
