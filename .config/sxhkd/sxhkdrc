@@ -1,0 +1,239 @@
+# ~/.xbindkeysrc
+# /etc/scripts/bin/,fzf_sxhkdrc
+# /etc/scripts/bin/,fzf_resize-win
+
+# focus apps, run rofi, menus ()
+# exec cmds, run apps, run commands ()
+# wm cmds (super + key)
+# mixed with wm ()
+# special (super + Return)
+# EXEC WIN CMD
+# mod3 + space
+# mod3 + semicolon
+# mod3 + backslash
+# super + space
+# super + semicolon
+# super + backslash
+
+
+# TERMINAL {{{
+super + Return
+  ,terminal # open terminal
+super + shift + Return
+  ,terminal-tmux # open terminal with tmux
+# }}}
+
+
+# FOCUS {{{
+super + space; g
+  ,focus_any goldendict.GoldenDict goldendict # GoldenDict multiformat dictionary
+super + space; b
+  ,focus_newsboat # RSS/Atom feed reader
+super + space; d
+  ,focus_notes # todo, annotations, diary, journal
+super + space; r
+  ,focus_ranger # ranger file manager
+super + space; s
+  ,focus_any strawberry.strawberry strawberry # Strawberry music player
+super + space; grave
+  ,focus_terminal-tilde # single terminal instance
+super + space; m
+  ,focus_any Mail.Thunderbird thunderbird # Thunderbird mail client
+super + space; v
+  ,focus_any vlc.vlc vlc # VLC media player
+super + space; k
+  ,focus_any keepassxc.KeePassXC keepassxc # KeePassXC password manager
+super + space; q
+  ,focus_any qbittorrent.qBittorrent qbittorrent # qBittorrent bitTorrent client
+super + space; t
+  ,focus_any telegram-desktop.TelegramDesktop telegram-desktop # Telegram messaging app
+super + space; period
+  ibus-ui-emojier-plasma # Emoji selector
+super + space; slash
+  ,focus_any kcharselect.kcharselect kcharselect # Character selector
+super + space; ctrl + slash
+  ,focus_any gucharmap.Gucharmap gucharmap # Character map
+# }}}
+
+
+# ROFI {{{
+super + space; ctrl + period
+  rofimoji --action copy --prompt "😀 Emoji" # Emoji ctrl picker
+super + space; shift + period
+  ,rofi-alt-emoji # Emoji shift picker
+super + space; mod3 + period
+  ,rofi-alt-emoji # Emoji hyper picker (example with mod3)
+
+# rofi -show-icons -modi drun,run -sidebar-mode -show drun # launch app picker
+# alt + F2
+#   ,rofi-start -show drun # launch app picker
+
+# clipboard picker
+# super + c
+#   rofi -modi "clipboard:greenclip print" -show "clipboard"
+
+# { XF86PowerOff , XF86PowerDown , XF86Suspend , XF86Sleep , XF86Hibernate , XF86LogOff , XF86Reload }
+#   /etc/scripts/bin/,rofi-start -show power
+
+# super + shift + period
+#   rofi -modi "kawaii:/etc/scripts/rofi-menu_kawaii-faces.sh" -show "kawaii"
+
+# Print
+#   maim --select --format=png --hidecursor --quality 10 --tolerance=100 --bordersize=3 --color 255,255,0 | xclip -selection clipboard -target image/png
+# super + s; Print
+#   ,rofi-screenshot # screenshot picker
+# }}}
+
+
+# CUSTOM {{{
+# TODO copy/paste from /usr/local/srv/dima-admin/copypaste.txt
+# TODO notify-send and taskbar indicator for any `alt + semicolon`
+{ alt + semicolon; BackSpace , alt + semicolon; alt + BackSpace }
+  ,sxhkd # reload sxhkd
+{ alt + semicolon; w , alt + semicolon; alt + w }
+  ,work-toggle # toggle work mode
+{ alt + semicolon; d , alt + semicolon; alt + d }
+  ,copy-utc-date # copy utc date to clipboard
+{ alt + semicolon; q , alt + semicolon; alt + q }
+  /etc/scripts/feh-qrencode-xclip.sh # show feh QR code from clipboard
+{ alt + semicolon; F1 , alt + semicolon; alt + F1 }
+  ,terminal-tui ,fzf_sxhkdrc # sxhkd keybinds, help
+# TODO --launchonly
+{ alt + semicolon; Print , alt + semicolon; alt + Print }
+  spectacle # Spectacle screenshot capture utility
+
+alt + space; v; v
+  /etc/scripts/dictaphone.sh # start / stop record audio
+alt + space; v; {1,2,3,4,5,6,7,8,9,0}
+  /etc/scripts/dictaphone.sh {1,2,3,4,5,6,7,8,9,10} # play recorded audio number
+
+alt + space; r; r
+  ,terminal-tui ,fzf_resize-win # resize window, ratio, width/height
+# TODO ,resize-win 1 (exit fullscreen/maximize and resize 1024 768, wmctrl -r :ACTIVE: -e 0,-1,-1,1024,768)
+# full width and 1/3 secondary screen height
+# 1/2, 1/3, 1/4 screen width/height (super + 1 switch to screen 1, so super + 1 + somekey (alt + semicolon) will change dimension for that screen)
+# alt + semicolon; r; {1,2,3,4,5,6,7,8,9,0}
+#   ,resize-win {1,2,3,4,5,6,7,8,9,10}
+# alt + semicolon; alt + r; alt + {1,2,3,4,5,6,7,8,9,0}
+#   ,resize-win {1,2,3,4,5,6,7,8,9,10}
+
+# compositing
+# TODO ,picom
+{ alt + semicolon; F12; F12 , alt + semicolon; alt + F12; alt + F12 }
+  killall picom || picom --config /etc/xdg/picom/picom.conf # toggle picom compositor
+{ alt + semicolon; F12; i , alt + semicolon; alt + F12; alt + i }
+  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/color-preserving-invert.glsl)"
+{ alt + semicolon; F12; c , alt + semicolon; alt + F12; alt + c }
+  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/colorscheme-filter.glsl)"
+{ alt + semicolon; F12; r , alt + semicolon; alt + F12; alt + r }
+  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/swizzle-rainbow.glsl)"
+{ alt + semicolon; F12; g , alt + semicolon; alt + F12; alt + g }
+  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/grayscale.glsl)"
+{ alt + semicolon; F12; ctrl + g , alt + semicolon; alt + F12; alt + ctrl + g }
+  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/grayscale-filter.glsl)"
+# }}}
+
+
+# EXTRA WM {{{
+super + backslash
+  /etc/scripts/move-cursor-window-center.sh # mouse to window center
+# loginctl lock-session
+shift + Escape
+  ,lock-screen-off # lockscreen
+
+super + ctrl + equal
+  /etc/scripts/change-window-opacity.sh -i # increase opacity
+super + ctrl + minus
+  /etc/scripts/change-window-opacity.sh -d # decrease opacity
+super + ctrl + 0
+  /etc/scripts/change-window-opacity.sh -r # reset opacity
+
+# move window
+super + ctrl + shift + h
+ xdotool getwindowfocus windowmove --sync --relative -- -1 0 # move window left
+super + ctrl + shift + j
+ xdotool getwindowfocus windowmove --sync --relative -- 0 1 # move window down
+super + ctrl + shift + k
+ xdotool getwindowfocus windowmove --sync --relative -- 0 -1 # move window up
+super + ctrl + shift + l
+  xdotool getwindowfocus windowmove --sync --relative -- 1 0 # move window right
+
+# workspaces
+mod3 + {1,2,3,4,5,6,7,8,9,0}
+  wmctrl -s {0,1,2,3,4,5,6,7,8,9} # switch to workspace
+mod3 + shift + {1,2,3,4,5,6,7,8,9,0}
+  wmctrl -r :ACTIVE: -t {0,1,2,3,4,5,6,7,8,9} # window to workspace
+mod3 + ctrl + {1,2,3,4,5,6,7,8,9,0}
+  wmctrl -n {1,2,3,4,5,6,7,8,9,10} # change the number of desktops
+
+# xdotool getwindowfocus windowkill
+# alt + F4
+#   wmctrl -c :ACTIVE: # close active window
+# ctrl + alt + Escape
+#   xkill # close selected window
+
+# { alt + F11, super + f }
+#   wmctrl -r :ACTIVE: -b toggle,fullscreen # toggle fullscreen
+
+# maximize
+# xdotool getwindowfocus windowsize 100% 100%
+# super + Up
+#   wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz
+# super + Right
+#   wmctrl -r :ACTIVE: -b toggle,maximized_horz
+# super + Left
+#   wmctrl -r :ACTIVE: -b toggle,maximized_vert
+
+# minimize
+# super + Down
+#   xdotool getwindowfocus windowminimize
+# }}}
+
+
+# AUDIO {{{
+# XF86AudioRaiseVolume
+#   pactl set-sink-volume @DEFAULT_SINK@ +10%
+#
+# XF86AudioLowerVolume
+#   pactl set-sink-volume @DEFAULT_SINK@ -10%
+#
+# XF86AudioMute
+#   pactl set-sink-mute @DEFAULT_SINK@ toggle
+#
+# { XF86AudioMicMute , super + XF86AudioMute , ctrl + XF86AudioMute , alt + XF86AudioMute , shift + XF86AudioMute }
+#   pactl set-source-mute @DEFAULT_SOURCE@ toggle
+#
+# { super + XF86AudioRaiseVolume , ctrl + XF86AudioRaiseVolume , alt + XF86AudioRaiseVolume , shift + XF86AudioRaiseVolume }
+#   pactl set-source-volume @DEFAULT_SOURCE@ +10%
+#
+# { super + XF86AudioLowerVolume , ctrl + XF86AudioLowerVolume , alt + XF86AudioLowerVolume , shift + XF86AudioLowerVolume }
+#   pactl set-source-volume @DEFAULT_SOURCE@ -10%
+# }}}
+
+
+# FAST TTY SWITCH {{{
+super + F1
+  sudo chvt 13 && sudo chvt 1
+super + F2
+  sudo chvt 13 && sudo chvt 2
+super + F3
+  sudo chvt 13 && sudo chvt 3
+super + F4
+  sudo chvt 13 && sudo chvt 4
+super + F5
+  sudo chvt 13 && sudo chvt 5
+super + F6
+  sudo chvt 13 && sudo chvt 6
+super + F7
+  sudo chvt 13 && sudo chvt 7
+super + F8
+  sudo chvt 13 && sudo chvt 8
+super + F9
+  sudo chvt 13 && sudo chvt 9
+super + F10
+  sudo chvt 13 && sudo chvt 10
+super + F11
+  sudo chvt 13 && sudo chvt 11
+super + F12
+  sudo chvt 13 && sudo chvt 12
+# }}}

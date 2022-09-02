@@ -1,9 +1,4 @@
-# For the benefit of emacs users: -*- shell-script -*-
-###########################
-# xbindkeys configuration #
-###########################
-#
-# Version: 1.8.6
+# Version: 1.8.7
 #
 # If you edit this file, do not forget to uncomment any lines
 # that you change.
@@ -37,9 +32,6 @@
 #keystate_capslock = enable
 #keystate_scrolllock= enable
 
-# xdotool key --clearmodifiers ctrl+BackSpace
-# "xvkbd -xsendevent -text '\C\b'"
-
 # Examples of commands:
 
 # "xbindkeys_show"
@@ -68,12 +60,58 @@
 #"rxvt"
 #  Control + b:2 + Release
 
-# назначение Hyper_L, он же Mod3, он же CapsLock
-# так как нету левой Win (Super), это правая Win клавиша для неудобных комбинаций (в xfce настроено, везде где Hyper, по идее должен быть Super)
-# нестандартные абривиатуры, вставка различных символов
-# удобная навигация по тексту (emacs/bash style)
+# ~/.config/sxhkd/sxhkdrc
 
-# # Настраиваем CapsLock как дополнительный модификатор(Mod3), который будет везде работать
+# Escape
+"sleep 0.1 && xdotool key Escape"
+Mod5 + bracketleft
+
+# vim-mode
+# "xvkbd -xsendevent -text '\e'"
+# Control + bracketleft
+#
+# # полностью заменить клавишу переключения раскладки на `xkb-switch -n` для vim на сочетание <F2>
+# "vim-key.sh 'xkb-switch -n && xvkbd -xsendevent -text "\[F2]"'"
+# ISO_Next_Group
+#
+# "vim-key.sh 'xvkbd -xsendevent -text "\Cw"' 'xvkbd -xsendevent -text "\C\b"'"
+# Control + BackSpace
+
+# "sleep 0.1 && xdotool key Multi_key"
+# Mod5 + Delete
+
+# "rofi -show window -kb-accept-entry '!Alt-Tab' -kb-row-down Alt-Tab -show-icons"
+# Alt + Tab
+
+# "pactl set-source-volume @DEFAULT_SOURCE@ +10%"
+#   XF86AudioMicRaiseVolume
+#
+# "pactl set-source-volume @DEFAULT_SOURCE@ -10%"
+#   XF86AudioMicLowerVolume
+
+# "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+#   XF86AudioPlay
+# "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+#   XF86AudioStop
+# "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:-10000000"
+#   XF86AudioRewind
+# "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Seek int64:10000000"
+#   XF86AudioForward
+# "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+#   XF86AudioPrev
+# "dbus-send --type=method_call --dest=org.mpris.MediaPlayer2.vlc /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+#   XF86AudioNext
+
+# "xte 'keydown Alt_L' 'keydown Left' 'keyup Left' 'keyup Alt_L'"
+#      b:8
+#
+# "xte 'keydown Alt_L' 'keydown Right' 'keyup Right' 'keyup Alt_L'"
+#      b:9
+
+
+# xdotool key --clearmodifiers ctrl+BackSpace
+# "xvkbd -xsendevent -text '\C\b'"
+
 # "xvkbd -xsendevent -text '\C\b'"
 #   Mod3 + w
 # "xvkbd -xsendevent -text '\b'"
@@ -127,9 +165,9 @@
 # "xdotool key Caps_Lock"
 #   Shift+Mod3 + Shift_L
 #
-# # # esc # Конфликт в баше со знаками препинания
-# # "xvkbd -xsendevent -text '\e'"
-# #   Mod3 + bracketleft
+# # esc # Конфликт в баше со знаками препинания
+# "xvkbd -xsendevent -text '\e'"
+#   Mod3 + bracketleft
 #
 # # удобные знаки препинания для любой расскладки
 # "xvkbd-if-vim.sh '\[F18]' '\[bracketleft]'"
@@ -182,59 +220,55 @@
 #   XF86AudioPlay
 
 # открыть меню
-"sleep 0.1; xvkbd -xsendevent -text '\[Menu]'"
-  Mod4 + space
+# "sleep 0.1; xvkbd -xsendevent -text '\[Menu]'"
+#   Mod4 + space
 
 # переключить режим работы
-"work-toggle.sh"
-  Mod4 + w
+# "work-toggle.sh"
+#   Mod4 + w
 
 # вывести текущую дату
-"current-date.sh"
-  Control+Mod4 + d
+# "current-date.sh"
+#   Control+Mod4 + d
 
 # https://bugs.kde.org/show_bug.cgi?id=183458#c49
 # тайлинг
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom Left'"
-  Alt+Mod4 + KP_1
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom Right'"
-  Alt+Mod4 + KP_3
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top Left'"
-  Alt+Mod4 + KP_7
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top Right'"
-  Alt+Mod4 + KP_9
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Left' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Vertical'"
-  Alt+Mod4 + KP_4
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Right' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Vertical'"
-  Alt+Mod4 + KP_6
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Horizontal'"
-  Alt+Mod4 + KP_2
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Horizontal'"
-  Alt+Mod4 + KP_8
-"qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize'"
-  Alt+Mod4 + KP_5
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom Left'"
+#   Alt+Mod4 + KP_1
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom Right'"
+#   Alt+Mod4 + KP_3
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top Left'"
+#   Alt+Mod4 + KP_7
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top Right'"
+#   Alt+Mod4 + KP_9
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Left' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Vertical'"
+#   Alt+Mod4 + KP_4
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Right' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Vertical'"
+#   Alt+Mod4 + KP_6
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Horizontal'"
+#   Alt+Mod4 + KP_2
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Top' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize Horizontal'"
+#   Alt+Mod4 + KP_8
+# "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Maximize'"
+#   Alt+Mod4 + KP_5
 
 # перемещение окон
 # "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Remove Window From Group' ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'"
-"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'"
-  Shift+Mod4 + KP_4
-"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'"
-  Shift+Mod4 + KP_6
-"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
-  Shift+Mod4 + KP_8
-"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
-  Shift+Mod4 + KP_2
-"window-unset-tile.sh ; window-move-center.sh"
-  Shift+Mod4 + KP_5
-"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
-  Shift+Mod4 + KP_7
-"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
-  Shift+Mod4 + KP_9
-"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
-  Shift+Mod4 + KP_1
-"window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
-  Shift+Mod4 + KP_3
-
-##################################
-# End of xbindkeys configuration #
-##################################
+# "window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'"
+#   Shift+Mod4 + KP_4
+# "window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'"
+#   Shift+Mod4 + KP_6
+# "window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
+#   Shift+Mod4 + KP_8
+# "window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
+#   Shift+Mod4 + KP_2
+# "window-unset-tile.sh ; window-move-center.sh"
+#   Shift+Mod4 + KP_5
+# "window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
+#   Shift+Mod4 + KP_7
+# "window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Up'"
+#   Shift+Mod4 + KP_9
+# "window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Left'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
+#   Shift+Mod4 + KP_1
+# "window-unset-tile.sh ; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Right'; qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Pack Down'"
+#   Shift+Mod4 + KP_3
