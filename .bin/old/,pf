@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+,ff() {
+  local files
+  files="$(
+    fd --type f --hidden --no-ignore-vcs --exclude .git --color=always \
+      | fzf --multi --ansi --bind \
+        'ctrl-t:execute-multi(nvr -s --servername $(git rev-parse --show-toplevel)/.git/nvimsocket --remote-tab {})+abort'
+  )" || return
+  nvr -s --servername $(git rev-parse --show-toplevel)/.git/nvimsocket "$files" || return
+}
+,ff
+tmux select-pane -t 0

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+ssh root@artdeline.com << EOF
+  cd /opt/artdeline.com/artdeline-frontend/
+  git pull
+  chown -R nginx:nginx /opt/artdeline.com/artdeline-frontend/
+  sudo -u nginx yarn install
+  sudo -u nginx yarn build
+EOF

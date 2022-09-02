@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+rsync -ahlv --progress --delete --stats ~/code/artdeline/artdeline-storage-admin/public-data/ /mnt/backup/site-data/artdeline/admin/public-data/
+rsync -ahlv --progress --delete --stats ~/code/artdeline/artdeline-storage-admin/conf/ /mnt/backup/site-data/artdeline/admin/conf/
+
+# ssh app@artdeline.com << EOF
+#   rm -f storage/public/data && ln -s ../admin/public-data storage/public/data
+# EOF

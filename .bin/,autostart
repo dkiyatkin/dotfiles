@@ -1,0 +1,35 @@
+#!/bin/sh
+
+sleep 5
+# notify-send ',autostart'
+
+/etc/scripts/shortcuts.sh &
+
+# qbittorrent &
+
+# xhost +si:localuser:dima-sandbox
+
+# thunderbird &
+# birdtray &
+
+# newsboat --execute=reload &
+# ,newsboat &
+
+# savelog -t -n $HOME/.ccnet/logs/seafile.log && seafile-applet &
+# google-drive-ocamlfuse ~/GoogleDrive/ &
+# redshift-gtk -l 53.5464:49.3607 -t 5700:3600 -g 0.8 &
+# everpad &
+# skype &
+
+# gsettings set org.workrave.general operation-mode 0 && workrave & # run workrave in normal mode
+
+qdbus org.kde.rsibreak /rsibreak org.rsibreak.rsiwidget.suspend && rsibreak &
+
+# prevents the screensaver and display power management (DPMS) to be activated when you are watching Flash or HTML5 Videos
+# lightsOn.sh &
+
+# wait;
+
+# Иначе сразу Hyper не срабатывает
+# xfconf-query -c xfwm4 -p '/general/easy_click' -s "Alt"
+# xfconf-query -c xfwm4 -p '/general/easy_click' -s "Hyper"

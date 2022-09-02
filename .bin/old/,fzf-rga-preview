@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# https://github.com/junegunn/fzf/wiki/Examples#searching-file-contents
+,fzf-rga-preview() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  local file
+  file="$(
+    rga --max-count=1 --ignore-case --files-with-matches --no-messages "$@" \
+      | fzf \
+        --history $HOME/.local/share/fzf-history/RgaPreview \
+        --prompt 'RgaPreview> ' \
+        --preview="rga --ignore-case --pretty --context 10 '"$@"' {}"
+  )"
+  echo "$file"
+}
+,fzf-rga-preview "$@"

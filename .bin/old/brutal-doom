@@ -1,0 +1,2 @@
+#!/bin/sh
+optirun zandronum -iwad DOOM2.WAD -file ExtraTextures.wad hellonearthstarterpack.wad brutalv20b.pk3 DoomMetalVol4.wad

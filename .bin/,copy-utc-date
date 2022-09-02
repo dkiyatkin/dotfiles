@@ -1,0 +1,5 @@
+#!/bin/sh
+
+OUTPUT=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+echo "$OUTPUT" | xclip -selection clipboard
+notify-send "$(basename "$0")" "$OUTPUT"

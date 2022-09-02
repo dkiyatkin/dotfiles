@@ -1,0 +1,50 @@
+#!/bin/bash
+if [ "$#" -eq 2 ]; then
+	if [ "$1" -gt 0 ]; then
+		if [ -d "$2" ] # если параметр задан
+		then
+			listing=$2
+		elif [ "$2" = "" ]; then
+			listing=`pwd`
+		else
+			echo "Нет такого каталога"
+			exit 0;
+		fi
+		time="$1";
+	else
+		echo "Неправильное время"
+		exit 0;
+	fi
+else
+	echo "Нужны два параметра, время в секундах и путь до папки"
+	exit 0;
+fi
+find "$listing" -maxdepth 1 -type f -iname "*.mp3" > /tmp/list
+numstr=`cat /tmp/list | wc -l` # считаем строки в файле
+#randline -n $numstr /tmp/list > /tmp/list2
+cat /tmp/list | awk '{print rand()"\t"$0}'|sort|awk -F'\t' '{print $2}' > /tmp/list2
+# вывести первый файл, узнать его длину
+numnow=1
+duration=0
+if [ -e "`pwd`/newfile" ]; then
+	rm "`pwd`/newfile"
+fi
+while [ "$numnow" -le "$numstr" ]; do
+	if [ "$duration" -gt "$time" ]; then
+		numnow=$(( $numnow + 1 ));
+	else
+		headn=`head -n $numnow /tmp/list2|tail -n 1`
+		duration_now=`mp3info -p "%S" "$headn"`
+		if [ "$(( $duration_now + $duration ))" -gt "$time" ]; then
+			numnow=$(( $numnow + 1 ));
+		else
+			echo "$headn">>"`pwd`/newfile"
+			duration=$(( $duration_now + $duration ))
+			numnow=$(( $numnow + 1 ));
+		fi
+	fi
+done 
+echo ""
+echo "плэйлист \"`pwd`/newfile\" создан и случайно отсортирован"
+echo "общая продолжительнось: $duration"
+echo ""

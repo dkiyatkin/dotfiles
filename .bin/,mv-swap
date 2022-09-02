@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+tmpname=$(basename $(mktemp -u))
+mv $1 $tmpname
+mv $2 $1
+mv $tmpname $2

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+,tmux-select-ranger() {
+  local panes current_pane target_pane
+  panes=$(tmux list-panes -F '#I:#P - #{pane_title}')
+  current_pane=$(tmux display-message -p '#I:#P')
+  target_pane=$(echo "$panes" | grep ranger | grep -v "$current_pane" | awk 'BEGIN{FS=":|-"} {print$2}' | cut -c 1 |  head -n 1)
+  tmux select-pane -t ${target_pane} || true
+}
+,tmux-select-ranger

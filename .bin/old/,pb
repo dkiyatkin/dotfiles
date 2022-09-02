@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+,nvr-git.sh --remote-expr 'PrintBuffers()' | fzf --bind "enter:execute(ls {+})+accept" --multi --no-sort --prompt="AllBuf> "

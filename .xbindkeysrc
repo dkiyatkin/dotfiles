@@ -227,10 +227,6 @@ Mod5 + bracketleft
 # "work-toggle.sh"
 #   Mod4 + w
 
-# вывести текущую дату
-# "current-date.sh"
-#   Control+Mod4 + d
-
 # https://bugs.kde.org/show_bug.cgi?id=183458#c49
 # тайлинг
 # "qdbus org.kde.kglobalaccel /component/kwin org.kde.kglobalaccel.Component.invokeShortcut 'Window Quick Tile Bottom Left'"

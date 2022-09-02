@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# https://github.com/junegunn/fzf/wiki/Examples#opening-files
+# fuzzy grep open via ag with line number
+file=""
+line=""
+
+read -r file line <<<"$(rg --line-number --no-heading --color always $@ | fzf -0 -1 | awk -F: '{print $1, $2}')"
+
+if [[ -n $file ]]
+then
+  # ${EDITOR:-vim} $file +$line
+  ~/bin/e $file +$line
+fi

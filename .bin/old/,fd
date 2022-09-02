@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+dir=$(fd ${1:-.} --hidden --type d 2> /dev/null | fzf +m)
+echo $dir
+cd "$dir"

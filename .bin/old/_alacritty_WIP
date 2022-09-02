@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# XFCE fix, add -x option, as alias for -e
+
+if [[ $1 == -x ]]; then
+  /usr/bin/alacritty -e "${@:2}"
+else
+  /usr/bin/alacritty "$@"
+fi

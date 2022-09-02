@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+rsync -ahlv --progress /mnt/backup/site-data/artdeline/admin/ ~/code/artdeline/artdeline-storage-admin/
+rm -rf ~/code/artdeline/artdeline-frontend/public/data
+rm -rf ~/code/artdeline/artdeline-frontend/build/data
+mkdir ~/code/artdeline/artdeline-frontend/public/data
+mkdir ~/code/artdeline/artdeline-frontend/build/data
+ln -s ~/code/artdeline/artdeline-storage-admin/public-data ~/code/artdeline/artdeline-frontend/public/data/admin
+ln -s ~/code/artdeline/artdeline-storage-admin/public-data ~/code/artdeline/artdeline-frontend/build/data/admin
+ln -s /mnt/backup/site-data/artdeline/users-public-data ~/code/artdeline/artdeline-frontend/public/data/users
+ln -s /mnt/backup/site-data/artdeline/users-public-data ~/code/artdeline/artdeline-frontend/build/data/users

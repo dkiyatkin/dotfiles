@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+kioclient exec ~/.local/opt/firefox-esr/firefox

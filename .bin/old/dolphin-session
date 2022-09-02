@@ -1,0 +1,13 @@
+#!/bin/sh
+# Запуск dolphin с простым автосохранением сессий
+
+# прочитать список сохраненных директорий
+# SELECT * FROM nuao_DesktopEvent WHERE initiatingAgent='dolphin' AND end ISNULL;
+# ~/.local/share/dolphin-last-dirs
+# запустить dolphin с директориями
+/usr/bin/dolphin $@
+
+# sqlite3 ~/.kde/share/apps/activitymanager/resources/database
+# сохранить все записи из nuao_desktopevent по dolphin без end
+
+# NOTE из-за недостаточной поддержки хоткеев в dolphin, перешел на krusader

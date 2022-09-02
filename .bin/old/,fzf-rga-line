@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# https://github.com/junegunn/fzf/wiki/Examples#searching-file-contents
+,fzf-rga-line() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  local file
+  file="$(
+    rga --ignore-case --no-messages "$@" \
+      | fzf \
+        --bind "ctrl-y:execute-silent(echo {+} | awk -F':' '{print \$1}' | xsel --clipboard --input)" \
+        --history $HOME/.local/share/fzf-history/RgaLine \
+        --prompt 'RgaLine> ' \
+      | awk -F':' '{print $1}'
+  )"
+  echo "$file"
+}
+,fzf-rga-line "$@"

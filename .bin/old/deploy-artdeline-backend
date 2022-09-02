@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+ssh root@artdeline.com << EOF
+  systemctl stop artdeline-backend@3000
+
+  ln -f /opt/artdeline.com/artdeline-backend/config/systemd/artdeline-backend@.service /lib/systemd/system/artdeline-backend@.service
+  systemctl daemon-reload
+
+  cd /opt/artdeline.com/artdeline-backend/
+  git pull
+  chown -R nginx:nginx /opt/artdeline.com/artdeline-backend/
+  sudo -u nginx yarn install
+
+  systemctl restart nginx
+
+  systemctl start artdeline-backend@3000
+  systemctl enable artdeline-backend@3000
+EOF

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# https://github.com/junegunn/fzf/wiki/Examples#searching-file-contents
+,fzf-fd-one-dir() {
+  local file
+  file="$(
+    fd --type d --color=always "$@" \
+      | fzf \
+        --history $HOME/.local/share/fzf-history/Dirs \
+        --prompt "Dirs:$@> $PWD/" \
+        --preview ',tree --level=1 {}'
+  )"
+  echo "$file"
+}
+,fzf-fd-one-dir "$@"

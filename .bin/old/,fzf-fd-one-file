@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# https://github.com/junegunn/fzf/wiki/Examples#searching-file-contents
+,fzf-fd-one-file() {
+  local file
+  file="$(
+    fd --type f --color=always "$@" \
+      | fzf \
+        --history $HOME/.local/share/fzf-history/Files \
+        --prompt "Files:$@> $PWD/" \
+        --preview '~/.local/share/nvim/site/pack/git/opt/fzf/bin/preview.sh {}'
+  )"
+  echo "$file"
+}
+,fzf-fd-one-file "$@"
