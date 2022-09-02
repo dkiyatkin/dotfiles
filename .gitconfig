@@ -1,19 +1,71 @@
 [user]
 	name = Dmitriy Kiyatkin
 	email = dkiyatkin@gmail.com
+
 [github]
 	user = dkiyatkin
-[diff]
-	tool = vimdiff
-[difftool]
-	prompt = false
-[alias]
-	d = difftool
-	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
 [core]
+	# pager = less --tabs=4 -FRX
+	# pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): ' -z-3 -M +Gg
 	excludesfile = ~/.gitignore_global
 	quotepath = false
-	editor = nvim
-[instaweb]
-	httpd=webrick
+	# editor = nvim
+
+# [instaweb]
+# 	httpd=webrick
+
+# [diff]
+# 	tool = vimdiff
+
+# [difftool]
+# 	prompt = false
+
+# [merge]
+# 	tool = vimdiff
+# 	# ff = false
+
+# [mergetool]
+# 	prompt = true
+
+# [mergetool "vimdiff"]
+# 	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+# [alias]
+# 	# d = difftool
+# 	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+# 	lg = log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+# 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+# 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+# 	mylog = log --pretty=format:'%h %s [%an]' --graph
+# 	patch = !git --no-pager diff --no-color
+
+# [alias ""]
+# 	s = status
+# 	a = add
+# 	diff-last-commit = diff HEAD~1 HEAD~0
+# 	add-all-commit = !git add --all && git commit
+# 	unstage-all-diff = !git add --all && git diff HEAD && git reset HEAD
+
+# [color]
+# 	ui = true
+
+# [color "diff-highlight"]
+# 	oldNormal = red bold
+# 	oldHighlight = red bold 52
+# 	newNormal = green bold
+# 	newHighlight = green bold 22
+
+# [color "diff"]
+# 	meta = yellow
+# 	frag = magenta bold
+# 	commit = yellow bold
+# 	old = red bold
+# 	new = green bold
+# 	whitespace = red reverse
+
+# [init]
+# 	templatedir = ~/.git-templates
+
+# [status]
+# 	showUntrackedFiles = all
