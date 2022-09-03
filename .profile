@@ -68,4 +68,5 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 
 # https://wiki.archlinux.org/title/SSH_keys#Start_ssh-agent_with_systemd_user
 # ~/.config/systemd/user/ssh-agent.service
+# systemctl --user enable ssh-agent.service
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
