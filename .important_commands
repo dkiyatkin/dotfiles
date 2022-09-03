@@ -3,27 +3,76 @@ python -m py_compile ~/.config/qtile/config.py
 wmctrl -l
 xprop | grep -e WM_CLASS -e _NET_WM_WINDOW_TYPE -e WM_WINDOW_ROLE -e WM_NAME
 
-killall -SIGUSR1 sxhkd ; (killall -HUP xbindkeys && xdotool mousemove_relative --sync 1 0 && xdotool mousemove_relative --sync -- -1 0)
+# press CAPS
+xdotool key Caps_Lock
 
-kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell
+# locksession
+qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock ; sleep 1 ; xset dpms force off
+# shutdown
+qdbus org.kde.ksmserver /KSMServer logout 0 2 0
+# reboot
+qdbus org.kde.ksmserver /KSMServer logout 0 1 0
+# logout
+qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+# - volume
+amixer set 'Master' 10%-
+# + volume
+amixer set 'Master' 10%+
+
+sudo etckeeper vcs status
+sudo etckeeper commit 'update'
+
+sudo rm /var/lib/pacman/db.lck
+
+# remove all cached versions of uninstalled packages
+paccache -ruk0
+
+# unused packages (orphans)
+pacman -Qtdq
+
+paru -Syu --batchinstall
+
+startx /usr/bin/startxfce4
+
+xfce4-panel --quit ; pkill xfconfd ; rm -rf ~/.config/xfce4/panel ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml ; xfce4-panel;
+
+# unlock user
+faillock --reset
+
+pkill -u username
+
+qdbus org.kde.KWin /KWin reconfigure
+(kquitapp5 plasmashell || killall plasmashell) ; kstart5 plasmashell
 
 systemctl --user enable plasma-i3.service ; systemctl --user mask plasma-kwin_x11.service
 systemctl --user disable plasma-i3.service ; systemctl --user unmask plasma-kwin_x11.service
 
-# locksession
-qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock ; sleep 1 ; xset dpms force off
+# battery
+acpi
 
-# shutdown
-qdbus org.kde.ksmserver /KSMServer logout 0 2 0
+# keyboard backlight
+sudo brightnessctl --device='tpacpi::kbd_backlight' set 1
+sudo brightnessctl --device='tpacpi::kbd_backlight' set 0
 
-# reboot
-qdbus org.kde.ksmserver /KSMServer logout 0 1 0
+lsblk -o NAME,UUID
 
-# logout
-qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+mogrify -format png /path/*.jpg
 
-# - volume
-amixer set 'Master' 10%-
+cd "$(pwd -P)"
 
-# + volume
-amixer set 'Master' 10%+
+killall -SIGUSR1 sxhkd ; (killall -HUP xbindkeys && xdotool mousemove_relative --sync 1 0 && xdotool mousemove_relative --sync -- -1 0)
+
+nvim -d ~/.config/alacritty/alacritty.yml /usr/share/doc/alacritty/example/alacritty.yml
+nvim -o ~/.xbindkeysrc ~/.config/sxhkd/sxhkdrc
+
+,g Exec=\/usr /usr/share/applications/
+
+fd --list-details --hidden --no-ignore --change-newer-than 3m | grep -v ".config/BraveSoftware/" | grep -v ".thunderbird/" | grep -v ".local/share/qBittorrent/" | grep -v ".config/chromium/" | grep -v ".cache/plasmashell"
+find /etc/xdg/ \! -user root | grep -v "/etc/xdg/tmux" | grep -v "/etc/xdg/nvim"
+
+(ln -sf /usr/share/sddm/faces/$(whoami).face.icon ~/.face) && (ln -sf ~/.face ~/.face.icon)
+
+sudo chown dima-test:sddm /usr/share/sddm/faces/dima-test.face.icon
+sudo chmod 640 /usr/share/sddm/faces/dima-*.face.icon
+
+sudo cp ~/.config/tig/config /etc/tigrc
