@@ -1,0 +1,29 @@
+python -m py_compile ~/.config/qtile/config.py
+
+wmctrl -l
+xprop | grep -e WM_CLASS -e _NET_WM_WINDOW_TYPE -e WM_WINDOW_ROLE -e WM_NAME
+
+killall -SIGUSR1 sxhkd ; (killall -HUP xbindkeys && xdotool mousemove_relative --sync 1 0 && xdotool mousemove_relative --sync -- -1 0)
+
+kquitapp5 plasmashell || killall plasmashell && kstart5 plasmashell
+
+systemctl --user enable plasma-i3.service ; systemctl --user mask plasma-kwin_x11.service
+systemctl --user disable plasma-i3.service ; systemctl --user unmask plasma-kwin_x11.service
+
+# locksession
+qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock ; sleep 1 ; xset dpms force off
+
+# shutdown
+qdbus org.kde.ksmserver /KSMServer logout 0 2 0
+
+# reboot
+qdbus org.kde.ksmserver /KSMServer logout 0 1 0
+
+# logout
+qdbus org.kde.ksmserver /KSMServer logout 0 0 0
+
+# - volume
+amixer set 'Master' 10%-
+
+# + volume
+amixer set 'Master' 10%+
