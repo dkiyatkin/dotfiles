@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+shopt -s expand_aliases
+alias ,rsync-cp='/usr/bin/rsync --archive --human-readable'
+
+MY_USER=$(id -un)
+MY_GROUP=$(id -gn)
+MY_DIRECTORY=$(eval echo ~$MY_USER)
+
+MY_UID=$(id -u $MY_USER)
+
+if [ ! -d "$MY_DIRECTORY" ]; then
+  echo "Directory $MY_DIRECTORY does not exists."
+  exit 1
+fi
+
+read -p "Are you sure ($MY_DIRECTORY)? " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+fi
+
+# pkill -u $MY_USER &&
+
+# echo "rm -r /var/run/user/$MY_UID/"
+# rm -r /var/run/user/$MY_UID/ &&
+
+# TODO spaces in dirname
+echo "rm -rf $MY_DIRECTORY/.config/gtk-3.0"
+rm -rf $MY_DIRECTORY/.config/gtk-3.0
+echo "rm -rf $MY_DIRECTORY/.config/gtk-4.0"
+rm -rf $MY_DIRECTORY/.config/gtk-4.0
+echo "rm -rf $MY_DIRECTORY/.config/ranger/"
+rm -rf $MY_DIRECTORY/.config/ranger/
+echo "rm -rf $MY_DIRECTORY/.local/share/kscreen/"
+rm -rf $MY_DIRECTORY/.local/share/kscreen/
+
+(cd /etc/xdg/ && find . -not -path "./tmux/*" -not -path "./nvim/*" -not -path "*/.git/*" -exec rm -vf $MY_DIRECTORY/.config/{} 2>/dev/null \;) &&
+
+mkdir -p $MY_DIRECTORY/tmp/
+echo "rsync --archive --human-readable /etc/skel.dima/ $MY_DIRECTORY/"
+,rsync-cp /etc/skel.dima/ $MY_DIRECTORY/ &&
+ln -sfv /usr/share/sddm/faces/$MY_USER.face.icon $MY_DIRECTORY/.face &&
+ln -sfv $MY_DIRECTORY/.face $MY_DIRECTORY/.face.icon &&
+chmod 700 $MY_DIRECTORY/
+# chown -R $MY_USER:$MY_GROUP $MY_DIRECTORY/
+
+# firecfg --fix

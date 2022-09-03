@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# took in ~/** all that match with names in /etc/skel.dima/** and rsync to it
+
+MY_USER='dima-main'
+MY_GROUP='dima-main'
+MY_DIRECTORY=$(eval echo ~$MY_USER)
+
+MY_UID=$(id -u $MY_USER)
+
+SKEL_DIRECTORY=/etc/skel.dima
+
+read -p "Are you sure ($MY_DIRECTORY -> $SKEL_DIRECTORY)? " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+fi
+
+RSYNC_CMD="/usr/bin/rsync --verbose --archive --progress --no-owner --no-group --human-readable"
+
+# https://unix.stackexchange.com/questions/87018/find-and-rsync
+find $SKEL_DIRECTORY/ -printf %P\\0 | $RSYNC_CMD --files-from=- --from0 $MY_DIRECTORY/ $SKEL_DIRECTORY
