@@ -1,0 +1,220 @@
+# i3 config file (v4)
+
+# /etc/i3/config
+
+set $meta_mod Mod4
+set $alt_mod Mod1
+
+font pango:Iosevka Fixed 12
+
+# Use Mouse+$meta_mod to drag floating windows to their wanted position
+floating_modifier $meta_mod
+
+# The middle button over a titlebar kills the window
+bindsym --release button2 kill
+
+# start a terminal
+bindsym $meta_mod+Return exec --no-startup-id i3-sensible-terminal
+# kill focused window
+bindsym $alt_mod+F4 kill
+# start program launcher
+bindsym $alt_mod+F2 exec --no-startup-id "rofi -show-icons -modi drun,run -sidebar-mode -show drun"
+
+# change focus
+bindsym $meta_mod+h fullscreen disable; focus left
+bindsym $meta_mod+j fullscreen disable; focus down
+bindsym $meta_mod+k fullscreen disable; focus up
+bindsym $meta_mod+l fullscreen disable; focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $meta_mod+Left fullscreen disable; focus left
+bindsym $meta_mod+Down fullscreen disable; focus down
+bindsym $meta_mod+Up fullscreen disable; focus up
+bindsym $meta_mod+Right fullscreen disable; focus right
+
+# move focused window
+bindsym $meta_mod+Shift+h move left 1px
+bindsym $meta_mod+Shift+j move down 1px
+bindsym $meta_mod+Shift+k move up 1px
+bindsym $meta_mod+Shift+l move right 1px
+
+# resize focused window
+bindsym $meta_mod+Control+h resize shrink width 1px or 1ppt
+bindsym $meta_mod+Control+j resize grow height 1px or 1ppt
+bindsym $meta_mod+Control+k resize shrink height 1px or 1ppt
+bindsym $meta_mod+Control+l resize grow width 1px or 1ppt
+
+# TODO
+bindsym $alt_mod+Shift+m move position center
+bindsym $meta_mod+Shift+asciitilde move position mouse
+bindsym $meta_mod+Shift+s sticky toggle
+# bindsym $meta_mod+Shift+z exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+
+# alternatively, you can use the cursor keys:
+bindsym $meta_mod+Shift+Left move left
+bindsym $meta_mod+Shift+Down move down
+bindsym $meta_mod+Shift+Up move up
+bindsym $meta_mod+Shift+Right move right
+
+# TODO custom script to stay tabs/stacks inside the container
+# bindsym $meta_mod+Shift+p move left
+# bindsym $meta_mod+Shift+n move right
+# bindsym $meta_mod+Shift+Prior move left
+# bindsym $meta_mod+Shift+Next move right
+
+# split in horizontal orientation
+bindsym $meta_mod+backslash split horizontal
+bindsym $alt_mod+backslash split horizontal
+# split in vertical orientation
+bindsym $meta_mod+minus split vertical
+bindsym $alt_mod+minus split vertical
+
+bindsym $meta_mod+plus split toggle
+bindsym $alt_mod+plus split toggle
+# TODO https://github.com/i3/i3/issues/3808
+bindsym $alt_mod+0 floating toggle, floating toggle
+
+# enter fullscreen mode for the focused container
+bindsym $meta_mod+f fullscreen toggle
+bindsym $alt_mod+F11 fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $alt_mod+space layout toggle splitv stacking splith tabbed
+bindsym $alt_mod+Shift+space layout toggle tabbed splith stacking splitv
+
+bindsym $alt_mod+Control+minus layout splitv
+bindsym $alt_mod+Control+backslash layout splith
+
+# toggle tiling / floating
+bindsym $meta_mod+Shift+f floating toggle
+bindsym $meta_mod+Control+f floating toggle
+
+# change focus between tiling / floating windows
+bindsym $meta_mod+Escape focus mode_toggle
+bindsym $meta_mod+bracketleft focus mode_toggle
+
+# focus the parent container
+bindsym $meta_mod+a focus parent
+bindsym $meta_mod+Home focus parent
+# focus the child container
+bindsym $meta_mod+e focus child
+bindsym $meta_mod+End focus child
+# focus the child container
+bindsym $meta_mod+p focus prev
+bindsym $meta_mod+Prior focus prev
+bindsym $meta_mod+Control+Shift+Tab focus prev
+# focus the child container
+bindsym $meta_mod+n focus next
+bindsym $meta_mod+Next focus next
+bindsym $meta_mod+Control+Tab focus next
+
+# TODO home-pc global variable DisplayPort-1 DisplayPort-2
+
+# TODO relative to current monitor
+bindsym $meta_mod+space workspace back_and_forth
+bindsym $meta_mod+Shift+space move container to workspace back_and_forth
+
+set $ws1 "1:🢄"
+set $ws2 "2:🢆"
+set $ws3 "3:🢆"
+set $ws4 "4:🢄"
+set $ws5 "5:🢄"
+set $ws6 "6:🢄"
+set $ws7 "7:🢄"
+set $ws8 "8:🢆"
+set $ws9 "9:🢆"
+set $ws0 "0:🢄"
+
+workspace $ws1 output DisplayPort-2
+workspace $ws2 output primary
+workspace $ws3 output primary
+workspace $ws4 output DisplayPort-2
+workspace $ws5 output DisplayPort-2
+workspace $ws6 output DisplayPort-2
+workspace $ws7 output DisplayPort-2
+workspace $ws8 output primary
+workspace $ws9 output primary
+workspace $ws0 output DisplayPort-2
+
+# switch to workspace
+bindsym $meta_mod+1 workspace number $ws1
+bindsym $meta_mod+2 workspace number $ws2
+bindsym $meta_mod+3 workspace number $ws3
+bindsym $meta_mod+4 workspace number $ws4
+bindsym $meta_mod+5 workspace number $ws5
+bindsym $meta_mod+6 workspace number $ws6
+bindsym $meta_mod+7 workspace number $ws7
+bindsym $meta_mod+8 workspace number $ws8
+bindsym $meta_mod+9 workspace number $ws9
+bindsym $meta_mod+0 workspace number $ws0
+
+# move focused container to workspace
+bindsym $meta_mod+Shift+1 move container to workspace number $ws1
+bindsym $meta_mod+Shift+2 move container to workspace number $ws2
+bindsym $meta_mod+Shift+3 move container to workspace number $ws3
+bindsym $meta_mod+Shift+4 move container to workspace number $ws4
+bindsym $meta_mod+Shift+5 move container to workspace number $ws5
+bindsym $meta_mod+Shift+6 move container to workspace number $ws6
+bindsym $meta_mod+Shift+7 move container to workspace number $ws7
+bindsym $meta_mod+Shift+8 move container to workspace number $ws8
+bindsym $meta_mod+Shift+9 move container to workspace number $ws9
+bindsym $meta_mod+Shift+0 move container to workspace number $ws0
+
+# bindsym $meta_mod+n workspace next
+# bindsym $meta_mod+p workspace prev
+# bindsym $meta_mod+Next workspace next
+# bindsym $meta_mod+Prior workspace prev
+# workspace next|prev|next_on_output|prev_on_output
+
+# reload the configuration file
+bindsym $meta_mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $meta_mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $meta_mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $meta_mod+m exec i3-input -F 'mark --add --toggle %s' -l 1 -P 'Mark: '
+bindsym $meta_mod+apostrophe exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
+
+floating_minimum_size 24 x 24
+floating_maximum_size -1 x -1
+# default_orientation vertical
+hide_edge_borders both
+focus_wrapping force
+focus_follows_mouse no
+mouse_warping none
+popup_during_fullscreen leave_fullscreen
+# TODO relative to current monitor and moving windows
+# workspace_auto_back_and_forth yes
+force_display_urgency_hint 1500 ms
+focus_on_window_activation urgent
+
+show_marks yes
+# for_window [all] border pixel 2
+
+# https://github.com/i3/i3/issues/3811
+bindsym $meta_mod+BackSpace border toggle
+
+gaps inner 10
+smart_gaps on
+smart_borders on
+bindsym $meta_mod+Shift+g exec --no-startup-id /etc/scripts/i3-toggle-gaps.sh toggle
+
+include colors.conf
+include windows.conf
+
+bar {
+        status_command i3status
+        colors {
+            background #212630
+        }
+}
+
+# exec --no-startup-id /etc/scripts/autostart_i3.sh
+# exec_always --no-startup-id autotiling
+exec_always --no-startup-id picom --config /etc/xdg/picom/picom.conf
+
+# unlock KWallet automatically on login
+# exec --no-startup-id /usr/lib/pam_kwallet_init
+
+# exec --no-startup-id dex --autostart --environment i3
