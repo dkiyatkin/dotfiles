@@ -120,17 +120,17 @@ alt + space; r; r
 # compositing
 # TODO ,picom
 { alt + semicolon; F12; F12 , alt + semicolon; alt + F12; alt + F12 }
-  killall picom || picom --config /etc/xdg/picom/picom.conf # toggle picom compositor
+  killall picom || picom # toggle picom compositor
 { alt + semicolon; F12; i , alt + semicolon; alt + F12; alt + i }
-  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/color-preserving-invert.glsl)"
+  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/color-preserving-invert.glsl)"
 { alt + semicolon; F12; c , alt + semicolon; alt + F12; alt + c }
-  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/colorscheme-filter.glsl)"
+  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/colorscheme-filter.glsl)"
 { alt + semicolon; F12; r , alt + semicolon; alt + F12; alt + r }
-  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/swizzle-rainbow.glsl)"
+  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/swizzle-rainbow.glsl)"
 { alt + semicolon; F12; g , alt + semicolon; alt + F12; alt + g }
-  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/grayscale.glsl)"
+  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/grayscale.glsl)"
 { alt + semicolon; F12; ctrl + g , alt + semicolon; alt + F12; alt + ctrl + g }
-  killall picom; sleep 0.5; picom --config /etc/xdg/picom/picom.conf --backend glx --glx-fshader-win "$(cat /etc/xdg/picom/shaders/grayscale-filter.glsl)"
+  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/grayscale-filter.glsl)"
 # }}}
 
 
