@@ -1,0 +1,12 @@
+# /usr/share/xfce4/helpers/xfce4-terminal.desktop
+
+[Desktop Entry]
+Version=1.0
+Icon=alacritty
+Type=X-XFCE-Helper
+Name=alacritty
+StartupNotify=true
+X-XFCE-Binaries=alacritty;
+X-XFCE-Category=TerminalEmulator
+X-XFCE-Commands=%B;
+X-XFCE-CommandsWithParameter=%B -e %s;
