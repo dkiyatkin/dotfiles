@@ -83,3 +83,4 @@ sudo cp ~/.config/tig/config /etc/tigrc
 ls -al ~/ | grep .dotfiles/
 ls -al ~/.config/ | grep .dotfiles/
 ls -al ~/.local/share/ | grep .dotfiles/
+ls -al ~/.local/share/kxmlgui5/ | grep .dotfiles/
