@@ -1,0 +1,28 @@
+configuration {
+  font: "Iosevka Fixed 18";
+  icon-theme: "Papirus-Dark";
+  monitor: "primary";
+  modi: "";
+  display-clipboard: "📋 Clipboard";
+  display-drun: "🚀 Launch";
+  display-emoji: "🤔 All Emoji";
+  display-window: "🪟 Windows";
+  display-run: "⚡ Run";
+  display-ssh: "🐧 Ssh";
+  display-power: "🔌 Power";
+  display-kawaii: "🐼 Kawaii Faces";
+  display-screenshot: "📸 Screenshot";
+  display-favorites: "⭐ Favorites";
+}
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
+
+element-icon {
+  size: 30;
+  border: 0px;
+}
+
+window {
+  width: 1100px;
+  height: 696px;
+}
