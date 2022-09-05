@@ -1,0 +1,23 @@
+/* https://gist.github.com/ManiaciaChao/ddb14a09a12c95f134003bcd552dced4 */
+
+html {
+  background-color: #fefdeb;
+}
+body {
+  background-color: #fefdeb;
+}
+
+.gdarticle {
+  background-color: #fefdeb;
+}
+
+.grambox .expl,
+.grambox .compareword,
+.collobox .section,
+.thesbox .section {
+  background-color: #fefdeb;
+}
+
+* {
+  /* font-family: "Iosevka Fixed", sans-serif; */
+}

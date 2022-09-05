@@ -1,0 +1,24 @@
+/* https://gist.github.com/ManiaciaChao/ddb14a09a12c95f134003bcd552dced4 */
+
+MainWindow #searchPane #translateLine,
+MainWindow #searchPane #wordList {
+  background: #4b5162;
+  color: white;
+}
+MainWindow #favoritesPane #favoritesTree {
+  background: #4b5162;
+  color: white;
+}
+MainWindow #translateLine,
+ScanPopup #translateLine,
+MainWindow #wordList,
+MainWindow #dictsPane #dictsList,
+MainWindow #historyPane #historyList {
+  background: #4b5162;
+  color: #d4d2cf;
+}
+
+ScanPopup #groupList {
+  background: #404553;
+  color: #d4d2cf;
+}
