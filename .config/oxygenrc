@@ -1,0 +1,7 @@
+[Style]
+AnimationsEnabled=false
+MenuHighlightMode=MM_SUBTLE
+ScrollBarAddLineButtons=1
+ViewDrawFocusIndicator=true
+WindowDragEnabled=false
+WindowDragMode=WD_NONE

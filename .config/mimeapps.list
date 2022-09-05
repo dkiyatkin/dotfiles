@@ -1,0 +1,18 @@
+[Added Associations]
+application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
+audio/mpeg=vlc.desktop;mpv.desktop;org.strawberrymusicplayer.strawberry.desktop;audacity.desktop;
+inode/directory=org.kde.dolphin.desktop;
+video/x-matroska=vlc.desktop;mpv.desktop;org.bunkus.mkvtoolnix-gui.desktop;
+x-scheme-handler/http=chromium.desktop;
+x-scheme-handler/https=chromium.desktop;
+x-scheme-handler/mailto=thunderbird.desktop;
+
+[Default Applications]
+application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
+audio/mpeg=vlc.desktop;
+inode/directory=org.kde.dolphin.desktop;
+text/html=chromium.desktop;
+video/x-matroska=vlc.desktop;
+x-scheme-handler/http=chromium.desktop;
+x-scheme-handler/https=chromium.desktop;
+x-scheme-handler/mailto=thunderbird.desktop;
