@@ -1,0 +1,44 @@
+[$Version]
+update_info=kwinrules.upd:replace-placement-string-to-enum
+
+[1]
+Description=KRunner on first screen only
+screenrule=2
+wmclass=krunner krunner
+wmclasscomplete=true
+wmclassmatch=1
+
+[2]
+Description=DropDown Terminal
+closeablerule=2
+maximizehoriz=true
+maximizehorizrule=3
+maximizevert=true
+maximizevertrule=3
+screenrule=2
+types=1
+wmclass=tdrop alacritty
+wmclasscomplete=true
+wmclassmatch=1
+
+[3]
+Description=Workrave
+noborder=true
+noborderrule=2
+types=1
+wmclass=workrave workrave
+wmclasscomplete=true
+wmclassmatch=1
+
+[General]
+count=3
+rules=1,2,3
+
+[a15284eb-61ba-4476-be65-819cd7484ed1]
+Description=Workrave above others
+above=true
+aboverule=2
+types=1
+wmclass=workrave Workrave
+wmclasscomplete=true
+wmclassmatch=1
