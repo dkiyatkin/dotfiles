@@ -1,0 +1,31 @@
+[Desktop Entry]
+DefaultProfile=
+
+[DetailsMode]
+ExpandableFolders=false
+UseShortRelativeDates=false
+
+[General]
+RenameInline=false
+ShowFullPath=true
+ShowFullPathInTitlebar=true
+ShowSelectionToggle=false
+ShowToolTips=true
+Version=201
+ViewPropsTimestamp=2021,5,13,22,27,43.885
+
+[MainWindow]
+DisplayPort-1 DisplayPort-2 Height 2560x1440=1029
+DisplayPort-1 DisplayPort-2 Width 2560x1440=1196
+DisplayPort-1 DisplayPort-2 XPosition 2560x1440=682
+DisplayPort-1 DisplayPort-2 YPosition 2560x1440=2126
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAwAAAAAAAAC0AAAD3fwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawEAAAAoAAAA1QAAAD4A////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAEEAAADAQAAAD4A////AAAAAQAAALQAAAPd/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAQAAACgAAAPdAAAA4AD///8AAAADAAAErQAAALb8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAAAAAErQAAAAIA////AAADNgAAA90AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
+ToolBarsMovable=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,stage_key_thumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,marble_thumbnail_shp,exrthumbnail,directorythumbnail,fontthumbnail,marble_thumbnail_geojson,pothumbnail,marble_thumbnail_gpx,imagethumbnail,jpegthumbnail,karbon_karbon1x_thumbnail,marble_thumbnail_kmz,marble_thumbnail_kml,stage_kpr_thumbnail,kraorathumbnail,sheets_xlsx_thumbnail,sheets_excel_thumbnail,stage_pptx_thumbnail,stage_powerpoint_thumbnail,flow_vsdx_thumbnail,windowsexethumbnail,windowsimagethumbnail,words_docx_thumbnail,words_msword_thumbnail,words_wps_thumbnail,mltpreview,mobithumbnail,opendocumentthumbnail,calligra_odg_thumbnail,stage_odp_thumbnail,sheets_ods_thumbnail,words_odt_thumbnail,marble_thumbnail_osm,palathumbcreator,gsthumbnail,designerthumbnail,rawthumbnail,words_rtf_thumbnail,svgthumbnail,textthumbnail,ffmpegthumbs,webarchivethumbnail,karbon_wmf_thumbnail,words_wpd_thumbnail,karbon_wpg_thumbnail,flow_wpg_thumbnail,karbon_xfig_thumbnail
+
+[SettingsDialog]
+DisplayPort-1 DisplayPort-2 Height 2560x1440=400
+DisplayPort-1 DisplayPort-2 Width 2560x1440=626
