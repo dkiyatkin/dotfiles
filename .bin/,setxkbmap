@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# ~/.config/plasma-workspace/env/autostart_kde.sh
+# ~/.config/kxkbrc
+
+setxkbmap -layout us,ru -option grp:rctrl_toggle,lv3:ralt_switch,ctrl:swapcaps_hyper,terminate:ctrl_alt_bksp
