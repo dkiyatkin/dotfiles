@@ -1,0 +1,7 @@
+[Common]
+ShadowSize=ShadowMedium
+ShadowStrength=128
+
+[Windeco]
+DrawBackgroundGradient=true
+DrawTitleBarSeparator=true
