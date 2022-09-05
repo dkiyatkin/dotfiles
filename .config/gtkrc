@@ -1,0 +1,4 @@
+include "/usr/share/themes/Arc-Dark/gtk-2.0/gtkrc"
+
+gtk-theme-name="Arc-Dark"
+
