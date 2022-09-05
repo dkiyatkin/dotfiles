@@ -1,0 +1,74 @@
+#
+
+set selection-clipboard         "clipboard"
+
+set font                        "Iosevka Fixed 12"
+
+# set scroll-page-aware           "true"
+
+set guioptions                  ""
+
+set recolor-lightcolor          "#151515" #00
+set recolor-darkcolor           "#E0E0E0" #06
+set recolor-keephue             "true"
+set recolor                     "true" # Ctrl+r
+
+#
+
+map [normal]       <C-0> zoom
+map [fullscreen]   <C-0> zoom
+map [presentation] <C-0> zoom
+map [index]        <C-0> zoom
+
+map [normal]       <C-=> zoom in
+map [fullscreen]   <C-=> zoom in
+map [presentation] <C-=> zoom in
+map [index]        <C-=> zoom in
+
+map [normal]       <C--> zoom out
+map [fullscreen]   <C--> zoom out
+map [presentation] <C--> zoom out
+map [index]        <C--> zoom out
+
+#
+
+map [normal]       ; feedkeys :
+map [fullscreen]   ; feedkeys :
+map [presentation] ; feedkeys :
+map [index]        ; feedkeys :
+
+#
+
+map [normal]       <A-b> feedkeys :blist<Tab>
+map [fullscreen]   <A-b> feedkeys :blist<Tab>
+map [presentation] <A-b> feedkeys :blist<Tab>
+map [index]        <A-b> feedkeys :blist<Tab>
+
+map [normal]       <A-B> feedkeys :bmark\ 
+map [fullscreen]   <A-B> feedkeys :bmark\ 
+map [presentation] <A-B> feedkeys :bmark\ 
+map [index]        <A-B> feedkeys :bmark\ 
+
+# map [normal]       <A-C-b> feedkeys :bdelete<Tab>
+# map [fullscreen]   <A-C-b> feedkeys :bdelete<Tab>
+# map [presentation] <A-C-b> feedkeys :bdelete<Tab>
+# map [index]        <A-C-b> feedkeys :bdelete<Tab>
+
+#
+
+map [normal]       <C-y> scroll up
+map [fullscreen]   <C-y> scroll up
+map [presentation] <C-y> scroll up
+map [index]        <C-y> scroll up
+
+map [normal]       <C-e> scroll down
+map [fullscreen]   <C-e> scroll down
+map [presentation] <C-e> scroll down
+map [index]        <C-e> scroll down
+
+#
+
+map [normal]       <C-g> toggle_statusbar
+map [fullscreen]   <C-g> toggle_statusbar
+map [presentation] <C-g> toggle_statusbar
+map [index]        <C-g> toggle_statusbar
