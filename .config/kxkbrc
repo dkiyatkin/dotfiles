@@ -1,0 +1,17 @@
+[$Version]
+update_info=kxkb_variants.upd:split-variants
+
+[Layout]
+Options=grp:rctrl_toggle,lv3:ralt_switch,ctrl:swapcaps_hyper,terminate:ctrl_alt_bksp
+DisplayNames=EN,RU
+LayoutList=us,ru
+LayoutLoopCount=-1
+Model=pc86
+ResetOldOptions=true
+ShowFlag=true
+ShowLabel=false
+ShowLayoutIndicator=true
+ShowSingle=false
+SwitchMode=Global
+Use=true
+VariantList=,

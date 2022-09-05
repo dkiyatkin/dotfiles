@@ -1,0 +1,5 @@
+[Bell]
+VisibleBell=true
+
+[ScreenReader]
+Enabled=false
