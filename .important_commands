@@ -30,7 +30,9 @@ paccache -ruk0
 # unused packages (orphans)
 pacman -Qtdq
 
+sudo SKIP_AUTOSNAP= pacman -Syu
 paru -Syu --batchinstall
+sudo pacman -D --asexplicit audit
 
 startx /usr/bin/startxfce4
 
@@ -67,6 +69,7 @@ nvim -o ~/.xbindkeysrc ~/.config/sxhkd/sxhkdrc
 
 ,g Exec=\/usr /usr/share/applications/
 
+sudo find -user mysql -not -path "./mnt/*" -not -path "./home/*"
 fd --list-details --hidden --no-ignore --change-newer-than 3m | grep -v ".config/BraveSoftware/" | grep -v ".thunderbird/" | grep -v ".local/share/qBittorrent/" | grep -v ".config/chromium/" | grep -v ".cache/plasmashell"
 find /etc/xdg/ \! -user root | grep -v "/etc/xdg/tmux" | grep -v "/etc/xdg/nvim"
 
@@ -76,3 +79,7 @@ sudo chown dima-test:sddm /usr/share/sddm/faces/dima-test.face.icon
 sudo chmod 640 /usr/share/sddm/faces/dima-*.face.icon
 
 sudo cp ~/.config/tig/config /etc/tigrc
+
+ls -al ~/ | grep .dotfiles/
+ls -al ~/.config/ | grep .dotfiles/
+ls -al ~/.local/share/ | grep .dotfiles/
