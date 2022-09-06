@@ -1,0 +1,8 @@
+#!/bin/sh
+
+wmctrl -xa ranger.Alacritty && true || \
+  (
+  cd ~/tmp
+  # Ctrl-Q working with stty -ixon -ixoff only
+  alacritty --class ranger --command sh -c "stty -ixon -ixoff; ranger"
+  )

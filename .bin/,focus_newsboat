@@ -1,0 +1,7 @@
+#!/bin/sh
+
+wmctrl -xa Newsboat.Alacritty && true || \
+  (
+  # Ctrl-Q working with stty -ixon -ixoff only
+  alacritty --class Newsboat --title "Newsboat" --command sh -c "stty -ixon -ixoff; newsboat"
+  )

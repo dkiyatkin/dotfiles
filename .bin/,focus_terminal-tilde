@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# if tdrop terminate then hook doesn't quit and lists in ps
+# hide on lost focus
+# --post-create-hook 'xdotool behave $(xdotool getactivewindow) blur exec /etc/scripts/unmap_if_not_tdrop.sh $(xdotool getactivewindow)' \
+
+# I can forget about tdrop and it process because it don't exists in alt tab list
+# tdrop \
+#   -A \
+#   --monitor-aware \
+#   --number=1 \
+#   alacritty --working-directory ~/tmp --class tdrop --title tdrop --command tmux new-session -s tdrop
+
+wmctrl -xa TildeKey.Alacritty && true || \
+  (
+  alacritty --class TildeKey
+  )

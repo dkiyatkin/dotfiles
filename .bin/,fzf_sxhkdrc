@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# https://www.reddit.com/r/bspwm/comments/aejyze/tip_show_sxhkd_keybindings_with_fuzzy_search/
+# https://stackoverflow.com/questions/9605232/how-to-merge-every-two-lines-into-one-from-the-command-line
+# https://unix.stackexchange.com/questions/102008/how-do-i-trim-leading-and-trailing-whitespace-from-each-line-of-some-output
+# https://askubuntu.com/questions/216326/can-i-redirect-file-as-input-to-notify-send/299536
+
+# cat ~/.config/sxhkd/sxhkdrc | awk '/^[a-z,{,}]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' | column -t -s $'\t' | fzf
+
+# replace comment symbol in middle line
+# replace space symbols in start line
+# merge two lines
+cat ~/.config/sxhkd/sxhkdrc | \
+  ,grep-nocomm | \
+  sed 's/[ \t]*#[ \t]*/#/' | \
+  sed 's/^[ \t]*//;s/[ \t]*$//' | \
+  paste -d '#' - - | \
+  column --output-separator ' # ' --separator '#' --table --table-order 3,2,1 --output-width 300 | \
+  sed 's/#/ 🚀/' | \
+  sed 's/#/ ⌨  /' | \
+  fzf | \
+  sed 's/.*🚀[ \t]*//' | \
+  sed 's/[ \t]*⌨.*//' | \
+  while read OUTPUT; do notify-send "$(basename "$0")" "$OUTPUT"; echo "$OUTPUT"; done | \
+  (nohup /bin/sh &) >/dev/null 2>&1

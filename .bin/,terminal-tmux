@@ -1,0 +1,6 @@
+#! /bin/sh
+
+# /etc/xprofile
+# ~/.bin/,terminal
+
+/usr/bin/alacritty --class tmux --working-directory ~/tmp --command /usr/bin/tmux

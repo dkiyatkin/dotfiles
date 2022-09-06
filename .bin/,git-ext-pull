@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+#отобразить compare ссылку
+
+echo $(git config --get remote.origin.url | sed 's/\.git//g')/compare/$(git pull --rebase "$@" 2>&1  | grep Updating | cut -f2 -d' ' | sed 's/\.\./\.\.\./g')

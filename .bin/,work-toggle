@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# toggle work mode (redshift, workrave, rsibreak)
+
+# toggle redshift
+# https://bugs.launchpad.net/redshift/+bug/1076314
+# killall -USR1 redshift &
+
+# toggle workrave
+# https://sourceforge.net/p/workrave/mailman/message/30722929/
+# 0 - normal, 1 - suspend, 2 - quiet
+# dbus-send start workrave, but don't change mode at first time
+# OPERATION_MODE=$(gsettings get org.workrave.general operation-mode)
+# if [ $OPERATION_MODE = '1' ]; then
+#   dbus-send --type=method_call --dest=org.workrave.Workrave /org/workrave/Workrave/Core org.workrave.CoreInterface.SetOperationMode string:'normal'
+#   gsettings set org.workrave.general operation-mode 0
+#   notify-send --icon workrave 'workrave' 'mode: normal'
+# else
+#   dbus-send --type=method_call --dest=org.workrave.Workrave /org/workrave/Workrave/Core org.workrave.CoreInterface.SetOperationMode string:'suspended'
+#   gsettings set org.workrave.general operation-mode 1
+#   notify-send --icon workrave 'workrave' 'mode: suspended'
+# fi
+
+# panel indicator
+# gdbus call -e -d org.workrave.Workrave -o /org/workrave/Workrave/Core -m org.workrave.CoreInterface.GetTimerElapsed 'dailylimit'
+# gdbus call -e -d org.workrave.Workrave -o /org/workrave/Workrave/Core -m org.workrave.CoreInterface.GetTimerElapsed 'restbreak'
+# gdbus call -e -d org.workrave.Workrave -o /org/workrave/Workrave/Core -m org.workrave.CoreInterface.GetTimerElapsed 'microbreak'
+# gdbus call -e -d org.workrave.Workrave -o /org/workrave/Workrave/Core -m org.workrave.ConfigInterface.GetInt 'timers/micro_pause/limit'
+# gdbus call -e -d org.workrave.Workrave -o /org/workrave/Workrave/Core -m org.workrave.ConfigInterface.GetInt 'timers/daily_limit/limit'
+# gdbus call -e -d org.workrave.Workrave -o /org/workrave/Workrave/Core -m org.workrave.ConfigInterface.GetInt 'timers/rest_break/limit'
+
+# toggle rsibreak
+RSIBREAK_ICON=$(qdbus org.kde.rsibreak /rsibreak org.rsibreak.rsiwidget.currentIcon)
+if [[ $RSIBREAK_ICON == 'rsibreakx' ]] ; then
+  qdbus org.kde.rsibreak /rsibreak org.rsibreak.rsiwidget.resume
+  notify-send --icon rsibreak 'rsibreak' 'resume'
+else
+  qdbus org.kde.rsibreak /rsibreak org.rsibreak.rsiwidget.suspend
+  notify-send --icon rsibreak 'rsibreak' 'suspend'
+fi
+
+# panel indicator
+# qdbus org.kde.rsibreak /rsibreak org.rsibreak.rsiwidget.bigLeft

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+rofi \
+  -modi "screenshot:/etc/scripts/rofi-menu_screenshot.sh" \
+  -show "screenshot" \
+  -theme-str 'window {width: 473px; height: 189px;}'

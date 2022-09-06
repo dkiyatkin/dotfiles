@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# TODO check links like ![img_alt](file://~/Pictures/image.jpg "img_title")
+rg --line-number --only-matching '<file://[^>\s]{4,}>' ~/notes/ | \
+  while read OUTPUT; do echo "$OUTPUT"; echo "$OUTPUT" | \
+    rg --only-matching '<.*>$' | \
+      sd '<file://' '' | sd '~' "$HOME" | sd '>' '' | \
+        xargs exa -ld 2>&1 ; done | \
+          rg --color=never --before-context 1 error

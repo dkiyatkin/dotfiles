@@ -1,0 +1,5 @@
+#! /bin/sh
+
+# /etc/xprofile
+
+/usr/bin/alacritty --class Enter --working-directory ~/tmp

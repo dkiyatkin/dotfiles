@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# reload or start sxhkd
+
+if pgrep --uid $UID --exact "sxhkd" > /dev/null; then
+  pkill --uid $UID --signal SIGUSR1 --exact sxhkd
+  notify-send --icon preferences-desktop-keyboard-shortcuts "sxhkd" "reload"
+else
+  mkdir -p "$HOME/.local/share/sxhkd/"
+  echo '' > "$HOME/.local/share/sxhkd/sxhkd.log"
+  if [ ! -p "$HOME/.local/share/sxhkd/sxhkd.fifo" ]; then mkfifo "$HOME/.local/share/sxhkd/sxhkd.fifo"; fi
+  sxhkd -t 2 -r "$HOME/.local/share/sxhkd/sxhkd.log" -s "$HOME/.local/share/sxhkd/sxhkd.fifo" &
+  notify-send --icon preferences-desktop-keyboard-shortcuts "sxhkd" "start"
+fi
+
+pkill --uid $UID --exact sxhkd-mode.sh
+/etc/scripts/sxhkd-mode.sh &

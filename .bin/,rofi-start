@@ -1,0 +1,7 @@
+#!/bin/sh
+
+rofi \
+  -show-icons \
+  -modi "favorites:/etc/scripts/rofi-menu_favorites.sh,drun,run,ssh,power:/etc/scripts/rofi-menu_power.sh" \
+  -sidebar-mode \
+  "$@"

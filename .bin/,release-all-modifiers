@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# https://unix.stackexchange.com/questions/60007/how-to-force-release-of-a-keyboard-modifiers
+# https://unix.stackexchange.com/a/538208/87588
+
+for KEYCODE in $(xmodmap -pm | grep -Pio '(?<=\b0x)[0-9a-f]+\b'); do
+
+    echo -e "xdotool keyup $((16#$KEYCODE))\n" >&2
+    xdotool keyup $((16#$KEYCODE))
+
+done

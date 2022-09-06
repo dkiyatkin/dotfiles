@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# ~/.bin/,fzf_sxhkdrc
+
+grep -Ev '''^(#|$)''' "$@"

@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# https://quinoa42.github.io/en/oceanus/replace-dmenu-with-fzf/
+# https://en.wikipedia.org/wiki/Display_resolution#Common_display_resolutions
+
+(
+cat << EOF
+Common display resolutions
+Standard Aspect ratio Width Height Megapixels Comment
+1/4      -            1278  677    -          primary quarter
+1/8      -            637   677    -          primary tall 637=(1278/2)-2
+1/8      -            1278  322    -          primary wide 322=(677/2)-16.5
+1/4      -            598   929    -          secondary quarter
+1/8      -            297   929    -          secondary tall 297=(598/2)-2
+1/8      -            598   448    -          secondary wide 448=(929/2)-16.5
+-        -            1008  720    -          default alacritty
+nHD      16:9         640   360    0.230
+SVGA     4:3          800   600    0.480
+XGA      4:3          1024  768    0.786
+WXGA     16:9         1280  720    0.922
+WXGA     16:10        1280  800    1.024
+SXGA     5:4          1280  1024   1.311
+HD       ≈16:9        1360  768    1.044
+HD       ≈16:9        1366  768    1.049
+WXGA+    16:10        1440  900    1.296
+N/A      16:9         1536  864    1.327
+HD+      16:9         1600  900    1.440
+WSXGA+   16:10        1680  1050   1.764
+FHD      16:9         1920  1080   2.074
+WUXGA    16:10        1920  1200   2.304
+QWXGA    16:9         2048  1152   2.359
+N/A      ≈21:9        2560  1080   2.765
+QHD      16:9         2560  1440   3.686
+N/A      ≈21:9        3440  1440   4.954
+4K/UHD   16:9         3840  2160   8.294
+EOF
+) | fzf --header-lines=2 | \
+  awk -F ' ' '{print $3","$4}' | \
+  while read OUTPUT; do echo "sleep 0.1; wmctrl -r :ACTIVE: -e 0,-1,-1,$OUTPUT"; done | \
+  while read OUTPUT; do notify-send "$(basename "$0")" "$OUTPUT"; echo "$OUTPUT"; done | \
+  (nohup /bin/sh &) >/dev/null 2>&1

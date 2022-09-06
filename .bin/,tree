@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+/usr/bin/exa --color=always --long --tree --level=3 --classify --color-scale --all --git-ignore --group-directories-first -I '.git|node_modules|*.un~' --git "$@"

@@ -1,0 +1,4 @@
+#! /bin/zsh
+
+source /usr/share/nnn/quitcd/quitcd.bash_zsh
+n "$@"

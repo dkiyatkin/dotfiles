@@ -1,0 +1,15 @@
+#!/bin/sh
+
+wmctrl -xa Nvim-notes.Alacritty && true || \
+  (
+  cd ~/notes
+  alacritty --class Nvim-notes --command nvim -c "syntax enable" -O *.md
+  )
+
+# todayfilename=$(date -u +"%Y-%m-%d").md
+#
+# if [ -f "$todayfilename" ]; then
+#   alacritty --command nvim -c "syntax enable" -p *.md
+# else
+#   alacritty --command nvim -c "syntax enable" -p *.md "$todayfilename"
+# fi

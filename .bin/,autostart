@@ -5,7 +5,7 @@
 
 # shortcuts
 # xbindkeys &
-/etc/scripts/bin/,sxhkd &
+,sxhkd &
 
 # qbittorrent &
 

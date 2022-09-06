@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# /etc/xdg/sxhkd/sxhkdrc
+
+# https://unix.stackexchange.com/questions/197792/joining-bash-arguments-into-single-string-with-spaces/197794#197794
+
+/usr/bin/alacritty --class TUI --title "$*" --command "$@"

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wmctrl -xa "$1" && true || \
+  (
+  "$2"
+  )
