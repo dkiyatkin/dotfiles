@@ -1,9 +1,11 @@
 #!/bin/sh
 
-sleep 5
+# sleep 5
 # notify-send ',autostart'
 
-/etc/scripts/shortcuts.sh &
+# shortcuts
+# xbindkeys &
+/etc/scripts/bin/,sxhkd &
 
 # qbittorrent &
 

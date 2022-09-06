@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=,autostart
-TryExec=,autostart
-Exec=,autostart
-NoDisplay=true
