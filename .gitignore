@@ -1,14 +1,10 @@
-.config/autostart/*
+/*
 
-.config/chromium/
-.config/pulse/cookie
-.config/session/
-.config/systemsettingsrc
+!/.bin/
+!/.config/
+!/.goldendict/
+!/.local/
 
-.local/share/RecentDocuments/
-.local/share/TelegramDesktop/
-.local/share/Trash/
-.local/share/kactivitymanagerd/
-.local/share/klipper/
-.local/share/kscreen/
-.local/share/nvim/
+/.local/*
+/.config/*
+/.goldendict/*

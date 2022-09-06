@@ -31,21 +31,19 @@
 # [mergetool "vimdiff"]
 # 	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
-# [alias]
-# 	# d = difftool
-# 	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-# 	lg = log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-# 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-# 	lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
-# 	mylog = log --pretty=format:'%h %s [%an]' --graph
-# 	patch = !git --no-pager diff --no-color
-
-# [alias ""]
-# 	s = status
-# 	a = add
-# 	diff-last-commit = diff HEAD~1 HEAD~0
-# 	add-all-commit = !git add --all && git commit
-# 	unstage-all-diff = !git add --all && git diff HEAD && git reset HEAD
+[alias]
+	# d = difftool
+	# history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	# lg = log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	# hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	# lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	# mylog = log --pretty=format:'%h %s [%an]' --graph
+	# patch = !git --no-pager diff --no-color
+	s = status
+	a = add
+	# diff-last-commit = diff HEAD~1 HEAD~0
+	# add-all-commit = !git add --all && git commit
+	# unstage-all-diff = !git add --all && git diff HEAD && git reset HEAD
 
 # [color]
 # 	ui = true

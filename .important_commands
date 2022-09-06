@@ -80,12 +80,4 @@ sudo chmod 640 /usr/share/sddm/faces/dima-*.face.icon
 
 sudo cp ~/.config/tig/config /etc/tigrc
 
-ls -al ~/ | grep .dotfiles/
-ls -al ~/.config/ | grep .dotfiles/
-ls -al ~/.local/share/ | grep .dotfiles/
-ls -al ~/.local/share/kxmlgui5/ | grep .dotfiles/
-
-# install .dotfiles
-ln -s .dotfiles/.*/ ~/
-ln -s .dotfiles/.* ~/
-rm ~/.git ~/.gitignore
+git clone --bare git@github.com:dkiyatkin/dotfiles.git ~/.dotfiles
