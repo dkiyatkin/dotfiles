@@ -90,7 +90,7 @@ if exists('g:gui_oni')
   set noshowmode
 endif
 
-" /usr/local/share/nvim/site/pack/git/repos.conf
+" ~/.config/nvim/repos.conf
 
 " ~/.config/nvim/plugin/my-pack-conf/base.vim
 
@@ -111,7 +111,7 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   packadd! tmux-clipboard
   packadd! tmux
 
-  " /usr/local/share/nvim/site/plugin/my-pack-conf/enhancement.vim {{{
+  " ~/.config/nvim/plugin/my-pack-conf/enhancement.vim {{{
   packadd! undotree
   packadd! fzf
   packadd! fzf-quickfix
@@ -126,7 +126,7 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   packadd! which-key
   " }}}
 
-  " /usr/local/share/nvim/site/plugin/my-pack-conf/filetype.vim {{{
+  " ~/.config/nvim/plugin/my-pack-conf/filetype.vim {{{
   packadd! json
   packadd! javascript
   packadd! yats
