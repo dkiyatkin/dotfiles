@@ -1,1 +1,10 @@
 .config/autostart/*
+
+.config/session/
+.config/systemsettingsrc
+.config/pulse/cookie
+
+.local/share/kscreen/
+.local/share/kactivitymanagerd/
+.local/share/klipper/
+.local/share/nvim/
