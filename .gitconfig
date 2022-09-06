@@ -39,7 +39,7 @@
 	# lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	# mylog = log --pretty=format:'%h %s [%an]' --graph
 	# patch = !git --no-pager diff --no-color
-	s = status
+	s = --paginate status --verbose
 	a = add
 	# diff-last-commit = diff HEAD~1 HEAD~0
 	# add-all-commit = !git add --all && git commit
