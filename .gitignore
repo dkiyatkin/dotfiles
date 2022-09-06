@@ -3,6 +3,7 @@
 .config/session/
 .config/systemsettingsrc
 .config/pulse/cookie
+.config/chromium/
 
 .local/share/kscreen/
 .local/share/kactivitymanagerd/

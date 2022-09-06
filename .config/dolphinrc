@@ -1,3 +1,6 @@
+[$Version]
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding
+
 [Desktop Entry]
 DefaultProfile=
 
@@ -11,8 +14,12 @@ ShowFullPath=true
 ShowFullPathInTitlebar=true
 ShowSelectionToggle=false
 ShowToolTips=true
-Version=201
+Version=202
 ViewPropsTimestamp=2021,5,13,22,27,43.885
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
 
 [MainWindow]
 DisplayPort-1 DisplayPort-2 Height 2560x1440=1029
@@ -20,7 +27,6 @@ DisplayPort-1 DisplayPort-2 Width 2560x1440=1196
 DisplayPort-1 DisplayPort-2 XPosition 2560x1440=682
 DisplayPort-1 DisplayPort-2 YPosition 2560x1440=2126
 MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAwAAAAAAAAC0AAAD3fwCAAAAAvsAAAAWAGYAbwBsAGQAZQByAHMARABvAGMAawEAAAAoAAAA1QAAAD4A////+wAAABQAcABsAGEAYwBlAHMARABvAGMAawEAAAEEAAADAQAAAD4A////AAAAAQAAALQAAAPd/AIAAAAB+wAAABAAaQBuAGYAbwBEAG8AYwBrAQAAACgAAAPdAAAA4AD///8AAAADAAAErQAAALb8AQAAAAH7AAAAGAB0AGUAcgBtAGkAbgBhAGwARABvAGMAawAAAAAAAAAErQAAAAIA////AAADNgAAA90AAAAEAAAABAAAAAgAAAAI/AAAAAEAAAACAAAAAQAAABYAbQBhAGkAbgBUAG8AbwBsAEIAYQByAQAAAAD/////AAAAAAAAAAA=
 ToolBarsMovable=Disabled
 
 [PreviewSettings]

@@ -88,4 +88,4 @@ ls -al ~/.local/share/kxmlgui5/ | grep .dotfiles/
 # install .dotfiles
 ln -s .dotfiles/.*/ ~/
 ln -s .dotfiles/.* ~/
-rm ~/.git
+rm ~/.git ~/.gitignore

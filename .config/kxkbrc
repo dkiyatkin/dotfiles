@@ -1,12 +1,12 @@
 [$Version]
-update_info=kxkb_variants.upd:split-variants
+update_info=kxkb_variants.upd:split-variants,kxkb.upd:remove-empty-lists,kxkb.upd:add-back-resetoptions
 
 [Layout]
-Options=grp:rctrl_toggle,lv3:ralt_switch,ctrl:swapcaps_hyper,terminate:ctrl_alt_bksp
 DisplayNames=EN,RU
 LayoutList=us,ru
 LayoutLoopCount=-1
 Model=pc86
+Options=grp:rctrl_toggle,lv3:ralt_switch,ctrl:swapcaps_hyper,terminate:ctrl_alt_bksp
 ResetOldOptions=true
 ShowFlag=true
 ShowLabel=false
