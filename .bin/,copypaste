@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ $1 == "write" ]]; then
+  xsel --clipboard > /usr/local/srv/dima-admin/copypaste.txt
+elif [[ $1 == "read" ]]; then
+  xsel --clipboard < /usr/local/srv/dima-admin/copypaste.txt
+fi
+
+COPYPASTE=$(cat /usr/local/srv/dima-admin/copypaste.txt)
+notify-send "$(basename "$0") $1" "$COPYPASTE"

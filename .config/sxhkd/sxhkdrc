@@ -88,9 +88,9 @@ super + space; mod3 + period
 # CUSTOM {{{
 # global copy/paste
 super + ctrl + c
-  xsel --clipboard > /usr/local/srv/dima-admin/copypaste.txt # export to global copy/paste file
+  ,copypaste write # clipboard to global copy/paste file
 super + ctrl + v
-  xsel --clipboard < /usr/local/srv/dima-admin/copypaste.txt # import from global copy/paste file
+  ,copypaste read # clipboard from global copy/paste file
 
 # TODO notify-send and taskbar indicator for any `alt + semicolon`
 { alt + semicolon; BackSpace , alt + semicolon; alt + BackSpace }
