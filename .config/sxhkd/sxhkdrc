@@ -217,28 +217,28 @@ mod3 + ctrl + {1,2,3,4,5,6,7,8,9,0}
 
 
 # FAST TTY SWITCH {{{
-super + F1
+mod3 + F1
   sudo chvt 13 && sudo chvt 1
-super + F2
+mod3 + F2
   sudo chvt 13 && sudo chvt 2
-super + F3
+mod3 + F3
   sudo chvt 13 && sudo chvt 3
-super + F4
+mod3 + F4
   sudo chvt 13 && sudo chvt 4
-super + F5
+mod3 + F5
   sudo chvt 13 && sudo chvt 5
-super + F6
+mod3 + F6
   sudo chvt 13 && sudo chvt 6
-super + F7
+mod3 + F7
   sudo chvt 13 && sudo chvt 7
-super + F8
+mod3 + F8
   sudo chvt 13 && sudo chvt 8
-super + F9
+mod3 + F9
   sudo chvt 13 && sudo chvt 9
-super + F10
+mod3 + F10
   sudo chvt 13 && sudo chvt 10
-super + F11
+mod3 + F11
   sudo chvt 13 && sudo chvt 11
-super + F12
+mod3 + F12
   sudo chvt 13 && sudo chvt 12
 # }}}
