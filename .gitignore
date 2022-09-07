@@ -11,5 +11,11 @@
 
 !/.config/nvim/
 
+# differents
+
 # display configuration
 /.local/share/kscreen/
+
+# applets
+/.config/plasma-org.kde.plasma.desktop-appletsrc
+~/.config/plasmashellrc
