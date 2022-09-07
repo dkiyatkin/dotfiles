@@ -13,9 +13,7 @@
 
 # differents
 
-# display configuration
+# display configuration and applets
 /.local/share/kscreen/
-
-# applets
 /.config/plasma-org.kde.plasma.desktop-appletsrc
-~/.config/plasmashellrc
+/.config/plasmashellrc
