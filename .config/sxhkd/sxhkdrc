@@ -92,6 +92,11 @@ super + ctrl + c
 super + ctrl + v
   ,copypaste read # clipboard from global copy/paste file
 
+alt + space; k
+  killall screenkey || screenkey # toggle keys
+
+# TODO chains only with semicolon hotkeys
+
 # TODO notify-send and taskbar indicator for any `alt + semicolon`
 { alt + semicolon; BackSpace , alt + semicolon; alt + BackSpace }
   ,sxhkd # reload sxhkd
