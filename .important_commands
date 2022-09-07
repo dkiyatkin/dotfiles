@@ -81,3 +81,4 @@ sudo chmod 640 /usr/share/sddm/faces/dima-*.face.icon
 sudo cp ~/.config/tig/config /etc/tigrc
 
 git clone --bare git@github.com:dkiyatkin/dotfiles.git ~/.dotfiles
+tig -C ~/.dotfiles
