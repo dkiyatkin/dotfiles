@@ -114,7 +114,6 @@ if (exists('g:myPackConfOpt') && g:myPackConfOpt && !exists('g:vscode'))
   " ~/.config/nvim/plugin/my-pack-conf/enhancement.vim {{{
   packadd! undotree
   packadd! fzf
-  packadd! fzf-quickfix
   packadd! ft-gitcommit-plugin
   packadd! fugitive
   packadd! gitgutter
