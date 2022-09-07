@@ -5,8 +5,10 @@
 !/.goldendict/
 !/.local/
 
-/.local/*
 /.config/*
 /.goldendict/*
+/.local/*
 
 !/.config/nvim/
+
+/.local/share/kscreen/
