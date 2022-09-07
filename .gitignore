@@ -11,4 +11,5 @@
 
 !/.config/nvim/
 
+# display configuration
 /.local/share/kscreen/
