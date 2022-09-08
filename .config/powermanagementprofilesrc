@@ -1,16 +1,10 @@
 [AC]
 icon=battery-charging
 
-[AC][DPMSControl]
-idleTime=1200
-
-[AC][DimDisplay]
-idleTime=600000
-
 [AC][HandleButtonEvents]
 lidAction=1
 powerButtonAction=16
-triggerLidActionWhenExternalMonitorPresent=false
+triggerLidActionWhenExternalMonitorPresent=true
 
 [Battery]
 icon=battery-060
