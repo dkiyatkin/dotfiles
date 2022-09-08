@@ -10,6 +10,7 @@
 /.local/*
 
 !/.config/nvim/
+!/.config/sxhkd/
 
 # differents
 
