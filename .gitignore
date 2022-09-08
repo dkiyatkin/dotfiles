@@ -17,3 +17,5 @@
 /.local/share/kscreen/
 /.config/plasma-org.kde.plasma.desktop-appletsrc
 /.config/plasmashellrc
+/.config/kscreenlockerrc
+/.config/powermanagementprofilesrc
