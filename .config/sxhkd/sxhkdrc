@@ -1,19 +1,18 @@
 # ~/.xbindkeysrc
-# /etc/scripts/bin/,fzf_sxhkdrc
-# /etc/scripts/bin/,fzf_resize-win
+# ~/.bin/,fzf_sxhkdrc
+# ~/.bin/,fzf_resize-win
 
-# focus apps, run rofi, menus ()
-# exec cmds, run apps, run commands ()
-# wm cmds (super + key)
-# mixed with wm ()
-# special (super + Return)
-# EXEC WIN CMD
 # mod3 + space
 # mod3 + semicolon
 # mod3 + backslash
 # super + space
 # super + semicolon
 # super + backslash
+# alt + space
+# alt + semicolon
+
+# multi chains only with semicolon hotkeys
+# notify-send and taskbar indicator or visual feedback for any `alt + space/semicolon`
 
 
 # TERMINAL {{{
@@ -53,6 +52,8 @@ super + space; slash
   ,focus_any kcharselect.kcharselect kcharselect # Character selector
 super + space; ctrl + slash
   ,focus_any gucharmap.Gucharmap gucharmap # Character map
+super + space; Print
+  ,focus_any spectacle.spectacle spectacle # show a screenshot
 # }}}
 
 
@@ -92,59 +93,54 @@ super + ctrl + c
 super + ctrl + v
   ,copypaste read # clipboard from global copy/paste file
 
-alt + space; k
-  killall screenkey || screenkey # toggle keys
-
-# TODO chains only with semicolon hotkeys
-
-# TODO notify-send and taskbar indicator for any `alt + semicolon`
-{ alt + semicolon; BackSpace , alt + semicolon; alt + BackSpace }
+alt + space; BackSpace
   ,sxhkd # reload sxhkd
-{ alt + semicolon; w , alt + semicolon; alt + w }
+alt + space; w
   ,work-toggle # toggle work mode
-{ alt + semicolon; d , alt + semicolon; alt + d }
+alt + space; k
+  killall screenkey || screenkey # toggle keys screencast
+alt + space; d
   ,copy-utc-date # copy utc date to clipboard
-{ alt + semicolon; q , alt + semicolon; alt + q }
+alt + space; q
   /etc/scripts/feh-qrencode-xclip.sh # show feh QR code from clipboard
-{ alt + semicolon; F1 , alt + semicolon; alt + F1 }
+alt + space; F1
   ,terminal-tui ,fzf_sxhkdrc # sxhkd keybinds, help
-# TODO --launchonly
-{ alt + semicolon; Print , alt + semicolon; alt + Print }
-  spectacle # Spectacle screenshot capture utility
+alt + space; Print
+  spectacle --background # take a screenshot
 
-alt + space; v; v
-  /etc/scripts/dictaphone.sh # start / stop record audio
-alt + space; v; {1,2,3,4,5,6,7,8,9,0}
-  /etc/scripts/dictaphone.sh {1,2,3,4,5,6,7,8,9,10} # play recorded audio number
-
-alt + space; r; r
-  ,terminal-tui ,fzf_resize-win # resize window, ratio, width/height
-# TODO ,resize-win 1 (exit fullscreen/maximize and resize 1024 768, wmctrl -r :ACTIVE: -e 0,-1,-1,1024,768)
-# full width and 1/3 secondary screen height
-# 1/2, 1/3, 1/4 screen width/height (super + 1 switch to screen 1, so super + 1 + somekey (alt + semicolon) will change dimension for that screen)
-# alt + semicolon; r; {1,2,3,4,5,6,7,8,9,0}
-#   ,resize-win {1,2,3,4,5,6,7,8,9,10}
-# alt + semicolon; alt + r; alt + {1,2,3,4,5,6,7,8,9,0}
-#   ,resize-win {1,2,3,4,5,6,7,8,9,10}
-
-# compositing
-# TODO ,picom
-{ alt + semicolon; F12; F12 , alt + semicolon; alt + F12; alt + F12 }
-  killall picom || picom # toggle picom compositor
-{ alt + semicolon; F12; i , alt + semicolon; alt + F12; alt + i }
-  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/color-preserving-invert.glsl)"
-{ alt + semicolon; F12; c , alt + semicolon; alt + F12; alt + c }
-  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/colorscheme-filter.glsl)"
-{ alt + semicolon; F12; r , alt + semicolon; alt + F12; alt + r }
-  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/swizzle-rainbow.glsl)"
-{ alt + semicolon; F12; g , alt + semicolon; alt + F12; alt + g }
-  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/grayscale.glsl)"
-{ alt + semicolon; F12; ctrl + g , alt + semicolon; alt + F12; alt + ctrl + g }
-  killall picom; sleep 0.5; picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/grayscale-filter.glsl)"
+alt + semicolon; v; v
+  ,dictaphone # start / stop record audio
+alt + semicolon; v; {1,2,3,4,5,6,7,8,9,0}
+  ,dictaphone {1,2,3,4,5,6,7,8,9,10} # play recorded audio number
 # }}}
 
 
 # EXTRA WM {{{
+super + semicolon; r; r
+  ,terminal-tui ,fzf_resize-win # resize window, ratio, width/height
+super + semicolon; w; {h,t,q}
+  ,resize-win decorate-width {half,third,quarter} # resize decorate window width
+super + semicolon; h; {h,t,q}
+  ,resize-win decorate-height {half,third,quarter} # resize decorate window height
+super + semicolon; w; alt + {h,t,q}
+  ,resize-win width {half,third,quarter} # resize window width
+super + semicolon; h; alt + {h,t,q}
+  ,resize-win height {half,third,quarter} # resize window height
+
+# compositing
+super + semicolon; F12; F12
+  killall picom || picom # toggle picom compositor
+super + semicolon; F12; i
+  killall picom; sleep 0.5; ,picom-shader color-preserving-invert
+super + semicolon; F12; c
+  killall picom; sleep 0.5; ,picom-shader colorscheme-filter
+super + semicolon; F12; r
+  killall picom; sleep 0.5; ,picom-shader swizzle-rainbow
+super + semicolon; F12; g
+  killall picom; sleep 0.5; ,picom-shader grayscale
+super + semicolon; F12; ctrl + g
+  killall picom; sleep 0.5; ,picom-shader grayscale-filter
+
 super + backslash
   /etc/scripts/move-cursor-window-center.sh # mouse to window center
 # loginctl lock-session

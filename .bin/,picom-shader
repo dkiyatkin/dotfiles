@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+picom --backend glx --glx-fshader-win "$(cat ~/.config/picom/shaders/$1.glsl)"

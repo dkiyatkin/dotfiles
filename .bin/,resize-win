@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# TODO dynamic calculation
+# 1920x1080
+# 960 640 480
+# 540 360 270
+
+wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
+wmctrl -r :ACTIVE: -b remove,fullscreen
+
+if [[ $1 == "decorate-width" ]]; then
+  # -4 delta
+  if [[ $2 == "half" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,956,-1
+  elif [[ $2 == "third" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,636,-1
+  elif [[ $2 == "quarter" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,476,-1
+  fi
+elif [[ $1 == "decorate-height" ]]; then
+  if [[ $2 == "half" ]]; then
+    # -45 delta
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,495
+  elif [[ $2 == "third" ]]; then
+    # -41 delta
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,319
+  elif [[ $2 == "quarter" ]]; then
+    # -39 delta
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,231
+  fi
+elif [[ $1 == "width" ]]; then
+  if [[ $2 == "half" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,960,-1
+  elif [[ $2 == "third" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,640,-1
+  elif [[ $2 == "quarter" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,480,-1
+  fi
+elif [[ $1 == "height" ]]; then
+  if [[ $2 == "half" ]]; then
+    # -12 delta (25/2=12.5)
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,528
+  elif [[ $2 == "third" ]]; then
+    # -8 delta (25/4≈8.3)
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,352
+  elif [[ $2 == "quarter" ]]; then
+    # -6 delta (25/4=6.25)
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,264
+  fi
+fi
+
+notify-send "$(basename "$0")" "$2 $1"

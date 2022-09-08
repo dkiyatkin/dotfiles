@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# ~/.config/sxhkd/sxhkdrc
+
+# TODO
+# write in python, with separate ~/dictophone folder, with record command without audio-recorder
+# escape charaters in filenames
+# delete all files except the newest ten
+
+DICTAPHONE_DIR=~/Audio/
+
+# WARN dangerous
+# find $DICTAPHONE_DIR -type f -printf '%T@\t%p\n' |
+# sort -t $'\t' -g |
+# head -n -10 |
+# cut -d $'\t' -f 2- |
+# xargs -I {} rm -v {}
+
+NOTIFY_CHAIN_CMD="notify-send --urgency low --icon org.gnome.SoundRecorder Dictaphone"
+if [ $# -eq 0 ]; then
+  audio-recorder --show-icon=1 --show-window=0 --command hide
+  if [ $(audio-recorder --command status) = 'on' ]; then
+    audio-recorder --command stop
+    $NOTIFY_CHAIN_CMD "Record Off"
+  else
+    audio-recorder --command start
+    $NOTIFY_CHAIN_CMD "Record On"
+  fi
+else
+  NUM="$1"
+  if [ $(audio-recorder --command status) = 'on' ]; then
+    audio-recorder --command stop
+    $NOTIFY_CHAIN_CMD "Record Off"
+  fi
+  $NOTIFY_CHAIN_CMD "Play $NUM"
+  # TODO stop already running mpv?
+  mpv "$(ls -Atd $DICTAPHONE_DIR/* | sed -n ${NUM}p)"
+  $NOTIFY_CHAIN_CMD "Stop $NUM"
+fi
