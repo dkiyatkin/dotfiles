@@ -9,8 +9,12 @@ wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz
 wmctrl -r :ACTIVE: -b remove,fullscreen
 
 if [[ $1 == "decorate-width" ]]; then
-  # -4 delta
-  if [[ $2 == "half" ]]; then
+  # -4
+  if [[ $2 == "three-quarters" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,1436,-1
+  elif [[ $2 == "two-thirds" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,1276,-1
+  elif [[ $2 == "half" ]]; then
     wmctrl -r :ACTIVE: -e 0,-1,-1,956,-1
   elif [[ $2 == "third" ]]; then
     wmctrl -r :ACTIVE: -e 0,-1,-1,636,-1
@@ -18,18 +22,28 @@ if [[ $1 == "decorate-width" ]]; then
     wmctrl -r :ACTIVE: -e 0,-1,-1,476,-1
   fi
 elif [[ $1 == "decorate-height" ]]; then
-  if [[ $2 == "half" ]]; then
-    # -45 delta
+  if [[ $2 == "three-quarters" ]]; then
+    #
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,758
+  elif [[ $2 == "two-thirds" ]]; then
+    #
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,670
+  elif [[ $2 == "half" ]]; then
+    # -45
     wmctrl -r :ACTIVE: -e 0,-1,-1,-1,495
   elif [[ $2 == "third" ]]; then
-    # -41 delta
+    # -41
     wmctrl -r :ACTIVE: -e 0,-1,-1,-1,319
   elif [[ $2 == "quarter" ]]; then
-    # -39 delta
+    # -39
     wmctrl -r :ACTIVE: -e 0,-1,-1,-1,231
   fi
 elif [[ $1 == "width" ]]; then
-  if [[ $2 == "half" ]]; then
+  if [[ $2 == "three-quarters" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,1440,-1
+  elif [[ $2 == "two-thirds" ]]; then
+    wmctrl -r :ACTIVE: -e 0,-1,-1,1280,-1
+  elif [[ $2 == "half" ]]; then
     wmctrl -r :ACTIVE: -e 0,-1,-1,960,-1
   elif [[ $2 == "third" ]]; then
     wmctrl -r :ACTIVE: -e 0,-1,-1,640,-1
@@ -37,14 +51,20 @@ elif [[ $1 == "width" ]]; then
     wmctrl -r :ACTIVE: -e 0,-1,-1,480,-1
   fi
 elif [[ $1 == "height" ]]; then
-  if [[ $2 == "half" ]]; then
-    # -12 delta (25/2=12.5)
+  if [[ $2 == "three-quarters" ]]; then
+    #
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,791
+  elif [[ $2 == "two-thirds" ]]; then
+    #
+    wmctrl -r :ACTIVE: -e 0,-1,-1,-1,703
+  elif [[ $2 == "half" ]]; then
+    # -12 (25/2=12.5)
     wmctrl -r :ACTIVE: -e 0,-1,-1,-1,528
   elif [[ $2 == "third" ]]; then
-    # -8 delta (25/4≈8.3)
+    # -8 (25/4≈8.3)
     wmctrl -r :ACTIVE: -e 0,-1,-1,-1,352
   elif [[ $2 == "quarter" ]]; then
-    # -6 delta (25/4=6.25)
+    # -6 (25/4=6.25)
     wmctrl -r :ACTIVE: -e 0,-1,-1,-1,264
   fi
 fi

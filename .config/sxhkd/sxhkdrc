@@ -118,14 +118,14 @@ alt + semicolon; v; {1,2,3,4,5,6,7,8,9,0}
 # EXTRA WM {{{
 super + semicolon; r; r
   ,terminal-tui ,fzf_resize-win # resize window, ratio, width/height
-super + semicolon; w; {h,t,q}
-  ,resize-win decorate-width {half,third,quarter} # resize decorate window width
-super + semicolon; h; {h,t,q}
-  ,resize-win decorate-height {half,third,quarter} # resize decorate window height
-super + semicolon; w; alt + {h,t,q}
-  ,resize-win width {half,third,quarter} # resize window width
-super + semicolon; h; alt + {h,t,q}
-  ,resize-win height {half,third,quarter} # resize window height
+super + semicolon; w; {Q,T,h,t,q}
+  ,resize-win decorate-width {three-quarters,two-thirds,half,third,quarter} # resize decorate window width
+super + semicolon; h; {Q,T,h,t,q}
+  ,resize-win decorate-height {three-quarters,two-thirds,half,third,quarter} # resize decorate window height
+super + semicolon; alt + w; {Q,T,h,t,q}
+  ,resize-win width {three-quarters,two-thirds,half,third,quarter} # resize window width
+super + semicolon; alt + h; {Q,T,h,t,q}
+  ,resize-win height {three-quarters,two-thirds,half,third,quarter} # resize window height
 
 # compositing
 super + semicolon; F12; F12
