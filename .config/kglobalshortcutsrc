@@ -132,8 +132,8 @@ Window Grow Horizontal=none,,Expand Window Horizontally
 Window Grow Vertical=none,,Expand Window Vertically
 Window Lower=none,,Lower Window
 Window Maximize=Meta+Up,Meta+PgUp,Maximize Window
-Window Maximize Horizontal=Meta+PgDown,,Maximize Window Horizontally
-Window Maximize Vertical=Meta+PgUp,,Maximize Window Vertically
+Window Maximize Horizontal=none,,Maximize Window Horizontally
+Window Maximize Vertical=none,,Maximize Window Vertically
 Window Minimize=Meta+Down,Meta+PgDown,Minimize Window
 Window Move=Meta+M,,Move Window
 Window Move Center=none,,Move Window to the Center
@@ -264,15 +264,11 @@ activate task manager entry 6=none,Meta+6,Activate Task Manager Entry 6
 activate task manager entry 7=none,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=none,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=none,Meta+9,Activate Task Manager Entry 9
-activate widget 12=Meta+V,none,Activate Clipboard Widget
-activate widget 17=Meta+N,none,Activate Notifications Widget
-activate widget 35=none,none,Activate Weather Report Widget
-activate widget 39=Meta+C,none,Activate Networks Widget
-activate widget 4=,none,Activate Application Launcher Widget
-activate widget 44=none,none,Activate Fokus Widget
-activate widget 46=none,none,Activate Minimize all Windows Widget
+activate widget 13=Meta+V,none,Activate Clipboard Widget
+activate widget 18=Meta+N,none,Activate Notifications Widget
+activate widget 22=Meta+C,none,Activate Networks Widget
+activate widget 38=Alt+F1,none,Activate Application Menu Widget
 activate widget 52=Alt+F5,none,Activate Window AppMenu Widget
-activate widget 56=Alt+F1,none,Activate Application Menu Widget
 clear-history=none,,Clear Clipboard History
 clipboard_action=none,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=none,Meta+Alt+P,Move keyboard focus between panels
@@ -290,6 +286,13 @@ stop current activity=none,Meta+S,Stop Current Activity
 switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
+
+[strawberry]
+_k_friendly_name=strawberry
+next_track=Media Next,none,Next track
+play_pause=Media Play,none,Play/Pause
+prev_track=Media Previous,none,Previous track
+stop=Media Stop,none,Stop
 
 [systemsettings.desktop]
 _k_friendly_name=System Settings

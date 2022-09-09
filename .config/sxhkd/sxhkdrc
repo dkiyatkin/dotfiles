@@ -185,10 +185,10 @@ mod3 + ctrl + {1,2,3,4,5,6,7,8,9,0}
 # xdotool getwindowfocus windowsize 100% 100%
 # super + Up
 #   wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz
-# super + Right
-#   wmctrl -r :ACTIVE: -b toggle,maximized_horz
-# super + Left
-#   wmctrl -r :ACTIVE: -b toggle,maximized_vert
+super + Prior
+  wmctrl -r :ACTIVE: -b toggle,maximized_horz
+super + Next
+  wmctrl -r :ACTIVE: -b toggle,maximized_vert
 
 # minimize
 # super + Down
