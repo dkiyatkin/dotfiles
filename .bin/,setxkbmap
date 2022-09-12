@@ -2,5 +2,6 @@
 
 # ~/.config/plasma-workspace/env/autostart_kde.sh
 # ~/.config/kxkbrc
+# /etc/X11/xorg.conf.d/50-local.conf
 
-setxkbmap -layout us,ru -option grp:rctrl_toggle,lv3:ralt_switch,ctrl:swapcaps_hyper,terminate:ctrl_alt_bksp
+setxkbmap -layout us,ru -option grp:rctrl_toggle,lv3:ralt_switch,terminate:ctrl_alt_bksp,ctrl:hyper_capscontrol
