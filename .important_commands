@@ -82,3 +82,5 @@ sudo cp ~/.config/tig/config /etc/tigrc
 
 git clone --bare git@github.com:dkiyatkin/dotfiles.git ~/.dotfiles
 tig -C ~/.dotfiles
+
+GIT_COMMITTER_DATE='2022-09-01 19:47 +0400' git commit -m 'update' --date '2022-09-01 19:47 +0400'
