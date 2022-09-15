@@ -2,9 +2,6 @@
 # ~/.bin/,fzf_sxhkdrc
 # ~/.bin/,fzf_resize-win
 
-# mod3 + space
-# mod3 + semicolon
-# mod3 + backslash
 # super + space
 # super + semicolon
 # super + backslash
@@ -62,8 +59,6 @@ super + space; ctrl + period
   rofimoji --action copy --prompt "😀 Emoji" # Emoji ctrl picker
 super + space; shift + period
   ,rofi-alt-emoji # Emoji shift picker
-super + space; mod3 + period
-  ,rofi-alt-emoji # Emoji hyper picker (example with mod3)
 
 # rofi -show-icons -modi drun,run -sidebar-mode -show drun # launch app picker
 # alt + F2
@@ -165,12 +160,12 @@ super + ctrl + shift + l
   xdotool getwindowfocus windowmove --sync --relative -- 1 0 # move window right
 
 # workspaces
-mod3 + {1,2,3,4,5,6,7,8,9,0}
-  wmctrl -s {0,1,2,3,4,5,6,7,8,9} # switch to workspace
-mod3 + shift + {1,2,3,4,5,6,7,8,9,0}
-  wmctrl -r :ACTIVE: -t {0,1,2,3,4,5,6,7,8,9} # window to workspace
-mod3 + ctrl + {1,2,3,4,5,6,7,8,9,0}
-  wmctrl -n {1,2,3,4,5,6,7,8,9,10} # change the number of desktops
+super + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+  wmctrl -s {0,1,2,3,4,5,6,7,8,9,10,11} # switch to workspace
+super + shift + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+  wmctrl -r :ACTIVE: -t {0,1,2,3,4,5,6,7,8,9,10,11} # window to workspace
+super + ctrl + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+  wmctrl -n {1,2,3,4,5,6,7,8,9,10,11,12} # change the number of desktops
 
 # xdotool getwindowfocus windowkill
 # alt + F4
@@ -218,28 +213,6 @@ super + Next
 
 
 # FAST TTY SWITCH {{{
-mod3 + F1
-  sudo chvt 13 && sudo chvt 1
-mod3 + F2
-  sudo chvt 13 && sudo chvt 2
-mod3 + F3
-  sudo chvt 13 && sudo chvt 3
-mod3 + F4
-  sudo chvt 13 && sudo chvt 4
-mod3 + F5
-  sudo chvt 13 && sudo chvt 5
-mod3 + F6
-  sudo chvt 13 && sudo chvt 6
-mod3 + F7
-  sudo chvt 13 && sudo chvt 7
-mod3 + F8
-  sudo chvt 13 && sudo chvt 8
-mod3 + F9
-  sudo chvt 13 && sudo chvt 9
-mod3 + F10
-  sudo chvt 13 && sudo chvt 10
-mod3 + F11
-  sudo chvt 13 && sudo chvt 11
-mod3 + F12
-  sudo chvt 13 && sudo chvt 12
+super + alt + {F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12}
+  sudo chvt 13 && sudo chvt {1,2,3,4,5,6,7,8,9,10,11,12}
 # }}}
