@@ -24,6 +24,10 @@ autocmd FileType man setlocal signcolumn=auto
 autocmd FileType markdown setlocal spell
 autocmd BufNewFile,BufRead .gitignore_global setlocal filetype=conf
 
+" TODO set appropriate filetype
+autocmd BufNewFile,BufRead ~/.local/share/fzf/selected setlocal filetype=nginx
+autocmd BufNewFile,BufRead ~/.local/share/ranger/tagged setlocal filetype=nginx
+
 " plugin:fish {{{
 autocmd FileType fish compiler fish
 " }}}
@@ -48,3 +52,24 @@ autocmd FileType qf 7wincmd_
 " autocmd InsertLeave * silent exe "!gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval 'imports.ui.status.keyboard.getInputSourceManager().inputSources[0].activate()'"
 autocmd InsertLeave * silent exe "!xkb-switch -s us"
 " " }}}
+
+" file marks
+" call SetFileMark('', '~/.local/share/nnn/selection', 999, 1)
+" call SetFileMark('', '~/.local/share/tmux/paste_buffer', 999, 1)
+call SetFileMark('A', '~/.config/nvim/plugin/30_abbreviations.vim', 999, 1)
+call SetFileMark('B', '~/.local/share/ranger/bookmarks', 999, 1)
+call SetFileMark('C', '~/.config/nvim/plugin/20_commands.vim', 999, 1)
+call SetFileMark('E', '~/.profile', 999, 1)
+call SetFileMark('F', '~/.config/nvim/plugin/10_functions.vim', 999, 1)
+call SetFileMark('I', '~/.config/alacritty/alacritty.yml', 999, 1)
+call SetFileMark('K', '~/.config/sxhkd/sxhkdrc', 999, 1)
+call SetFileMark('L', '~/.aliases', 999, 1)
+call SetFileMark('M', '~/.config/nvim/plugin/40_mappings.vim', 999, 1)
+call SetFileMark('O', '~/.config/nvim/plugin/50_other.vim', 999, 1)
+call SetFileMark('P', '~/.config/ranger/commands.py', 999, 1)
+call SetFileMark('R', '~/.config/ranger/rc.conf', 999, 1)
+call SetFileMark('S', '~/.local/share/fzf/selected', 999, 1)
+call SetFileMark('T', '~/.local/share/ranger/tagged', 999, 1)
+call SetFileMark('V', '~/.config/nvim/init.vim', 999, 1)
+call SetFileMark('Y', '~/.local/share/ranger/copy_buffer', 999, 1)
+call SetFileMark('Z', '~/.zshrc.local', 999, 1)

@@ -8,19 +8,21 @@ let g:loaded_myMappings = 1
 
 " http://vim.wikia.com/wiki/Make_search_results_appear_in_the_middle_of_the_screen
 " plugin:visualstar
-" nnoremap n nzz
-" nnoremap N Nzz
+" nnoremap <unique> n nzz
+" nnoremap <unique> N Nzz
 
 " http://vim.wikia.com/wiki/Count_number_of_matches_of_a_pattern
-nnoremap <Leader><C-g> :%s///gn<CR>
+nnoremap <unique> <Leader><C-g> :%s///gn<CR>
 
 " редактирование новых строк с курсором в самом начале
-nmap <A-o> ]<Space>ji
-nmap <A-O> [<Space>ki
+nmap <unique> <A-o> ]<Space>ji
+nmap <unique> <A-O> [<Space>ki
 
 " меняем местами ' `
-noremap ' `
-noremap ` '
+noremap <unique> ' `
+noremap <unique> ` '
+noremap <unique> g' g`
+noremap <unique> g` g'
 
 " нажатие : без шифта
 noremap <unique> ; :
@@ -30,61 +32,57 @@ noremap <unique> ,, ,
 " http://vim.wikia.com/wiki/Short_mappings_for_common_tasks
 nnoremap Y y$
 
-" открывать новый буфер, даже если файл не существует
-nnoremap <Leader>gf :e <cfile><CR>
-
 nnoremap <unique> <LocalLeader>T :edit TODO.md<CR>
 
 " заменить везде кавычки двойные на одинарные и наоборот
-" nnoremap <Leader>r"' :%s/\"/\'/g<CR>
-" nnoremap <Leader>r'" :%s/\'/\"/g<CR>
+" nnoremap <unique> <Leader>r"' :%s/\"/\'/g<CR>
+" nnoremap <unique> <Leader>r'" :%s/\'/\"/g<CR>
 
 " http://superuser.com/questions/216411/go-to-middle-of-line-in-vim
-nnoremap <Leader>gm :exe 'normal '.(virtcol('$')/2).'\|'<CR>
+nnoremap <unique> <Leader>gm :exe 'normal '.(virtcol('$')/2).'\|'<CR>
 
 " Easy block selection with mouse http://vim.wikia.com/wiki/VimTip1132
-noremap <A-LeftMouse> <4-LeftMouse>
-inoremap <A-LeftMouse> <4-LeftMouse>
+noremap <unique> <A-LeftMouse> <4-LeftMouse>
+inoremap <unique> <A-LeftMouse> <4-LeftMouse>
 onoremap <A-LeftMouse> <C-c><4-LeftMouse>
-noremap <A-LeftDrag> <LeftDrag>
-inoremap <A-LeftDrag> <LeftDrag>
+noremap <unique> <A-LeftDrag> <LeftDrag>
+inoremap <unique> <A-LeftDrag> <LeftDrag>
 onoremap <A-LeftDrag> <C-c><LeftDrag>
 
 " заменить два символа http://vimcasts.org/episodes/creating-repeatable-mappings-with-repeat-vim/
-nnoremap <silent> <Plug>TransposeCharacters xp
+nnoremap <silent><unique> <Plug>TransposeCharacters xp
   \:call repeat#set("\<Plug>TransposeCharacters")<CR>
-nmap cp <Plug>TransposeCharacters
+nnoremap <unique> cp <Plug>TransposeCharacters
 
 " TODO folding
 " " show only this fold section
-" nnoremap <Leader>z zMzv
+" nnoremap <unique> <Leader>z zMzv
 
 " common-hotkeys {{{
-
-" Use CTRL-S for saving, also in Insert mode
-noremap  <C-s> <C-c>:update<CR>
+" Use `Ctrl+s` for saving, also in Insert mode
+noremap <unique>  <C-s> <C-c>:update<CR>
 vnoremap <C-s> <C-c>:update<CR>gv
-inoremap <C-s> <C-o>:update<CR>
+inoremap <unique> <C-s> <C-o>:update<CR>
 
-nnoremap [om :set selection=exclusive<CR>
-nnoremap ]om :set selection=inclusive<CR>
-nnoremap yom :call ToggleSelection()<CR>
+nnoremap <unique> [om :set selection=exclusive<CR>
+nnoremap <unique> ]om :set selection=inclusive<CR>
+nnoremap <unique> yom :call ToggleSelection()<CR>
 
-" http://superuser.com/a/402247/377338
+" https://superuser.com/questions/402246/bash-can-i-set-ctrl-backspace-to-delete-the-word-backward/402247#402247
 " set <F17>=[9;3~
-" vnoremap <F17> d
-" inoremap <F17> <C-w>
-" cnoremap <F17> <C-w>
+" vnoremap <unique> <F17> d
+" inoremap <unique> <F17> <C-w>
+" cnoremap <unique> <F17> <C-w>
 
-" отключаем переключение режимов по ctrl-insert
-noremap <C-Insert> <Nop>
-inoremap <C-Insert> <Nop>
-cnoremap <C-Insert> <Nop>
+" отключаем переключение режимов по `Ctrl+Insert`
+noremap <unique> <C-Insert> <Nop>
+inoremap <unique> <C-Insert> <Nop>
+cnoremap <unique> <C-Insert> <Nop>
 
 " обработка буфера выделения, нет смысла для visual
-nnoremap <C-S-Insert> "*gp
-inoremap <C-S-Insert> <MiddleMouse>
-cnoremap <C-S-Insert> <C-r>*
+nnoremap <unique> <C-S-Insert> "*gp
+inoremap <unique> <C-S-Insert> <MiddleMouse>
+cnoremap <unique> <C-S-Insert> <C-r>*
 " }}}
 
 " nnoremap <expr><unique> <C-\> empty(bufname("term://*//*:ranger")) ? ":terminal ranger<CR>" : ":buffer ranger<CR>"
@@ -107,16 +105,16 @@ nnoremap <unique> yp :<C-u>let @+=expand("%:p") \| call system("tmux loadb -",ex
 " }}}
 
 " перемещение в всплывающем меню
-inoremap <C-f> <C-R>=pumvisible() ? "\<lt>PageDown>" : "\<lt>C-f>"<CR>
-inoremap <C-b> <C-R>=pumvisible() ? "\<lt>PageUp>"   : "\<lt>C-b>"<CR>
+inoremap <unique> <C-f> <C-r>=pumvisible() ? "\<lt>PageDown>" : "\<lt>C-f>"<CR>
+inoremap <unique> <C-b> <C-r>=pumvisible() ? "\<lt>PageUp>"   : "\<lt>C-b>"<CR>
 
 " emacs, bash maps
-inoremap <C-a> <Home>
-inoremap <C-e> <C-R>=pumvisible() ? "\<lt>C-e>" : "\<lt>End>"<CR>
+inoremap <unique> <C-a> <Home>
+inoremap <unique> <C-e> <C-R>=pumvisible() ? "\<lt>C-e>" : "\<lt>End>"<CR>
 
 " plugin:husk {{{
-cnoremap <expr> <C-Left> husk#left()
-cnoremap <expr> <C-Right> husk#right()
+cnoremap <expr><unique> <C-Left> husk#left()
+cnoremap <expr><unique> <C-Right> husk#right()
 " }}}
 
 " jump-buf-win-tab {{{
@@ -136,112 +134,8 @@ nnoremap <unique> <C-PageDown> :tabnext<CR>
 nnoremap <unique> <C-S-PageUp>   :tabmove -1<CR>
 nnoremap <unique> <C-S-PageDown> :tabmove +1<CR>
 
-" :h terminal-input
-tnoremap <Esc> <C-\><C-n>
-
-tnoremap <C-w>h <C-\><C-n><C-w>h
-tnoremap <C-w>j <C-\><C-n><C-w>j
-tnoremap <C-w>k <C-\><C-n><C-w>k
-tnoremap <C-w>l <C-\><C-n><C-w>l
-
-inoremap <A-h> <C-\><C-n><C-w>h
-inoremap <A-j> <C-\><C-n><C-w>j
-inoremap <A-k> <C-\><C-n><C-w>k
-inoremap <A-l> <C-\><C-n><C-w>l
-
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-" alt-o alt-; tmux-like
-tnoremap <A-w> <C-\><C-N><C-w>w
-inoremap <A-w> <C-\><C-N><C-w>w
-nnoremap <A-w> <C-w>w
-tnoremap <A-W> <C-\><C-N><C-w>W
-inoremap <A-W> <C-\><C-N><C-w>W
-nnoremap <A-W> <C-w>W
-tnoremap <A-;> <C-\><C-N><C-w>p
-inoremap <A-;> <C-\><C-N><C-w>p
-nnoremap <A-;> <C-w>p
-
-" bufmru {{{
-nnoremap ]m  :BufMRUPrev<CR>
-nnoremap [m  :BufMRUNext<CR>
-" }}}
-
-" Ctrl-q-v conflict. Alt-v == in_Ctrl-v, CTRL-q == :qall
-noremap <A-v> <C-v>
-inoremap <A-v> <C-v>
-cnoremap <A-v> <C-v>
-noremap <C-q> <C-c>:qall<CR>
-inoremap <C-q> <C-c>:qall<CR>
-cnoremap <C-q> <C-c>:qall<CR>
-" tnoremap <C-q> <C-\><C-n><C-c>:qall<CR>
-
-" из-за частых ошибок (во многих сплитах q означает выход), ставим макросы на <Alt>-q
-noremap <M-q> q
-noremap <silent> q <C-w>c
-" autocmd FileType scratch nnoremap <buffer> q :q<CR>
-" autocmd FileType qf nnoremap <silent><buffer> q :bd<CR>
-autocmd FileType nerdtree nnoremap <silent> <buffer> q :NERDTreeClose<CR>
-
-" навигация в Cmdwin
-autocmd CmdwinEnter * nnoremap <silent> <buffer> q :q<CR>
-
-" навигация по вкладкам по Ctrl TAB
-" http://stackoverflow.com/a/31961401/1054723
-
-" }}}
-
-autocmd FileType help nnoremap <silent><buffer> gO :call ShowToc()<CR><C-w>L:vertical resize 29<CR>
-
-" plugin:matchup {{{
-" xmap <unique> <Leader>%            <Plug>(matchup-z%)
-" nmap <unique> <Leader>%            <Plug>(matchup-z%)
-" omap <unique> <Leader>%            <Plug>(matchup-o_)<Plug>(matchup-z%)
-nmap <unique> <F7>                 <plug>(matchup-hi-surround)
-" }}}
-
-" plugin:easymotion {{{
-map <unique> , <Plug>(easymotion-prefix)
-nmap <unique> s <Plug>(easymotion-overwin-f)
-xmap <unique> s <Plug>(easymotion-bd-f)
-omap <unique> s <Plug>(easymotion-bd-f)
-" }}}
-
-" plugin:css-color {{{
-" css, color, enable | включить css цвета')
-nnoremap <unique> <Leader>[oc :<C-u>call css_color#enable()<CR>
-
-" css, color, disable | выключить css цвета')
-nnoremap <unique> <Leader>]oc :<C-u>call css_color#disable()<CR>
-
-" css, color, toggle | переключить css цвета')
-nnoremap <unique> <Leader>yoc :<C-u>call css_color#toggle()<CR>
-" }}}
-
-" plugin:gitv {{{
-nnoremap <unique> <Leader>gv :Gitv --all<CR>
-nnoremap <unique> <Leader>gV :Gitv! --all<CR>
-vnoremap <unique> <Leader>gV :Gitv! --all<CR>
-" навигация по diff git
-nnoremap <unique> <Leader>gd /^diff --git<CR>:call histdel("search", -1)<CR>
-" }}}
-
-" plugin:gitgutter {{{
-" GitGutter stuff (similar to what unimpaired.vim does).
-nnoremap [h :GitGutterPrevHunk<CR>
-nnoremap ]h :GitGutterNextHunk<CR>
-" }}}
-
-" plugin:undotree {{{
-nnoremap <unique> <Leader>u :UndotreeToggle<CR>
-" }}}
-
-" plugin:fugitive {{{
-nnoremap <unique><silent> <Leader>gs :Git<CR>
-" }}}
+" навигация по вкладкам по `Ctrl+Tab`
+" https://stackoverflow.com/questions/2686766/mapping-c-tab-in-my-vimrc-fails-in-ubuntu/31961401#31961401
 
 tnoremap <unique> <C-^> <C-\><C-n><C-^>
 inoremap <unique> <C-^> <C-\><C-n><C-^>
@@ -277,8 +171,8 @@ nnoremap <unique> <A-7> 7gt
 nnoremap <unique> <A-8> 8gt
 nnoremap <unique> <A-9> :tablast<CR>
 
-nnoremap <C-Tab> gt
-nnoremap <C-S-Tab> gT
+nnoremap <unique> <C-Tab> gt
+nnoremap <unique> <C-S-Tab> gT
 
 " переключиться на предыдущую активную вкладку
 tnoremap <unique> <A-0> <C-\><C-n>:exe "tabn ".g:LastTab<CR>
@@ -303,6 +197,142 @@ nnoremap <unique> <Leader>w- :resize -10<CR>
 nnoremap <unique> <Leader>w< :vertical-resize -40<CR>
 nnoremap <unique> <Leader>w> :vertical-resize +40<CR>
 
+" plugin:ctrlspace {{{
+tnoremap <unique> <C-Space> <C-\><C-n>:CtrlSpace<CR>
+inoremap <unique> <C-Space> <C-\><C-n>:CtrlSpace<CR>
+let g:CtrlSpaceDefaultMappingKey = "<C-Space> "
+
+nnoremap <silent><unique> <A-!> :CtrlSpace K q<CR>
+nnoremap <silent><unique> <A-@> :CtrlSpace Kj q<CR>
+nnoremap <silent><unique> <A-#> :CtrlSpace Kjj q<CR>
+nnoremap <silent><unique> <A-$> :CtrlSpace Kjjj q<CR>
+nnoremap <silent><unique> <A-%> :CtrlSpace Kjjjj q<CR>
+nnoremap <silent><unique> <A-^> :CtrlSpace Kjjjjj q<CR>
+nnoremap <silent><unique> <A-&> :CtrlSpace Kjjjjjj q<CR>
+nnoremap <silent><unique> <A-*> :CtrlSpace Kjjjjjjj q<CR>
+nnoremap <silent><unique> <A-(> :CtrlSpace J q<CR>
+nnoremap <unique> <A-)> <C-^>
+
+" plugin:unimpaired {{{
+" <LocalLeader>
+nnoremap <silent><unique> <A-\>k :CtrlSpace k q<CR>
+nnoremap <silent><unique> <A-\>K :CtrlSpace K q<CR>
+nnoremap <silent><unique> <A-\>j :CtrlSpace j q<CR>
+nnoremap <silent><unique> <A-\>J :CtrlSpace J q<CR>
+" }}}
+
+" plugin:bclose {{{
+" <LocalLeader>
+nnoremap <silent><unique> <A-\>f :CtrlSpace fq<CR>
+nnoremap <silent><unique> <A-\>F :CtrlSpace Fq<CR>
+" }}}
+" }}}
+
+" :h terminal-input
+tnoremap <unique> <Esc> <C-\><C-n>
+
+" tnoremap <unique> <C-w>h <C-\><C-n><C-w>h
+" tnoremap <unique> <C-w>j <C-\><C-n><C-w>j
+" tnoremap <unique> <C-w>k <C-\><C-n><C-w>k
+" tnoremap <unique> <C-w>l <C-\><C-n><C-w>l
+
+" inoremap <unique> <A-h> <C-\><C-n><C-w>h
+" inoremap <unique> <A-j> <C-\><C-n><C-w>j
+" inoremap <unique> <A-k> <C-\><C-n><C-w>k
+" inoremap <unique> <A-l> <C-\><C-n><C-w>l
+"
+" nnoremap <unique> <A-h> <C-w>h
+" nnoremap <unique> <A-j> <C-w>j
+" nnoremap <unique> <A-k> <C-w>k
+" nnoremap <unique> <A-l> <C-w>l
+
+" `Alt+o` `Alt+semicolon` tmux-like
+" tnoremap <unique> <A-w> <C-\><C-n><C-w>w
+" inoremap <unique> <A-w> <C-\><C-n><C-w>w
+" nnoremap <unique> <A-w> <C-w>w
+" tnoremap <unique> <A-w> <C-\><C-n><C-w>W
+" inoremap <unique> <A-w> <C-\><C-n><C-w>W
+" nnoremap <unique> <A-w> <C-w>W
+" tnoremap <unique> <A-;> <C-\><C-n><C-w>p
+" inoremap <unique> <A-;> <C-\><C-n><C-w>p
+" nnoremap <unique> <A-;> <C-w>p
+
+" plugin:bufmru {{{
+nnoremap <silent><unique> ]m  :BufMRUPrev<CR>
+nnoremap <silent><unique> [m  :BufMRUNext<CR>
+nnoremap <silent><unique> <Leader>m  :BufMRUCommit<CR>
+" }}}
+
+" `Ctrl+q` `Ctrl+v` conflict. `Alt+v` - i_CTRL-V, `Ctrl+q` - :qall
+noremap <unique> <A-v> <C-v>
+inoremap <unique> <A-v> <C-v>
+cnoremap <unique> <A-v> <C-v>
+noremap <unique> <C-q> <C-c>:qall<CR>
+inoremap <unique> <C-q> <C-c>:qall<CR>
+cnoremap <unique> <C-q> <C-c>:qall<CR>
+" tnoremap <unique> <C-q> <C-\><C-n><C-c>:qall<CR>
+
+" из-за частых ошибок (во многих сплитах `q` означает выход), ставим макросы на `Alt+q`
+noremap <unique> <A-q> q
+noremap <silent><unique> q <C-w>c
+" autocmd FileType scratch nnoremap <buffer><unique> q :q<CR>
+" autocmd FileType qf nnoremap <silent><buffer><unique> q :bd<CR>
+autocmd FileType nerdtree nnoremap <silent><buffer><unique> q :NERDTreeClose<CR>
+
+" навигация в Cmdwin
+autocmd CmdwinEnter * nnoremap <silent><buffer><unique> q :q<CR>
+
+autocmd FileType help nnoremap <silent><buffer> gO :call ShowToc()<CR><C-w>L:vertical resize 29<CR>
+" }}}
+
+" plugin:matchup {{{
+" xmap <unique> <Leader>%            <Plug>(matchup-z%)
+" nmap <unique> <Leader>%            <Plug>(matchup-z%)
+" omap <unique> <Leader>%            <Plug>(matchup-o_)<Plug>(matchup-z%)
+nmap <unique> <F7>                 <plug>(matchup-hi-surround)
+" }}}
+
+" plugin:easymotion {{{
+map <unique> , <Plug>(easymotion-prefix)
+nmap <unique> s <Plug>(easymotion-overwin-f)
+xmap <unique> s <Plug>(easymotion-bd-f)
+omap <unique> s <Plug>(easymotion-bd-f)
+" }}}
+
+" plugin:css-color {{{
+" plugin:unimpaired {{{
+" css, color, enable | включить css цвета')
+nnoremap <unique> <Leader>[oc :<C-u>call css_color#enable()<CR>
+" css, color, disable | выключить css цвета')
+nnoremap <unique> <Leader>]oc :<C-u>call css_color#disable()<CR>
+" css, color, toggle | переключить css цвета')
+nnoremap <unique> <Leader>yoc :<C-u>call css_color#toggle()<CR>
+" }}}
+" }}}
+
+" plugin:gitv {{{
+nnoremap <unique> <Leader>gv :Gitv --all<CR>
+nnoremap <unique> <Leader>gV :Gitv! --all<CR>
+vnoremap <unique> <Leader>gV :Gitv! --all<CR>
+" навигация по diff git
+nnoremap <unique> <Leader>gd /^diff --git<CR>:call histdel("search", -1)<CR>
+" }}}
+
+" plugin:gitgutter {{{
+" plugin:unimpaired {{{
+nnoremap <unique> [h :GitGutterPrevHunk<CR>
+nnoremap <unique> ]h :GitGutterNextHunk<CR>
+" }}}
+" }}}
+
+" plugin:undotree {{{
+nnoremap <unique> <Leader>u :UndotreeToggle<CR>
+" }}}
+
+" plugin:fugitive {{{
+nnoremap <unique><silent> <Leader>gs :Git<CR>
+" }}}
+
 " plugin:fzf {{{
 nnoremap <unique> <Leader>r :PopRegisters<CR>
 nnoremap <unique> <Leader>k :PopKeyMaps<CR>
@@ -317,46 +347,58 @@ nnoremap <unique> <Leader>pf :Files<CR>
 nnoremap <unique> <C-p> :Files<CR>
 
 nnoremap <unique> <Leader>pg :Rg<Space>
-" alacritty ctrl+shift+f
+" alacritty `Ctrl+Shift+f`
 nnoremap <unique> <F21> :Rg<Space>
 
 nnoremap <unique> <Leader>/  :BLines<CR>
 nnoremap <unique> <Leader>?  :Lines<CR>
-nnoremap <unique> <Leader>m :MRU<CR>
+nnoremap <unique> <Leader>M :MRU<CR>
 " nnoremap <unique> <Leader>'m :FileMarks<CR>
 nnoremap <unique> <Leader>'z :Z<CR>
-" Mapping selecting mappings
-nmap <unique> <Leader><Tab> <plug>(fzf-maps-n)
-xmap <unique> <Leader><Tab> <plug>(fzf-maps-x)
-omap <unique> <Leader><Tab> <plug>(fzf-maps-o)
+" mapping selecting mappings
+nnoremap <unique> <Leader><Tab> <plug>(fzf-maps-n)
+xnoremap <unique> <Leader><Tab> <plug>(fzf-maps-x)
+onoremap <unique> <Leader><Tab> <plug>(fzf-maps-o)
 " Insert mode completion
-imap <unique> <C-x><C-j> <plug>(fzf-complete-file-ag)
+inoremap <unique> <C-x><C-j> <plug>(fzf-complete-file-ag)
 " }}}
 
 " plugin:miniyank {{{
-nnoremap <A-p> :YanksAfter<CR>
-nnoremap <A-P> :YanksBefore<CR>
-inoremap <A-p> <Nop>
-inoremap <A-P> <Nop>
+nnoremap <unique> <A-p> :YanksAfter<CR>
+nnoremap <unique> <A-P> :YanksBefore<CR>
+inoremap <unique> <A-p> <Nop>
+inoremap <unique> <A-P> <Nop>
 " }}}
 
 " plugin:windowswap {{{
-nnoremap <silent> <Leader>w :call WindowSwap#EasyWindowSwap()<CR>
+nnoremap <silent><unique> <Leader>w :call WindowSwap#EasyWindowSwap()<CR>
 " }}}
 
 " plugin:node {{{
 autocmd FileType javascript
-  \ nmap <buffer> <LocalLeader>gf <Plug>NodeGotoFile
+  \ nnoremap <buffer><unique> <LocalLeader>gf <Plug>NodeGotoFile
 autocmd FileType javascript
-  \ nmap <buffer> <LocalLeader><C-w>f <Plug>NodeSplitGotoFile
+  \ nnoremap <buffer><unique> <LocalLeader><C-w>f <Plug>NodeSplitGotoFile
 autocmd FileType javascript
-  \ nmap <buffer> <LocalLeader><C-w><C-f> <Plug>NodeSplitGotoFile
+  \ nnoremap <buffer><unique> <LocalLeader><C-w><C-f> <Plug>NodeSplitGotoFile
 autocmd FileType javascript
-  \ nmap <buffer> <LocalLeader><C-w>gf <Plug>NodeTabGotoFile
+  \ nnoremap <buffer><unique> <LocalLeader><C-w>gf <Plug>NodeTabGotoFile
 " }}}
 
-" plugin:ctrlspace {{{
-tnoremap <C-Space> <C-\><C-n>:CtrlSpace<CR>
-inoremap <C-Space> <C-\><C-n>:CtrlSpace<CR>
-let g:CtrlSpaceDefaultMappingKey = "<C-Space> "
+" plugin:fetch {{{
+" https://vi.stackexchange.com/questions/3364/open-filename-under-cursor-like-gf-but-in-a-new-tab-or-split/3369#3369
+nnoremap <unique> <C-w><C-f> <C-w>vgf
+" alacritty `Ctrl+Shift+f`
+nnoremap <unique> <C-W><F21> <C-W>vgF
+" open new buffer when file doesn't exist
+nnoremap <unique> <Leader>gf :edit <cfile><CR>
+nnoremap <unique> <Leader><C-W>f :split <cfile><CR>
+nnoremap <unique> <Leader><C-W><C-f> :vsplit <cfile><CR>
+nnoremap <unique> <Leader><C-W>gf :tabe <cfile><CR>
+
+" TODO errors when wrong files
+" nnoremap <silent><unique> <Enter> :normal gF<CR>
+" https://stackoverflow.com/questions/437262/how-to-open-a-file-in-a-list-of-files-in-vim/69743457#69743457
+" nnoremap <silent><unique> <Leader>f :silent! normal gF<CR>
+" nnoremap <silent><unique> <Leader>F :% normal <Leader>F<CR>
 " }}}

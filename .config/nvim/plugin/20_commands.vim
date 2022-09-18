@@ -101,4 +101,3 @@ command WildignoreReset set wildignore=Session.vim | WildignoreFromGitignore .
 
 " https://marketplace.visualstudio.com/items?itemName=jonsmithers.open-in-vim
 command OpenCwdInVSCode exe "silent !vscodium '" . getcwd() . "' --goto '" . expand("%") . ":" . line(".") . ":" . col(".") . "'" | redraw!
-

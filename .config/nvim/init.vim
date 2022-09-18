@@ -74,8 +74,8 @@ set shell=/bin/zsh
 augroup TerminalStuff
   au!
   autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
-  autocmd TermOpen * startinsert
-  autocmd BufEnter term://* startinsert
+  " autocmd TermOpen * startinsert
+  " autocmd BufEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
 augroup END
 

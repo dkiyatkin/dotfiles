@@ -308,3 +308,9 @@ function AddOneTabpagebuffer(bufnr) abort
   let bufnr = bufnr('%')
   let t:tabpagebuffer[bufnr] = 1
 endfunction
+
+" https://stackoverflow.com/questions/36822894/persistent-vim-global-marks
+function SetFileMark(mark, filename, line_nr, col_nr) abort
+  let l:mybuf = bufnr(expand(a:filename), 1)
+  call setpos("'".a:mark, [l:mybuf, a:line_nr, a:col_nr, 0])
+endf
