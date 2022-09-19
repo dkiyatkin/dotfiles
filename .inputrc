@@ -1,0 +1,11 @@
+set enable-bracketed-paste on
+
+# https://unix.stackexchange.com/questions/231605/search-for-a-previous-command-with-the-prefix-i-just-typed
+# up and down arrows
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# https://unix.stackexchange.com/a/605163
+# Ctrl+w delete word
+set bind-tty-special-chars Off
+C-w: backward-kill-word
