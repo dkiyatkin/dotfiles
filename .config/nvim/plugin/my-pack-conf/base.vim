@@ -41,6 +41,7 @@ let g:matchup_matchparen_status_offscreen = 0
 " }}}
 
 " plugin:bclose {{{
+let g:bclose_no_plugin_maps = 1
 " }}}
 
 " plugin:bufmru {{{

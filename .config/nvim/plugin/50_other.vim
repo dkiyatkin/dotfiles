@@ -20,7 +20,6 @@ autocmd BufNewFile,BufRead .bash_aliases setlocal filetype=sh
 autocmd FileType vim setlocal foldmethod=marker
 autocmd FileType qf setlocal nonumber
 autocmd FileType help setlocal conceallevel=0 nolist nonumber
-autocmd FileType man setlocal signcolumn=auto
 autocmd FileType markdown setlocal spell
 autocmd BufNewFile,BufRead .gitignore_global setlocal filetype=conf
 
@@ -49,8 +48,8 @@ autocmd BufNewFile,BufRead .eslintrc,.babelrc setlocal filetype=json
 autocmd FileType qf 7wincmd_
 
 " всегда переключаться на английскую раскладку клавиатуры
-" autocmd InsertLeave * silent exe "!gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval 'imports.ui.status.keyboard.getInputSourceManager().inputSources[0].activate()'"
-autocmd InsertLeave * silent exe "!xkb-switch -s us"
+" autocmd InsertLeave * silent execute "!gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval 'imports.ui.status.keyboard.getInputSourceManager().inputSources[0].activate()'"
+autocmd InsertLeave * silent execute "!xkb-switch -s us"
 " " }}}
 
 " file marks

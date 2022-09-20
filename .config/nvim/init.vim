@@ -22,13 +22,13 @@ let g:maplocalleader = "\\"
 set synmaxcol=500
 set showcmd " показывать команды справа внизу
 " plugin:which-key {{{
-set timeoutlen=1500
+" plugin:unimpaired {{{
+set timeoutlen=0
+" }}}
 " }}}
 set nojoinspaces " не вставлять лишних пробелов при объединении строк
 set visualbell
 set history=10000 " Number of things to remember in history
-set number " Включает отображение номеров строк
-" set relativenumber " номера относительно текущей строки
 set hidden
 set linebreak
 set list
@@ -70,13 +70,22 @@ set wildignore=Session.vim
 
 set shell=/bin/zsh
 
+set signcolumn=number
+set number relativenumber
+
+" https://vi.stackexchange.com/questions/17816/solved-ish-neovim-dont-close-terminal-buffer-after-process-exit
 " https://github.com/onivim/oni/issues/962
 augroup TerminalStuff
-  au!
-  autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
+  autocmd!
+  " autocmd TermOpen * setlocal nonumber norelativenumber
   " autocmd TermOpen * startinsert
+  autocmd TermOpen * setlocal nonumber relativenumber | startinsert
+  " autocmd TermClose * setlocal number | call feedkeys("\<C-\>\<C-n>")
+  autocmd TermClose * call feedkeys("\<C-\>\<C-n>")
   " autocmd BufEnter term://* startinsert
   autocmd BufLeave term://* stopinsert
+  " autocmd TermEnter term://* setlocal nonumber norelativenumber
+  " autocmd TermLeave term://* setlocal nonumber relativenumber
 augroup END
 
 " https://www.reddit.com/r/vim/comments/3ae4qf/psa_set_clipboardunnamed/
