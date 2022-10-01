@@ -8,7 +8,6 @@
 [core]
 	# pager = less --tabs=4 -FRX
 	# pager = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): ' -z-3 -M +Gg
-	excludesfile = ~/.gitignore_global
 	quotepath = false
 	# editor = nvim
 
@@ -31,7 +30,7 @@
 # [mergetool "vimdiff"]
 # 	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
-[alias]
+[alias ""]
 	# d = difftool
 	# history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	# lg = log --graph --pretty=format:'%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -39,8 +38,10 @@
 	# lol = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	# mylog = log --pretty=format:'%h %s [%an]' --graph
 	# patch = !git --no-pager diff --no-color
-	s = --paginate status --verbose
-	a = add --force
+	s = status
+	sv = --paginate status --verbose
+	a = add
+	af = add --force
 	# diff-last-commit = diff HEAD~1 HEAD~0
 	# add-all-commit = !git add --all && git commit
 	# unstage-all-diff = !git add --all && git diff HEAD && git reset HEAD

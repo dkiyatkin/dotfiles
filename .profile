@@ -24,9 +24,15 @@ export PAGER='less'
 export LESS='-Ri +g'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
+# ~/.bin/,ff
+# ~/.bin/,fg
+# ~/.aliases
+export MY_RG_OPTS="--color=always --smart-case --line-number --column --no-ignore-vcs"
+export FZF_DEFAULT_COMMAND="/usr/bin/fd --color=always --no-ignore-vcs --strip-cwd-prefix --type f"
 export FZF_DEFAULT_OPTS="\
   --ansi \
-  --height=30 \
+  --color 'hl:-1:underline,hl+:-1:underline:reverse' \
+  --preview-window 'right,50%,border-left,wrap,+{2}+0/2,~0' \
   --info=inline \
   --layout=reverse \
   --bind 'bspace:backward-delete-char' \
@@ -35,6 +41,8 @@ export FZF_DEFAULT_OPTS="\
   --bind 'alt-d:kill-word' \
   --bind 'ctrl-k:kill-line' \
   --bind 'ctrl-a:beginning-of-line' \
+  --bind 'ctrl-a:select-all' \
+  --bind 'alt-a:toggle-all' \
   --bind 'ctrl-e:end-of-line' \
   --bind 'ctrl-u:half-page-up' \
   --bind 'ctrl-d:half-page-down' \
@@ -45,6 +53,8 @@ export FZF_DEFAULT_OPTS="\
   --bind 'ctrl-y:execute-silent(echo {+} | xsel --clipboard --input)' \
   --bind 'alt-n:preview-down' \
   --bind 'alt-p:preview-up' \
+  --bind 'alt-j:preview-down' \
+  --bind 'alt-k:preview-up' \
   --bind 'pgdn:preview-page-down' \
   --bind 'pgup:preview-page-up' \
   --bind 'alt-w:toggle-preview-wrap' \
@@ -52,8 +62,8 @@ export FZF_DEFAULT_OPTS="\
   --bind 'down:down' \
 "
 # --bind 'alt-enter:execute(less -f {})'
-export FZF_DEFAULT_COMMAND='fd --type f --color=always'
 
+export NNN_SEL="$HOME/.local/share/nnn/selection"
 export NNN_COLORS='7431'
 export NNN_TRASH=1
 export NNN_OPTS="aFErHdU"

@@ -19,17 +19,21 @@ alias ,ls-sort='LC_COLLATE=C /usr/bin/ls -a -1 -F -h --group-directories-first'
 alias ,l='exa --all --classify --sort=Name --group-directories-first'
 alias ,ll=',l --all --long --group --links --time-style=long-iso --git'
 
+# ~/.profile
 # find with default ignore-case
+# fzf: ~/.bin/,ff
 # -s, --case-sensitive
 # -i, --ignore-case
-alias ,f='/usr/bin/fd --hidden --no-ignore-vcs --ignore-case'
+alias ,f="$FZF_DEFAULT_COMMAND"
 
+# ~/.profile
 # grep with default ignore-case
+# fzf: ~/.bin/,fg
 # -S, --smart-case
 # -s, --case-sensitive
 # -i, --ignore-case
-alias ,g='/usr/bin/rg --hidden --no-ignore-vcs --ignore-case --line-number --column --max-columns 120 --max-columns-preview'
-alias ,ga='/usr/bin/rga --hidden --no-ignore-vcs --ignore-case --line-number --column --max-columns 120 --max-columns-preview'
+alias ,g="/usr/bin/rg --max-columns 120 --max-columns-preview $MY_RG_OPTS"
+alias ,ga="/usr/bin/rga --max-columns 120 --max-columns-preview $MY_RG_OPTS"
 
 # rsync (`--update` means skip destination files that is newer than source files)
 alias                ,rsync-cp='/usr/bin/rsync --verbose --archive --progress --human-readable'
@@ -39,7 +43,8 @@ alias              ,rsync-sync='/usr/bin/rsync --verbose --archive --progress --
 alias        ,rsync-force-sync='/usr/bin/rsync --verbose --archive --progress --human-readable --delete'
 alias ,rsync-hlinks-force-sync='/usr/bin/rsync --verbose --archive --progress --human-readable --delete --hard-links'
 
-alias ,mount='mount | column -t'
+alias ,mount='/usr/bin/mount | column -t'
+alias ,du='/usr/bin/dust --apparent-size'
 
 alias ,cat-nnn-sel="cat ${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection}"
 
@@ -49,4 +54,8 @@ alias ,cat-nnn-sel="cat ${NNN_SEL:-${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.select
 alias ,vim-with-log='savelog -t -n $HOME/log/vim.log ; vim -V0$HOME/log/vim.log'
 alias ,nvim-with-log='savelog -t -n $HOME/log/nvim.log ; nvim -V0$HOME/log/nvim.log'
 
-alias ,git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ,git-dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ,tig-dotfiles='tig -C ~/.dotfiles'
+
+# git-extras `git root` or `git rev-parse --show-toplevel`
+alias ,cd-git='cd $(git rev-parse --show-toplevel)'
