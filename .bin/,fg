@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# ~/.profile
+# ~/.aliases
+FZF_DEFAULT_COMMAND="/usr/bin/rg --no-heading $MY_RG_OPTS $@"
+selected=$(
+  fzf --ansi \
+      --history ~/.local/share/fzf/history \
+      --prompt "$(basename "$0") $(echo "$@") > " \
+      --delimiter : \
+      --preview "bat --color=always {1} --highlight-line {2}" \
+      --multi
+)
+[ -n "${selected}" ] && (
+echo -n '' > ~/.local/share/fzf/selected
+# TODO spaces in only pathname
+echo "${selected}" | while read -r line ; do
+   echo "${PWD}/${line}" >> ~/.local/share/fzf/selected
+done
+cat ~/.local/share/fzf/selected
+)

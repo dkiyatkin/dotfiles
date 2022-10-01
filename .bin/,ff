@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# ~/.profile
+# ~/.aliases
+FZF_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND $@"
+selected=$(
+  fzf --history ~/.local/share/fzf/history \
+      --prompt "$(basename "$0") $(echo "$@") > " \
+      --preview "bat --color=always {}" \
+      --multi
+)
+# --preview "~/.local/share/nvim/site/pack/git/opt/fzf/bin/preview.sh {}" \
+[ -n "${selected}" ] && (
+echo -n '' > ~/.local/share/fzf/selected
+# TODO spaces in only pathname
+echo "${selected}" | while read -r line ; do
+   echo "${PWD}/${line}" >> ~/.local/share/fzf/selected
+done
+cat ~/.local/share/fzf/selected
+)
