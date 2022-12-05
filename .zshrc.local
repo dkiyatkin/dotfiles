@@ -67,14 +67,20 @@ precmd_pipestatus() {
 unsetopt TRANSIENT_RPROMPT
 
 add-zsh-hook precmd precmd_pipestatus
-PROMPT='%(1j.[%j] .)%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-$}%f '
+PROMPT='%(1j.[%j].)%(?.%F{green}.%F{red})${PURE_PROMPT_SYMBOL:-$}%f '
 PS2='\`%_> '
 PS3='?# '
 PS4='+%N:%i:%_> '
 
 # nnn, ranger
-if [ -n "$NNNLVL" ]; then export PS1="[nnn$NNNLVL:$nnn]$PS1"; fi
-if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger$RANGER_LEVEL]$PS1"; fi
+if [ -n "$NNNLVL" ]; then export PS1="[$nnn:nnn$NNNLVL]$PS1"; fi
+if [ -n "$RANGER_LEVEL" ]; then
+    if [ "$RANGER_LEVEL" -gt "1" ]; then
+        export PS1="[${PWD/#$HOME/~}:ranger$RANGER_LEVEL]$PS1"
+    else
+        export PS1="[${PWD/#$HOME/~}:ranger]$PS1"
+    fi
+fi
 
 # https://github.com/ranger/ranger/blob/master/examples/shell_automatic_cd.sh
 ,ranger_cd() {
@@ -91,6 +97,8 @@ if [ -n "$RANGER_LEVEL" ]; then export PS1="[ranger$RANGER_LEVEL]$PS1"; fi
     if [ -z "$RANGER_LEVEL" ]; then
         ,ranger_cd "$@"
     else
+        # update `map S` - change directory in spawned shell when going back to ranger with `,r`
+        echo -n "$PWD" > ~/.local/share/ranger/last_shell_dir
         exit
     fi
 }
@@ -114,3 +122,11 @@ builtin fc -R /etc/important_commands > /dev/null 2>&1
 if [ -f /usr/share/nvm/init-nvm.sh ]; then
   source /usr/share/nvm/init-nvm.sh
 fi
+
+if [ -f /usr/share/doc/git-extras/git-extras-completion.zsh ]; then
+  source /usr/share/doc/git-extras/git-extras-completion.zsh
+fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
