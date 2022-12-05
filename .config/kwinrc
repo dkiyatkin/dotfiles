@@ -12,9 +12,7 @@ OpenGLIsUnsafe=false
 [Desktops]
 Id_1=ecb0218b-6fa1-4c55-b2b7-74cc81059622
 Id_2=dac2f11a-cfb3-47cb-b4d3-4a1a9ae02d19
-Id_3=4c1104b2-0c9a-497b-a489-3d9c3ae18e49
-Id_4=6d923edd-7317-41eb-baa5-57d7e280f02e
-Number=4
+Number=2
 Rows=2
 
 [Effect-PresentWindows]
@@ -63,6 +61,7 @@ highlightwindowEnabled=false
 invertEnabled=true
 kwin4_effect_dimscreenEnabled=true
 kwin4_effect_fadeEnabled=true
+kwin4_effect_fadedesktopEnabled=true
 kwin4_effect_fadingpopupsEnabled=false
 kwin4_effect_morphingpopupsEnabled=false
 kwin4_effect_scaleEnabled=false
@@ -71,6 +70,7 @@ overviewEnabled=false
 presentwindowsEnabled=false
 resizeEnabled=true
 screenedgeEnabled=false
+slideEnabled=false
 slidingpopupsEnabled=false
 snaphelperEnabled=true
 synchronizeskipswitcherEnabled=false

@@ -64,7 +64,7 @@ MoveZoomRight=none,none,Move Zoomed Area to Right
 MoveZoomUp=none,none,Move Zoomed Area Upwards
 Overview=none,Meta+W,Toggle Overview
 Setup Window Shortcut=none,,Setup Window Shortcut
-Show Desktop=Meta+D,Meta+D,Show Desktop
+Show Desktop=Meta+D,Meta+D,Peek at Desktop
 ShowDesktopGrid=none,Ctrl+F8,Show Desktop Grid
 Suspend Compositing=Alt+Shift+F12,Alt+Shift+F12,Suspend Compositing
 Switch One Desktop Down=none,Meta+Ctrl+Down,Switch One Desktop Down
@@ -196,7 +196,7 @@ Window to Screen 7=Meta+*,,Window to Screen 7
 WindowGeometry=none,Ctrl+Shift+F11,Toggle window geometry display (effect only)
 _k_friendly_name=KWin
 view_actual_size=Meta+0,Meta+0,Zoom to Actual Size
-view_zoom_in=Meta+=,Meta+=,Zoom In
+view_zoom_in=Meta+=,Meta++,Zoom In
 view_zoom_out=Meta+-,Meta+-,Zoom Out
 
 [mediacontrol]
@@ -264,11 +264,15 @@ activate task manager entry 6=none,Meta+6,Activate Task Manager Entry 6
 activate task manager entry 7=none,Meta+7,Activate Task Manager Entry 7
 activate task manager entry 8=none,Meta+8,Activate Task Manager Entry 8
 activate task manager entry 9=none,Meta+9,Activate Task Manager Entry 9
-activate widget 13=Meta+V,none,Activate Clipboard Widget
-activate widget 18=Meta+N,none,Activate Notifications Widget
-activate widget 22=Meta+C,none,Activate Networks Widget
-activate widget 38=Alt+F1,none,Activate Application Menu Widget
-activate widget 52=Alt+F5,none,Activate Window AppMenu Widget
+activate widget 12=Meta+V,none,Activate Clipboard Widget
+activate widget 17=Meta+N,none,Activate Notifications Widget
+activate widget 35=none,none,Activate Weather Report Widget
+activate widget 39=Meta+C,none,Activate Networks Widget
+activate widget 4=none,none,Activate Application Launcher Widget
+activate widget 44=none,none,Activate Fokus Widget
+activate widget 46=none,none,Activate Minimize all Windows Widget
+activate widget 52=none,none,Activate Window AppMenu Widget
+activate widget 56=Alt+F1,none,Activate Application Menu Widget
 clear-history=none,,Clear Clipboard History
 clipboard_action=none,Meta+Ctrl+X,Automatic Action Popup Menu
 cycle-panels=none,Meta+Alt+P,Move keyboard focus between panels
@@ -286,13 +290,6 @@ stop current activity=none,Meta+S,Stop Current Activity
 switch to next activity=none,,Switch to Next Activity
 switch to previous activity=none,,Switch to Previous Activity
 toggle do not disturb=none,,Toggle do not disturb
-
-[strawberry]
-_k_friendly_name=strawberry
-next_track=Media Next,none,Next track
-play_pause=Media Play,none,Play/Pause
-prev_track=Media Previous,none,Previous track
-stop=Media Stop,none,Stop
 
 [systemsettings.desktop]
 _k_friendly_name=System Settings
