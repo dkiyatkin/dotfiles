@@ -1,12 +1,13 @@
 #!/bin/sh
 
-# sleep 5
-# notify-send ',autostart'
+notify-send ',autostart'
 
 # shortcuts
 # xbindkeys &
 ,sxhkd &
 
+goldendict &
+keepassxc &
 # qbittorrent &
 
 # xhost +si:localuser:dima-sandbox

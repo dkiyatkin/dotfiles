@@ -27,8 +27,9 @@ rm -r /var/run/user/$MY_UID/
 echo "rm -r $MY_DIRECTORY/"
 rm -r $MY_DIRECTORY/ &&
 
-cp -rv /etc/skel.dima/ $MY_DIRECTORY/ &&
+# cp -rv /etc/skel.dima/ $MY_DIRECTORY/ &&
 # cp -rv /etc/skel/ $MY_DIRECTORY/ &&
+mkdir -v $MY_DIRECTORY/
 
 ln -sf /usr/share/sddm/faces/$MY_USER.face.icon $MY_DIRECTORY/.face &&
 ln -sf $MY_DIRECTORY/.face $MY_DIRECTORY/.face.icon &&

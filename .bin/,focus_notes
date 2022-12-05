@@ -3,7 +3,7 @@
 wmctrl -xa Nvim-notes.Alacritty && true || \
   (
   cd ~/notes
-  alacritty --class Nvim-notes --command nvim -c "syntax enable" -O *.md
+  alacritty --class Alacritty,Nvim-notes --command nvim -c "syntax enable" -O *.md
   )
 
 # todayfilename=$(date -u +"%Y-%m-%d").md
