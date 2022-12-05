@@ -3,9 +3,12 @@
 # ~/.bin/,fzf_resize-win
 
 # super + space
+# super + ctrl + space
+# super + shift + space
 # super + semicolon
-# super + backslash
 # alt + space
+# alt + ctrl + space
+# alt + shift + space
 # alt + semicolon
 
 # multi chains only with semicolon hotkeys
@@ -51,6 +54,11 @@ super + space; ctrl + slash
   ,focus_any gucharmap.Gucharmap gucharmap # Character map
 super + space; Print
   ,focus_any spectacle.spectacle spectacle # show a screenshot
+super + space; c
+  ,focus_any speedcrunch.SpeedCrunch speedcrunch # calculator
+# ,focus_any gpick.Gpick gpick # color picker
+super + space; p
+  ,focus_any kcolorchooser.kcolorchooser kcolorchooser # color picker
 # }}}
 
 
@@ -102,7 +110,12 @@ alt + space; F1
   ,terminal-tui ,fzf_sxhkdrc # sxhkd keybinds, help
 alt + space; Print
   spectacle --background # take a screenshot
+alt + space; p
+  notify-send gpick $(gpick -so) # pick a color on the screen
 
+# TODO
+# alt + space; r
+# alt + space; p
 alt + semicolon; v; v
   ,dictaphone # start / stop record audio
 alt + semicolon; v; {1,2,3,4,5,6,7,8,9,0}
