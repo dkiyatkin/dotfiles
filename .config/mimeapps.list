@@ -1,6 +1,7 @@
 [Added Associations]
 application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
 audio/mpeg=vlc.desktop;mpv.desktop;org.strawberrymusicplayer.strawberry.desktop;audacity.desktop;
+image/svg+xml=org.kde.gwenview.desktop;org.inkscape.Inkscape.desktop;krita_svg.desktop;gimp.desktop;org.kde.kolourpaint.desktop;org.kde.kate.desktop;org.kde.kwrite.desktop;libreoffice-writer.desktop;okularApplication_txt.desktop;firefox.desktop;org.qutebrowser.qutebrowser.desktop;brave-browser.desktop;librewolf.desktop;chromium.desktop;featherpad.desktop;nvim.desktop;notepadqq.desktop;neovide.desktop;codium.desktop;vscodium.desktop;geany.desktop;
 inode/directory=org.kde.dolphin.desktop;
 video/x-matroska=vlc.desktop;mpv.desktop;org.bunkus.mkvtoolnix-gui.desktop;
 x-scheme-handler/http=chromium.desktop;
@@ -10,6 +11,7 @@ x-scheme-handler/mailto=thunderbird.desktop;
 [Default Applications]
 application/x-bittorrent=org.qbittorrent.qBittorrent.desktop;
 audio/mpeg=vlc.desktop;
+image/svg+xml=org.kde.gwenview.desktop;
 inode/directory=org.kde.dolphin.desktop;
 text/html=chromium.desktop;
 video/x-matroska=vlc.desktop;
